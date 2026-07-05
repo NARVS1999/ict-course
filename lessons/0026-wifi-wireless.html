@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0026: Wi-Fi & Wireless Networking</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0026: Wi-Fi & Wireless Networking</h1>
+      <p><em>Alamin ang Wi-Fi standards, frequencies, security protocols, at kung paano mag-set up ng home wireless network.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Maunawaan ang mga Wi-Fi standards (802.11a/b/g/n/ac/ax), ang pagkakaiba ng 2.4GHz at 5GHz, at kung paano i-secure ang wireless network.
+      </div>
+
+      <h2>Wi-Fi Standards (802.11)</h2>
+      <p>Ang Wi-Fi ay base sa IEEE 802.11 standards: <strong>802.11b</strong> (11 Mbps, 2.4GHz — luma na), <strong>802.11g</strong> (54 Mbps, 2.4GHz), <strong>802.11n</strong> (Wi-Fi 4 — hanggang 600 Mbps, pwedeng 2.4 o 5GHz), <strong>802.11ac</strong> (Wi-Fi 5 — hanggang 1 Gbps+, 5GHz lang), <strong>802.11ax</strong> (Wi-Fi 6 — hanggang 9.6 Gbps, mas efficient sa maraming devices). Ang <strong>Wi-Fi 6E</strong> ay nagdadagdag ng 6GHz band para sa mas maraming channels at mas kaunting interference.</p>
+
+      <h2>2.4GHz vs 5GHz Frequencies</h2>
+      <p>Ang <strong>2.4GHz</strong> ay mas malayo ang abot at mas mahusay pumasok sa pader, pero mas mabagal at mas madaling ma-interfere (gamit din ito ng microwaves, Bluetooth, at iba pang devices). Ang <strong>5GHz</strong> ay mas mabilis at mas kaunti ang interference, pero mas maikli ang range at mas madaling ma-block ng pader. Piliin ang 2.4GHz kung malayo ka sa router; piliin ang 5GHz kung malapit ka at kailangan mo ng bilis.</p>
+
+      <blockquote>"Ang 2.4GHz mas malayo abot pero mas mabagal; ang 5GHz mabilis pero maikli range. Pumili ng tamang frequency."</blockquote>
+
+      <h2>SSID at Security (WPA2/WPA3)</h2>
+      <p>Ang <strong>SSID (Service Set Identifier)</strong> ay ang pangalan ng Wi-Fi network na nakikita mo. Para sa security, huwag gamitin ang WEP (napakadaling i-crack). Gumamit ng <strong>WPA2</strong> (minimum standard) o <strong>WPA3</strong> (pinakabago at pinakasecure). Ang <strong>WPA3</strong> ay may mas malakas na encryption at mas protektado laban sa password guessing attacks. Iwasan ang paggamit ng default SSID at password ng router.</p>
+
+      <h2>Channel Interference at Signal Strength</h2>
+      <p>Ang Wi-Fi channels ay pwedeng mag-overlap, lalo na sa 2.4GHz (channels 1, 6, at 11 lang ang hindi nag-o-overlap). Gamitin ang Wi-Fi analyzer apps para makita kung aling channel ang hindi masyadong gamit sa inyong area. Ang signal strength ay sinusukat sa dBm — mas malapit sa 0 (-30 dBm) ang mas malakas, ang -80 dBm ay mahina na.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang pinakabagong Wi-Fi standard?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> 802.11n</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> 802.11ac</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> 802.11ax (Wi-Fi 6)</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang pagkakaiba ng 2.4GHz at 5GHz?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> 2.4GHz ay mas mabilis, 5GHz ay mas malayo</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> 2.4GHz ay mas malayo pero mas mabagal; 5GHz ay mas mabilis pero maikli range</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Pareho lang sila</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang WPA3?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Ang pinakabagong Wi-Fi security standard na may mas malakas na encryption</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Isang Wi-Fi frequency band</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Isang uri ng router</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Check Your Wi-Fi Settings</h3>
+        <p>Pumunta sa Wi-Fi settings ng iyong computer o phone. Hanapin ang iyong kasalukuyang network at tingnan ang mga detalye: SSID (network name), frequency band (2.4GHz o 5GHz), security type (WPA2 o WPA3), at signal strength. Sa Windows, gamitin ang Settings > Network & Internet > Wi-Fi > Properties. I-document ang iyong findings.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Wi-Fi 6 (802.11ax) ang pinakabagong standard — mas mabilis at mas efficient sa maraming devices.</li>
+        <li>2.4GHz = mas malayo range, mas mabagal; 5GHz = mas mabilis, mas maikli range.</li>
+        <li>Gumamit ng WPA2 o WPA3 para sa security — iwasan ang WEP at default passwords.</li>
+        <li>Sa 2.4GHz, channels 1, 6, at 11 lang ang hindi nag-o-overlap — piliin ang hindi gaanong gamit na channel.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'c', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

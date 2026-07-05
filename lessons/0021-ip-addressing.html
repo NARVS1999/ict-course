@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0021: IP Addressing & Subnetting Basics</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0021: IP Addressing & Subnetting Basics</h1>
+      <p><em>Unawain ang IPv4, IPv6, subnet masks, at kung paano nagkakaroon ng address ang bawat device sa network.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang basics ng IP addressing — IPv4 vs IPv6, IP classes, private vs public IP, at subnet masking.
+      </div>
+
+      <h2>IPv4 vs IPv6</h2>
+      <p>Ang <strong>IPv4</strong> ay ang tradisyonal na IP address — 32 bits, 4 na grupo ng numbers (0-255 bawat isa), hal. 192.168.1.1. May limitasyon ito: mga 4.3 bilyong addresses lang — ubos na! Ang <strong>IPv6</strong> ay ang kapalit — 128 bits, 8 grupo ng hexadecimal, hal. 2001:0db8:85a3::8a2e:0370:7334. Bilyon-bilyon ang addresses nito — sapat para sa lahat ng devices sa mundo.</p>
+
+      <h2>IP Classes at Private vs Public</h2>
+      <p>Ang IPv4 ay may mga <strong>classes</strong>: Class A (1.0.0.0 - 127.255.255.255) para sa malalaking networks, Class B (128.0.0.0 - 191.255.255.255) para sa medium, Class C (192.0.0.0 - 223.255.255.255) para sa maliliit. Ang <strong>private IP addresses</strong> ay ginagamit sa loob ng local network at hindi naruroute sa internet — ang common ay 192.168.x.x, 10.x.x.x, at 172.16.x.x. Ang <strong>public IP</strong> naman ay unique sa buong mundo at kailangan para makakonekta sa internet.</p>
+
+      <h2>Subnet Mask at CIDR</h2>
+      <p>Ang <strong>subnet mask</strong> ay nagsasabi kung aling parte ng IP address ang network at alin ang host. Halimbawa, ang 255.255.255.0 ay nangangahulugang 24 bits para sa network at 8 bits para sa hosts — kaya 254 usable devices. Ang <strong>CIDR notation</strong> ay pinaikli: /24 = 255.255.255.0. Kung /16 = 255.255.0.0 (maraming hosts), kung /30 = 255.255.255.252 (2 usable hosts lang — para sa point-to-point).</p>
+
+      <blockquote>"Ang subnet mask nagsasabi kung ilan ang pwedeng devices sa isang network. 255.255.255.0 means 254 usable hosts."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang pagkakaiba ng IPv4 at IPv6?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> IPv4 ay 128 bits, IPv6 ay 32 bits</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> IPv4 ay 32 bits at ubos na ang addresses; IPv6 ay 128 bits at marami pang addresses</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Pareho lang sila</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang ibig sabihin ng /24 sa CIDR notation?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> 24 devices ang pwedeng kumonekta</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> 24 bits ay para sa network, 8 bits para sa hosts (254 usable)</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> 24 MHz na frequency</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang private IP address?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> IP address na unique sa buong mundo</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> IP address na ginagamit sa loob ng local network (hal. 192.168.x.x)</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> IP address ng ISP</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Check Your IP Configuration</h3>
+        <p>Buksan ang Command Prompt (cmd) at i-type ang <code>ipconfig</code> (Windows) o <code>ifconfig</code> (macOS/Linux). Hanapin ang IPv4 address, subnet mask, at default gateway ng iyong computer. Isulat ang mga ito at tukuyin kung anong IP class ito at kung ilan ang pwedeng hosts base sa subnet mask.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>IPv4 ay 32 bits (4.3B addresses), IPv6 ay 128 bits (halos unlimited).</li>
+        <li>Private IPs (192.168.x.x, 10.x.x.x) ay para sa local network; public IP ay para sa internet.</li>
+        <li>Subnet mask / CIDR ang nagsasabi kung ilang devices ang pwedeng magkasya sa network.</li>
+        <li>255.255.255.0 (/24) = 254 usable hosts — pinaka-common sa bahay at opisina.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

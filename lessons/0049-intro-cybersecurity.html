@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0049: Introduction to Cybersecurity</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0049: Introduction to Cybersecurity</h1>
+      <p><em>Pag-unawa sa mga pangunahing konsepto ng cybersecurity: CIA Triad, common threats, at defense in depth.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang fundamentals ng cybersecurity — kung paano protektahan ang data, kilalanin ang mga banta, at magpatupad ng security layers.
+      </div>
+
+      <h2>CIA Triad</h2>
+      <p>Ang CIA Triad ay ang pundasyon ng cybersecurity:</p>
+      <ul>
+        <li><strong>Confidentiality</strong> — Tanging ang awtorisadong tao lamang ang may access sa data. Halimbawa: encryption, passwords.</li>
+        <li><strong>Integrity</strong> — Hindi nababago ang data ng unauthorized na tao. Halimbawa: hashing, checksums.</li>
+        <li><strong>Availability</strong> — Ang data at system ay accessible kapag kailangan. Halimbawa: backups, redundancy.</li>
+      </ul>
+
+      <h2>Common Threats</h2>
+      <p><strong>Malware</strong> — Malicious software (virus, worm, trojan). <strong>Ransomware</strong> — Nagla-lock ng files at humihingi ng ransom. <strong>Phishing</strong> — Pekeng email/message na kunwari ay galing sa lehitimong source para nakawin ang credentials. <strong>Social Engineering</strong> — Pagmamanipula ng tao para magbigay ng kumpidensyal na impormasyon.</p>
+
+      <h2>Defense in Depth (Security Layers)</h2>
+      <p>Hindi sapat ang isang depensa lang. Ang defense in depth ay maraming layers: firewall, antivirus, strong passwords, encryption, user training, at regular updates. Kung bumagsak ang isang layer, may iba pang depensa.</p>
+
+      <blockquote>"Cybersecurity ay hindi lang antivirus — kasama na rito ang pag-iingat ng user at tamang configuration."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ibig sabihin ng "C" sa CIA Triad?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Confidentiality</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Compliance</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Connectivity</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang phishing?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Pangingisda sa ilog</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Pekeng email o message na kunwari ay galing sa lehitimong source para nakawin ang credentials</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Pag-scam sa phone calls</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang defense in depth?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Isang uri ng antivirus</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Maraming layers ng security para protektahan ang system</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Pagtatago ng files sa malalim na folder</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Identify 3 Security Measures</h3>
+        <p>Maglista ng tatlong security measures na ginagamit mo araw-araw. Halimbawa: pagla-lock ng phone, paggamit ng password, pag-iiwas sa pag-click ng suspicious links. Ipaliwanag kung paano nakatutulong ang bawat isa sa iyong seguridad.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>CIA Triad: Confidentiality, Integrity, Availability — pundasyon ng cybersecurity.</li>
+        <li>Mga common threats: malware, ransomware, phishing, social engineering.</li>
+        <li>Defense in depth = maraming layers ng depensa para sa mas matibay na proteksyon.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0028: Programming Concepts 101</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0028: Programming Concepts 101</h1>
+      <p><em>Alamin ang pangunahing konsepto ng programming — algorithm, flowchart, pseudocode, variables, data types, at control structures.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapag-explain ng basic programming concepts at makakagawa ng simpleng algorithm gamit ang flowchart at pseudocode.
+      </div>
+
+      <h2>Algorithm, Flowchart, at Pseudocode</h2>
+      <p>Ang <strong>algorithm</strong> ay isang step-by-step na paraan para malutas ang isang problema. Para ma-visualize ang algorithm, gumagamit tayo ng <strong>flowchart</strong> (mga hugis at arrow) o <strong>pseudocode</strong> (parang code pero English ang gamit).</p>
+
+      <blockquote>"Ang programming ay pagbibigay ng sunod-sunod na utos sa computer gamit ang wikang naiintindihan niya."</blockquote>
+
+      <h3>Flowchart Shapes Example</h3>
+      <pre><code>  +--------+
+  | START  |
+  +--------+
+      |
+      v
+  +--------+
+  | Input  |&lt;-- Parallelogram = Input/Output
+  | number |
+  +--------+
+      |
+      v
+  +--------+
+  | number |&lt;-- Diamond = Decision
+  | &gt; 0?   |
+  +--------+
+   /        \
+ yes        no
+  v          v
++------+  +------+
+|Print |  |Print |
+|"Pos" |  |"Neg" |
++------+  +------+
+  |          |
+  v          v
+  +--------+
+  |  END   |
+  +--------+</code></pre>
+
+      <h2>Variables at Data Types</h2>
+      <p>Ang <strong>variable</strong> ay parang lalagyan ng data sa memory ng computer. May iba't ibang <strong>data types</strong>:</p>
+      <ul>
+        <li><strong>Integer</strong> — buong numero (hal. 5, -3, 100)</li>
+        <li><strong>String</strong> — texto o salita (hal. "Hello", "Juan")</li>
+        <li><strong>Boolean</strong> — true o false lang</li>
+      </ul>
+
+      <h2>Control Structures</h2>
+      <p>Tatlong uri ng control structures:</p>
+      <ul>
+        <li><strong>Sequence</strong> — sunod-sunod na execution ng statements</li>
+        <li><strong>Selection</strong> — pagpili (if/else) depende sa condition</li>
+        <li><strong>Iteration</strong> — pag-uulit (loops) hanggang sa matugunan ang condition</li>
+      </ul>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang algorithm?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Isang step-by-step na paraan para malutas ang problema</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Isang programming language</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Isang uri ng computer</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Anong data type ang ginagamit para mag-imbak ng text?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Integer</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> String</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Boolean</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Anong control structure ang nagpapaulit-ulit ng code?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Sequence</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Selection</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Iteration</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Coffee-Making Algorithm</h3>
+        <p>Gumawa ng pseudocode para sa paggawa ng kape. Isulat ang step-by-step process — mula sa paghahanda ng ingredients hanggang sa pag-inom ng kape. Halimbawa: START, Painitin ang tubig, Ilagay ang kape sa tasa, atbp.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang algorithm ay step-by-step solution sa problema.</li>
+        <li>Ang flowchart at pseudocode ay ginagamit para i-represent ang algorithm.</li>
+        <li>May tatlong data types: integer, string, boolean.</li>
+        <li>Tatlong control structures: sequence, selection, iteration.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

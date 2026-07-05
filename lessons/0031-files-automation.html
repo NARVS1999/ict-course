@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0031: Working with Files & Automation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0031: Working with Files & Automation</h1>
+      <p><em>Matutong magbasa at magsulat ng files sa Python, at mag-automate ng mga paulit-ulit na gawain.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapagbasa at makakapagsulat ng text at CSV files, at makakagawa ng automation script para sa file organization.
+      </div>
+
+      <h2>Reading and Writing Text Files</h2>
+      <p>Gamit ang <code>open()</code> function, pwedeng magbasa at magsulat ng files. May iba't ibang modes: <code>'r'</code> para read, <code>'w'</code> para write, <code>'a'</code> para append.</p>
+
+      <blockquote>"Kapag manual mong ginagawa ang paulit-ulit na tasks sa computer, malamang may Python script na pwedeng mag-automate nito. Mas masarap matulog habang tumatakbo ang script mo."</blockquote>
+
+      <pre><code># Pagsulat ng file
+with open("sample.txt", "w") as file:
+    file.write("Hello, File!\n")
+    file.write("Ito ay line 2.\n")
+
+# Pagbasa ng file
+with open("sample.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+# Magbasa linya por linya
+with open("sample.txt", "r") as file:
+    for line in file:
+        print(line.strip())</code></pre>
+
+      <h2>Working with CSV Files</h2>
+      <p>Ang CSV (Comma-Separated Values) ay common na format para sa data tables. Gamitin ang <strong>csv module</strong>.</p>
+
+      <pre><code>import csv
+
+# Pagsulat ng CSV
+with open("students.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Name", "Age", "Course"])
+    writer.writerow(["Juan", 20, "BSIT"])
+    writer.writerow(["Maria", 19, "BSCS"])
+
+# Pagbasa ng CSV
+with open("students.csv", "r") as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)</code></pre>
+
+      <h2>Automating Boring Stuff</h2>
+      <p>Pwedeng mag-automate ng mga bagay tulad ng pag-rename ng files, pag-oorganize ng folders, at pag-backup.</p>
+
+      <pre><code>import os
+import shutil
+
+# Mag-rename ng files sa isang folder
+folder = "downloads"
+for filename in os.listdir(folder):
+    if filename.endswith(".jpg"):
+        new_name = "photo_" + filename
+        os.rename(os.path.join(folder, filename),
+                  os.path.join(folder, new_name))
+
+# Backup ng folder
+shutil.copytree("important_docs", "backup_important_docs")</code></pre>
+
+      <h2>Task Scheduling</h2>
+      <p>Sa Windows, gamitin ang <strong>Task Scheduler</strong>. Sa Linux/Mac, gamitin ang <strong>cron</strong>. Pwedeng i-schedule ang Python script para tumakbo araw-araw or every hour.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Anong function ang ginagamit para mag-open ng file sa Python?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> open()</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> file()</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> read()</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Anong mode ang gagamitin para magbasa ng file?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> 'w'</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> 'r'</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> 'a'</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Anong module ang ginagamit para mag-handle ng CSV files?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> csvfile</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> csvread</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> csv</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Word Counter</h3>
+        <p>Gumawa ng Python script na nagbabasa ng text file at nagco-count ng bilang ng words. I-print ang total word count. Subukan sa isang sample na file na may laman na hindi bababa sa 3 sentences.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Gamitin ang open() para magbasa at magsulat ng files.</li>
+        <li>Ang csv module ay ginagamit para sa CSV file operations.</li>
+        <li>Pwedeng i-automate ang file organization at iba pang tasks gamit ang Python.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

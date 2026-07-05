@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0029: Introduction to Python</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0029: Introduction to Python</h1>
+      <p><em>Matuto ng Python — ang pinaka-beginner-friendly na programming language. print(), variables, input(), conditionals, at loops.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapagsulat ng simpleng Python script na may input/output, conditionals, at loops.
+      </div>
+
+      <h2>Pag-setup ng Python</h2>
+      <p>I-download ang Python mula sa <strong>python.org</strong>. Pwede kang gumamit ng <strong>VS Code</strong>, <strong>PyCharm</strong>, o <strong>Thonny</strong> bilang editor. Sa VS Code, i-install ang Python extension para may syntax highlighting at auto-complete.</p>
+
+      <blockquote>"Python ang pinakamadaling language para sa beginners — parang English magbasa."</blockquote>
+
+      <h2>Print at Variables</h2>
+      <p>Ang <code>print()</code> ang ginagamit para magpakita ng output. Ang variable naman ay lalagyan ng data.</p>
+      <pre><code># Ito ay isang comment
+name = "Juan"
+age = 18
+is_student = True
+
+print("Hello, " + name)
+print("Age:", age)
+print("Student:", is_student)</code></pre>
+
+      <h2>User Input</h2>
+      <p>Gamit ang <code>input()</code>, pwedeng mag-enter ang user ng data.</p>
+      <pre><code>name = input("Enter your name: ")
+print("Hello, " + name + "!")</code></pre>
+
+      <h2>Conditionals (if/elif/else)</h2>
+      <pre><code>age = int(input("Enter your age: "))
+
+if age >= 18:
+    print("Adult ka na!")
+elif age >= 13:
+    print("Teenager ka.")
+else:
+    print("Bata ka pa.")</code></pre>
+
+      <h2>Loops (for at while)</h2>
+      <p>Ang <strong>for loop</strong> ay umuulit sa isang sequence. Ang <strong>while loop</strong> ay umuulit habang totoo ang condition.</p>
+      <pre><code># For loop - mag-print ng 1-5
+for i in range(1, 6):
+    print(i)
+
+# While loop - magbilang pababa
+count = 5
+while count > 0:
+    print(count)
+    count -= 1
+print("Blast off!")</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Anong function ang ginagamit para mag-print ng output sa Python?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> print()</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> output()</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> display()</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang tamang syntax para sa if statement sa Python?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> if condition { }</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> if condition:</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> if (condition) then</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Paano gumawa ng for loop na magpi-print ng 1-5?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> for x in 1-5:</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> for x = 1 to 5:</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> for i in range(1, 6):</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Name Greeting</h3>
+        <p>Gumawa ng Python script na nagtatanong ng pangalan ng user at nagpi-print ng greeting. Halimbawa: "Enter your name: Maria" -> "Hello, Maria! Welcome to Python!"</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Gamitin ang print() para mag-output at input() para sa user input.</li>
+        <li>Ang if/elif/else ay ginagamit para sa conditionals.</li>
+        <li>Ang for at while loops ay ginagamit para sa pag-uulit.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

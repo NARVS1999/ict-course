@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0027: Introduction to Network Security</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0027: Introduction to Network Security</h1>
+      <p><em>Alamin ang basics ng network security — firewalls, VPN, MAC filtering, at kung paano i-secure ang iyong home router.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Maunawaan ang mga basic security measures para protektahan ang network — firewalls, VPN, at router security settings.
+      </div>
+
+      <h2>Firewalls: Software at Hardware</h2>
+      <p>Ang <strong>firewall</strong> ay parang guard ng network — sinusuri nito ang incoming at outgoing traffic at binablock ang suspicious connections. May <strong>software firewall</strong> (naka-install sa computer tulad ng Windows Defender Firewall) at <strong>hardware firewall</strong> (built-in sa router). Siguraduhing naka-enable ang firewall sa router at sa bawat computer para sa double protection.</p>
+
+      <h2>VPN (Virtual Private Network)</h2>
+      <p>Ang <strong>VPN</strong> ay gumagawa ng naka-encrypt na tunnel sa pagitan ng computer at ng VPN server. Pinoprotektahan nito ang iyong privacy sa pamamagitan ng pagtatago ng iyong totoong IP address at pag-e-encrypt ng iyong internet traffic — lalo na kapag gumagamit ng public Wi-Fi (sa coffee shop, airport). Ang VPN ay nagbibigay ng <strong>privacy</strong> at <strong>security</strong> sa pamamagitan ng <strong>tunneling</strong> (pag-encapsulate ng data).</p>
+
+      <h2>MAC Filtering at WPS</h2>
+      <p>Ang <strong>MAC filtering</strong> ay isang security feature na nagpapahintulot lamang sa specific devices (base sa MAC address) na kumonekta sa Wi-Fi. Pero hindi ito 100% secure dahil pwedeng i-spoof ang MAC address. Ang <strong>WPS (Wi-Fi Protected Setup)</strong> ay isang feature na nagpapadali sa pagkonekta (pindot lang ng button o mag-type ng PIN) — pero may security vulnerability ito, kaya <strong>i-disable ang WPS</strong> para mas secure ang network.</p>
+
+      <blockquote>"Palitan lagi ang default admin password ng router — madalas admin/admin lang 'yan."</blockquote>
+
+      <h2>Basic Router Security Settings</h2>
+      <ul>
+        <li><strong>Palitan ang default admin password</strong> — huwad na iwanan ang "admin/admin".</li>
+        <li><strong>Palitan ang SSID</strong> — huwag gamitin ang default na pangalan na nagpapakita ng brand ng router.</li>
+        <li><strong>I-enable ang WPA2 o WPA3</strong> — huwag gumamit ng WEP o open network.</li>
+        <li><strong>I-disable ang remote management</strong> — para walang makapasok sa router settings mula sa internet.</li>
+        <li><strong>I-update ang router firmware</strong> — para ayusin ang mga security vulnerabilities.</li>
+      </ul>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang firewall?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Isang device na nagpapalakas ng Wi-Fi signal</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Isang security system na nagsa-filter ng network traffic at bumablock ng suspicious connections</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Isang uri ng cable</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang ibig sabihin ng VPN?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Virtual Private Network — naka-encrypt na tunnel para sa privacy at security</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Very Protected Network</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Video Player Network</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Bakit dapat i-disable ang WPS?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Dahil pinapabagal nito ang internet</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Dahil maraming security vulnerabilities na pwedeng i-exploit ng hackers</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Dahil hindi compatible sa mga bagong devices</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Check Your Router Security Settings</h3>
+        <p>Kung maa-access mo ang router admin panel, i-log in (karaniwang 192.168.1.1 o 192.168.0.1 sa browser). Hanapin ang security settings at i-check ang mga sumusunod: naka-WPA2/WPA3 ba ang Wi-Fi? Naka-disable ba ang WPS? Naka-disable ba ang remote management? Kung hindi mo ma-access, manood ng YouTube video kung paano i-secure ang isang home router at i-document ang steps.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Firewall ang nagbabantay sa network traffic — dapat naka-enable sa router at sa computer.</li>
+        <li>VPN ay nag-e-encrypt ng traffic para sa privacy — importante sa public Wi-Fi.</li>
+        <li>WPS ay may security risk — i-disable ito sa router settings.</li>
+        <li>Palitan ang default admin password ng router at i-update ang firmware regularly.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'a', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0036: HTML5 Fundamentals</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0036: HTML5 Fundamentals</h1>
+      <p><em>Matuto ng HTML5 — ang backbone ng web. Document structure, text elements, links, images, tables, semantic HTML, at forms.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakagawa ng isang kumpletong HTML page gamit ang semantic elements at forms.
+      </div>
+
+      <h2>Document Structure</h2>
+      <p>Ang bawat HTML document ay may basic structure: DOCTYPE declaration, html tag, head at body.</p>
+
+      <blockquote>"HTML ang skeleton ng website — nagbibigay ng structure."</blockquote>
+
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello, World!&lt;/h1&gt;
+  &lt;p&gt;Ito ang first HTML page ko.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <h2>Text Elements at Lists</h2>
+      <pre><code>&lt;h1&gt;Main Heading&lt;/h1&gt;
+&lt;h2&gt;Subheading&lt;/h2&gt;
+&lt;p&gt;Paragraph of text.&lt;/p&gt;
+&lt;strong&gt;Bold text&lt;/strong&gt;
+&lt;em&gt;Italic text&lt;/em&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Unordered item&lt;/li&gt;
+  &lt;li&gt;Another item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;First item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+      <h2>Links, Images, at Tables</h2>
+      <pre><code>&lt;!-- Links --&gt;
+&lt;a href="https://example.com"&gt;Click here&lt;/a&gt;
+
+&lt;!-- Images --&gt;
+&lt;img src="photo.jpg" alt="Description"&gt;
+
+&lt;!-- Tables --&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Juan&lt;/td&gt;
+    &lt;td&gt;20&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+      <h2>Semantic HTML</h2>
+      <p>Ang <strong>semantic elements</strong> ay may kahulugan sa browser at search engines. Mas maganda para sa SEO at accessibility.</p>
+      <pre><code>&lt;header&gt;Page header&lt;/header&gt;
+&lt;nav&gt;Navigation links&lt;/nav&gt;
+&lt;main&gt;Main content&lt;/main&gt;
+&lt;article&gt;Independent content&lt;/article&gt;
+&lt;section&gt;Related content group&lt;/section&gt;
+&lt;aside&gt;Sidebar content&lt;/aside&gt;
+&lt;footer&gt;Page footer&lt;/footer&gt;</code></pre>
+
+      <h2>Forms</h2>
+      <pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;label&gt;Name:&lt;/label&gt;
+  &lt;input type="text" name="name"&gt;
+
+  &lt;label&gt;Email:&lt;/label&gt;
+  &lt;input type="email" name="email"&gt;
+
+  &lt;button type="submit"&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ibig sabihin ng &lt;h1&gt; tag?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Heading level 1 — pinakamahalagang heading</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Horizontal line</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Highlighted text</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang semantic HTML?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> HTML na may maraming styles</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Paggamit ng meaningful tags tulad ng &lt;header&gt;, &lt;main&gt;, &lt;footer&gt;</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> HTML na walang errors</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Anong attribute ang ginagamit para i-set ang URL ng isang link?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> src</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> url</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> href</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Hobby Page</h3>
+        <p>Gumawa ng HTML page tungkol sa iyong paboritong hobby. Gamitin ang semantic elements (header, nav, main, footer), magdagdag ng image, isang list, at isang link sa reference site.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang HTML ay gumagamit ng tags para i-structure ang content.</li>
+        <li>Ang semantic elements ay nagbibigay ng meaning sa code.</li>
+        <li>Ang forms ay ginagamit para mag-collect ng user input.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

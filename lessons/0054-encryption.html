@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0054: Encryption & Data Protection</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0054: Encryption & Data Protection</h1>
+      <p><em>Pag-unawa sa encryption, hashing, SSL/TLS, at kung paano protektahan ang data sa rest at in transit.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang pagkakaiba ng symmetric at asymmetric encryption, ang gamit ng hashing para sa passwords, at ang SSL/TLS certificates.
+      </div>
+
+      <h2>Symmetric vs Asymmetric Encryption</h2>
+      <p>Sa <strong>symmetric encryption</strong>, iisang key ang ginagamit para mag-encrypt at mag-decrypt ng data. Mabilis ito pero may problema sa pag-share ng key. Sa <strong>asymmetric encryption</strong>, may dalawang keys: public key (pwedeng ibahagi) at private key (lihim). Gamit ang public key, kahit sino ay pwedeng mag-encrypt ng mensahe, ngunit ang private key lang ang makakapag-decrypt nito. Halimbawa: RSA, ECC.</p>
+
+      <h2>Hashing para sa Passwords</h2>
+      <p>Ang hashing ay isang one-way function — hindi pwedeng i-reverse para makuha ang original na input. Ginagamit ito para sa pag-imbak ng passwords: i-hash ang password at i-store ang hash. Kapag nag-login ang user, i-hash ang input at i-compare sa stored hash. Ang <strong>SHA-256</strong> ay isang hash function, ngunit para sa passwords, mas mainam ang <strong>bcrypt</strong> o <strong>Argon2</strong> dahil may salt at mas mabagal (resistant sa brute force).</p>
+
+      <pre><code>&lt;?php
+// Magandang paraan: bcrypt
+$password = "user_password123";
+$hash = password_hash($password, PASSWORD_BCRYPT);
+
+// I-verify kapag nag-login
+if (password_verify($input_password, $stored_hash)) {
+    echo "Login successful";
+} else {
+    echo "Invalid password";
+}
+?&gt;
+
+// Halimbawa ng SHA-256 (huwag gamitin for passwords alone)
+$hash = hash('sha256', $password);
+// Mas mainam ang bcrypt dahil may built-in salt at mas mabagal</code></pre>
+
+      <h2>SSL/TLS Certificates at HTTPS</h2>
+      <p>Ang SSL/TLS ay protocols na nag-e-encrypt ng communication sa pagitan ng browser at server. Kapag ang website ay may HTTPS (SSL certificate), ang lahat ng data na ipinadala — kabilang ang passwords, credit card numbers — ay naka-encrypt at hindi nababasa ng mga nasa gitna (man-in-the-middle).</p>
+
+      <h2>Full Disk Encryption</h2>
+      <p>Ang full disk encryption ay nag-e-encrypt ng buong hard drive para kung manakaw o mawala ang computer, hindi mababasa ang data. Windows: BitLocker (kailangan ng TPM chip). macOS: FileVault. Linux: LUKS.</p>
+
+      <blockquote>"Ang encryption ay parang sobre ng iyong data — tanging ang may tamang susi ang makakabasa ng laman nito."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang pagkakaiba ng symmetric at asymmetric encryption?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Symmetric ay gumagamit ng isang key; asymmetric ay gumagamit ng public at private key</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Symmetric ay mas secure kaysa asymmetric</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Walang pinagkaiba</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang gamit ng hashing sa mga passwords?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Para i-encrypt ang password na pwedeng i-decrypt</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Para i-convert ang password sa one-way hash na hindi pwedeng baliktarin</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Para i-compress ang password</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang naka-encrypt kapag gumagamit ng HTTPS?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Ang URL lamang</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Ang lahat ng data na ipinapadala sa pagitan ng browser at server (content, forms, cookies)</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Ang IP address lamang</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Check HTTPS Certificate</h3>
+        <p>Pumunta sa isang website na gumagamit ng HTTPS (halimbawa: https://www.google.com). I-click ang padlock icon sa address bar para makita ang SSL certificate details. I-check ang: issuer, expiration date, at kung valid ang certificate. I-screenshot ang certificate details.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Symmetric = iisang key; Asymmetric = public/private key pair.</li>
+        <li>Hashing = one-way; bcrypt/Argon2 ang recommended para sa passwords.</li>
+        <li>HTTPS (SSL/TLS) ay nag-e-encrypt ng communication; full disk encryption ay nagproprotekta kung manakaw ang device.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

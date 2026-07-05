@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0051: Network Security Basics</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0051: Network Security Basics</h1>
+      <p><em>Pag-unawa sa firewalls, IDS/IPS, Wi-Fi security, at VPN para sa ligtas na network.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang mga pangunahing konsepto ng network security at kung paano protektahan ang iyong network.
+      </div>
+
+      <h2>Firewalls</h2>
+      <p>Ang firewall ay isang system na sumasala ng incoming at outgoing network traffic batay sa security rules. Ang Windows Firewall ay built-in sa Windows — pwedeng mag-configure ng allowed/blocked applications at ports. Ang iptables naman ay firewall para sa Linux.</p>
+
+      <pre><code># Windows Firewall: Check status
+netsh advfirewall show allprofiles
+
+# Linux iptables: Allow SSH
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+# Block all incoming traffic except established connections
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -P INPUT DROP</code></pre>
+
+      <h2>IDS at IPS</h2>
+      <p>Ang <strong>IDS (Intrusion Detection System)</strong> ay nagmo-monitor ng network traffic at nag-aalert kapag may suspicious activity. Ang <strong>IPS (Intrusion Prevention System)</strong> naman ay aktibong pumipigil sa detection — hinaharangan nito ang malicious traffic bago pa man umabot sa system.</p>
+
+      <h2>Wi-Fi Security</h2>
+      <p>Ang pinakamahusay na Wi-Fi security ay <strong>WPA3</strong> (WPA2 kung hindi supported). I-disable ang WPS (Wi-Fi Protected Setup) dahil vulnerable ito sa brute force attacks. Gumamit ng malakas na Wi-Fi password at i-enable ang guest network para sa mga bisita para hindi nila ma-access ang main network.</p>
+
+      <h2>VPN</h2>
+      <p>Ang <strong>VPN (Virtual Private Network)</strong> ay nag-e-encrypt ng iyong internet connection at nagre-route nito sa isang remote server. Gamitin ang VPN kapag: gumagamit ng public Wi-Fi (cafe, airport), gusto itago ang IP address, o mag-access ng geo-restricted content. Hindi perpekto ang VPN — pumili ng trusted provider na walang logs policy.</p>
+
+      <blockquote>"Ang firewall ay gatekeeper — sinasala nito kung anong traffic papasok o lalabas ng network."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang pangunahing function ng firewall?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Pabilisin ang internet connection</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Sumala ng network traffic batay sa security rules</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Mag-imbak ng passwords</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang pinakamahusay na Wi-Fi security standard?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> WEP</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> WPA2</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> WPA3</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Kailan dapat gumamit ng VPN?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Kapag nagba-browse sa bahay</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Kapag gumagamit ng public Wi-Fi o gusto itago ang IP address</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Kapag naglalaro ng offline games</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Check Windows Firewall</h3>
+        <p>Buksan ang Windows Defender Firewall sa Control Panel. I-check kung anong mga inbound at outbound rules ang kasalukuyang active. Tingnan kung ang "File and Printer Sharing" ay naka-block o naka-allow. I-screenshot ang firewall status bilang ebidensya.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Firewall = sumasala ng traffic; IDS = detection; IPS = prevention.</li>
+        <li>WPA3 ang pinakasecure na Wi-Fi; i-disable ang WPS.</li>
+        <li>VPN ay nag-e-encrypt ng connection — gamitin sa public Wi-Fi at para sa privacy.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'c', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

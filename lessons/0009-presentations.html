@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0009: Presentations (PowerPoint / Google Slides)</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0009: Presentations (PowerPoint / Google Slides)</h1>
+      <p><em>Paano gumawa ng epektibong presentation gamit ang PowerPoint o Google Slides.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakagawa ng slide presentation na may text, images, charts, at transitions, at makapag-present nang epektibo.
+      </div>
+
+      <h2>Slide Layouts at Themes</h2>
+      <p>Ang <strong>slide layout</strong> ay ang arrangement ng content sa isang slide — pwedeng title slide, blank, may content na may text at image, o may table. Ang <strong>themes</strong> naman ay pre-designed na sets ng colors at fonts na nagbibigay ng consistent na itsura sa buong presentation.</p>
+
+      <h2>Adding Content: Text, Images, Charts, Video</h2>
+      <p>Pwede kang mag-insert ng text boxes, images (mula sa file o online), charts (bar, pie, line), at kahit video clips. Siguraduhing hindi sobra-sobra ang content sa bawat slide — iwasan ang siksikan na text.</p>
+
+      <blockquote>"Huwag gawing teleprompter ang slides; bullet points lang at ikaw ang mag-e-explain."</blockquote>
+
+      <h2>Transitions at Animations</h2>
+      <p>Ang <strong>transitions</strong> ay ang effect kapag lumilipat mula sa isang slide papunta sa susunod. Ang <strong>animations</strong> naman ay ang galaw ng mga elements sa loob ng slide (hal. text na pumapasok mula sa gilid). Gamitin ito nang minimal at may purpose — huwag masyadong marami dahil nakaka-distract.</p>
+
+      <h2>Presentation Tips</h2>
+      <ul>
+        <li><strong>10-20-30 Rule</strong> (ni Guy Kawasaki): Maximum ng 10 slides, 20 minuto, at 30-point font size.</li>
+        <li>Gumamit ng bullet points, hindi buong paragraph.</li>
+        <li>Magsalita nang malinaw at makipag-eye contact sa audience.</li>
+        <li>Practice bago mag-present.</li>
+      </ul>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What is a slide layout?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> A pre-arranged design for content placement on a slide</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> The order of slides in a presentation</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> A type of animation effect</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Why should you avoid too many animations?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> They make the file too large</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> They can distract the audience from the content</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> They are not supported in Google Slides</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. What is the 10-20-30 rule for presentations?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> 10 slides, 20 minutes, 30-point font</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> 10 images, 20 words, 30 seconds</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> 10 minutes, 20 slides, 30 animations</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: 5-Slide Presentation About Yourself</h3>
+        <p>Gumawa ng 5-slide presentation tungkol sa iyong sarili gamit ang PowerPoint o Google Slides. Slide 1: Title (Name at Course), Slide 2: About Me, Slide 3: My Skills, Slide 4: My Goals, Slide 5: Thank You. Gumamit ng consistent theme at minimal transitions.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Gumamit ng slide layouts at themes para sa consistent at professional na presentation.</li>
+        <li>Iwasan ang sobrang daming text at animations — simple at malinaw ang susi.</li>
+        <li>Tandaan ang 10-20-30 rule: 10 slides, 20 minuto, 30-point font.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0045: Advanced SQL — Joins & Subqueries</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0045: Advanced SQL — Joins & Subqueries</h1>
+      <p><em>Pagsasama ng maraming tables gamit ang JOIN at pag-embed ng queries gamit ang subqueries.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang INNER JOIN, LEFT JOIN, RIGHT JOIN, subqueries, at GROUP BY na may HAVING.
+      </div>
+
+      <h2>INNER JOIN</h2>
+      <p>Ang INNER JOIN ay nagbabalik lamang ng mga rows na may tugma sa parehong tables. Halimbawa, kung gusto mong malaman kung sino ang um-order at anong produkto, pagdugtungin ang Customers at Orders tables.</p>
+
+      <pre><code>SELECT c.customer_name, o.order_date, o.total
+FROM Customers c
+INNER JOIN Orders o ON c.customer_id = o.customer_id;</code></pre>
+
+      <h2>LEFT JOIN at RIGHT JOIN</h2>
+      <p>Ang LEFT JOIN ay nagbabalik ng lahat ng rows mula sa left table, kahit walang tugma sa right table (magiging NULL ang right side). Ang RIGHT JOIN naman ay baligtad — lahat ng rows mula sa right table.</p>
+
+      <pre><code>-- Lahat ng customers, kahit walang order
+SELECT c.customer_name, o.order_id
+FROM Customers c
+LEFT JOIN Orders o ON c.customer_id = o.customer_id;
+
+-- Lahat ng orders, kahit walang customer (rare)
+SELECT c.customer_name, o.order_id
+FROM Customers c
+RIGHT JOIN Orders o ON c.customer_id = o.customer_id;</code></pre>
+
+      <h2>Table Aliases at Self-Join</h2>
+      <p>Gamit ang alias (c, o), pinaikli ang pagsulat ng query. Ang self-join naman ay kapag ang isang table ay ni-join sa sarili nito — halimbawa, empleyado at manager na nasa iisang table.</p>
+
+      <pre><code>-- Self-join: employees at kanilang managers
+SELECT e.name AS employee, m.name AS manager
+FROM Employees e
+LEFT JOIN Employees m ON e.manager_id = m.employee_id;</code></pre>
+
+      <h2>GROUP BY at HAVING</h2>
+      <p>Ang GROUP BY ay nag-grupo ng rows batay sa column. Ginagamit ito kasama ng aggregate functions. Ang HAVING naman ay parang WHERE para sa grouped data — nagfa-filter ng groups.</p>
+
+      <pre><code>SELECT c.customer_name, COUNT(o.order_id) AS total_orders, SUM(o.total) AS total_spent
+FROM Customers c
+INNER JOIN Orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_name
+HAVING COUNT(o.order_id) >= 3
+ORDER BY total_spent DESC;</code></pre>
+
+      <blockquote>"Kapag gusto mo pagsamahin ang data mula sa dalawang table, gumamit ng JOIN — i-link gamit ang foreign key."</blockquote>
+
+      <h2>Subqueries (Nested SELECT)</h2>
+      <p>Ang subquery ay isang SELECT na naka-embed sa loob ng isa pang query. Pwedeng gamitin sa WHERE, FROM, o SELECT clause. Mas nababasa minsan ang subquery kaysa sa JOIN, ngunit maaaring mas mabagal.</p>
+
+      <pre><code>-- Hanapin ang customers na may order na lampas sa average
+SELECT customer_name
+FROM Customers
+WHERE customer_id IN (
+    SELECT customer_id
+    FROM Orders
+    WHERE total > (SELECT AVG(total) FROM Orders)
+);</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ibinabalik ng INNER JOIN?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Lahat ng rows mula sa parehong tables kahit walang tugma</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Mga rows lamang na may tugma sa parehong tables</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Mga rows mula sa left table lamang</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang subquery?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Isang query na mas mahaba sa 100 linya</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> SELECT statement na naka-embed sa loob ng isa pang query</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Isang query na gumagamit ng OR operator</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang ginagawa ng GROUP BY?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Nag-aayos ng results alphabetically</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Nag-grupo ng rows batay sa column para magamit ang aggregate functions</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Nagde-delete ng duplicate rows</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Orders & Customers Query</h3>
+        <p>Sumulat ng SQL query na gagamit ng INNER JOIN para pagsamahin ang Orders at Customers tables. I-display ang customer name, order date, at total amount. Pagkatapos, gumamit ng GROUP BY at HAVING para ipakita lamang ang customers na may higit sa 2 orders.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>INNER JOIN = tugma lang; LEFT JOIN = lahat mula left; RIGHT JOIN = lahat mula right.</li>
+        <li>Ang subquery ay SELECT sa loob ng SELECT; pwedeng gamitin sa WHERE, FROM, o SELECT.</li>
+        <li>GROUP BY ay nag-grupo ng rows; HAVING ay nagfa-filter ng groups (hindi tulad ng WHERE).</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

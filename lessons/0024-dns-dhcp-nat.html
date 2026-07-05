@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0024: DNS, DHCP & NAT</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0024: DNS, DHCP & NAT</h1>
+      <p><em>Alamin kung paano gumagana ang DNS, DHCP, at NAT — tatlong mahahalagang serbisyo sa networking.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Maunawaan ang role ng DNS sa pag-resolve ng domain names, DHCP sa automatic IP assignment, at NAT sa pag-share ng public IP.
+      </div>
+
+      <h2>DNS (Domain Name System)</h2>
+      <p>Ang <strong>DNS</strong> ay parang phonebook ng internet — nagco-convert ng domain names (hal. google.com) sa IP addresses (142.250.80.46). Kapag nag-type ka ng website address sa browser, nagtatanong ang computer mo sa DNS server para malaman ang IP. May iba't ibang <strong>DNS records</strong>: A record (IPv4 address), CNAME (alias ng domain), MX (mail exchange para sa email). Kung walang DNS, kailangan nating i-memorize ang IP addresses ng bawat website — impossible!</p>
+
+      <h2>DHCP (Dynamic Host Configuration Protocol)</h2>
+      <p>Ang <strong>DHCP</strong> ay awtomatikong nag-a-assign ng IP address, subnet mask, default gateway, at DNS server sa mga devices sa network. Kapag nag-connect ka sa Wi-Fi, ang router (na may DHCP server) ang nagbibigay ng IP mo. Ang process ay tinatawag na <strong>DORA</strong>: Discover (hanap ang DHCP server), Offer (offer ng IP), Request (request ng IP), Acknowledge (confirm). Ang <strong>lease</strong> ay ang tagal ng paggamit ng IP — magre-renew ito bago mag-expire.</p>
+
+      <h2>NAT (Network Address Translation)</h2>
+      <p>Ang <strong>NAT</strong> ay nagbibigay-daan sa maraming devices na mag-share ng iisang public IP address. Kapag pumunta ka sa internet, ang router mo ay nagta-translate ng private IP mo (192.168.1.10) sa public IP na binigay ng ISP. Ang lahat ng devices sa bahay ay lumalabas na iisang public IP lang sa internet. Ang <strong>port forwarding</strong> naman ay nag-aallow ng external access sa specific device sa loob ng network — halimbawa, para sa gaming server o CCTV.</p>
+
+      <blockquote>"Kapag nag-connect ka sa Wi-Fi, si DHCP magbibigay sa'yo ng IP. Si DNS ang maghahanap ng address ng website."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ginagawa ng DHCP?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Nagre-resolve ng domain names sa IP addresses</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Awtomatikong nag-a-assign ng IP addresses sa devices</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Nag-e-encrypt ng network traffic</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang ni-resolve ng DNS?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> IP address to MAC address</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Domain name (hal. google.com) sa IP address</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Port number sa service name</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Para saan ang NAT?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Pag-share ng iisang public IP sa maraming devices sa local network</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Pag-block ng mga websites</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Pag-accelerate ng internet speed</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Use nslookup</h3>
+        <p>Buksan ang Command Prompt (cmd) at i-type ang <code>nslookup google.com</code>. Tingnan ang IP addresses na lumabas — ito ang mga Google servers. Subukan din ang <code>nslookup facebook.com</code> at <code>nslookup google.com 8.8.8.8</code> (gamit ang Google DNS). I-compare ang results. Isulat ang mga IP addresses na nakuha mo.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>DNS ang nagco-convert ng domain names sa IP addresses — parang phonebook ng internet.</li>
+        <li>DHCP ang awtomatikong nag-a-assign ng IP, subnet mask, at gateway sa mga devices.</li>
+        <li>NAT ang nagpapahintulot na mag-share ng iisang public IP ang maraming devices.</li>
+        <li>Port forwarding ay nagbubukas ng specific ports para sa external access sa local devices.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

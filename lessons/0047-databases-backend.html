@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0047: Working with Databases in Backend Code</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0047: Working with Databases in Backend Code</h1>
+      <p><em>Pagkokonek ng database sa backend gamit ang PHP PDO, prepared statements, at transaction handling.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan kung paano kumonekta sa database mula sa backend code, gumamit ng prepared statements, at mag-handle ng transactions.
+      </div>
+
+      <h2>Connecting to MySQL with PHP PDO</h2>
+      <p>Ang PDO (PHP Data Objects) ay isang extension sa PHP para sa pag-access ng databases. Ito ay database-agnostic — pwedeng MySQL, PostgreSQL, o SQLite gamit ang iisang interface.</p>
+
+      <pre><code>&lt;?php
+// Konek sa MySQL gamit ang PDO
+$host = 'localhost';
+$dbname = 'school_db';
+$username = 'root';
+$password = '';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+}
+?&gt;</code></pre>
+
+      <h2>Prepared Statements (Proteksyon sa SQL Injection)</h2>
+      <p>Ang prepared statement ay naghihiwalay ng SQL logic mula sa data. Sa halip na i-concatenate ang user input sa query, gumamit ng placeholders (?) o named parameters (:name). Ito ang pinakamabisang depensa laban sa SQL injection.</p>
+
+      <pre><code>&lt;?php
+// Prepared statement gamit ang named placeholders
+$stmt = $pdo->prepare("SELECT * FROM Students WHERE email = :email AND course = :course");
+$stmt->execute([
+    ':email' => $_POST['email'],
+    ':course' => $_POST['course']
+]);
+$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// INSERT gamit ang prepared statement
+$stmt = $pdo->prepare("INSERT INTO Students (first_name, last_name, email) VALUES (?, ?, ?)");
+$stmt->execute(['Maria', 'Santos', 'msantos@email.com']);
+?&gt;</code></pre>
+
+      <blockquote>"Never concatenate user input sa SQL query — laging gumamit ng prepared statements."</blockquote>
+
+      <h2>Handling Transactions</h2>
+      <p>Ang transaction ay grupo ng SQL operations na lahat ay dapat magtagumpay o lahat ay mabibigo (rollback). Ito ay importante para sa consistency — halimbawa, kapag nag-transfer ng pera: bawas sa sender, dagdag sa receiver. Kung bumagsak ang isa, i-rollback lahat.</p>
+
+      <pre><code>&lt;?php
+$pdo->beginTransaction();
+try {
+    $pdo->exec("UPDATE Accounts SET balance = balance - 500 WHERE id = 1");
+    $pdo->exec("UPDATE Accounts SET balance = balance + 500 WHERE id = 2");
+    $pdo->commit();
+    echo "Transfer successful";
+} catch (Exception $e) {
+    $pdo->rollBack();
+    echo "Transfer failed: " . $e->getMessage();
+}
+?&gt;</code></pre>
+
+      <h2>Pagination at Search Queries</h2>
+      <p>Para sa malalaking datasets, gumamit ng pagination (LIMIT at OFFSET) at search (LIKE) para hindi ma-overwhelm ang user at server.</p>
+
+      <pre><code>&lt;?php
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$limit = 10;
+$offset = ($page - 1) * $limit;
+
+$search = '%' . $_GET['q'] . '%';
+$stmt = $pdo->prepare("SELECT * FROM Students WHERE name LIKE :search LIMIT :limit OFFSET :offset");
+$stmt->bindValue(':search', $search, PDO::PARAM_STR);
+$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+?&gt;</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang prepared statement?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Isang SQL statement na hindi pwedeng i-execute</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> SQL query na may hiwalay na data at logic para iwas SQL injection</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Isang uri ng database</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang SQL injection?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Pag-inject ng SQL software sa server</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Pagpasok ng malicious SQL code sa pamamagitan ng user input para i-manipulate ang database</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Pag-optimize ng SQL queries</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang tinitiyak ng isang database transaction?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Na lahat ng operations ay magtatagumpay o lahat ay mabibigo (rollback)</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Na mabilis ang query execution</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Na walang makakakita sa data</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: PHP PDO Database Script</h3>
+        <p>Sumulat ng PHP script gamit ang PDO na: (1) kumokonek sa MySQL database; (2) gumagamit ng prepared statement para kumuha ng records mula sa Students table; (3) nagdi-display ng results sa HTML table. Siguraduhing walang SQL injection vulnerability.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Gamitin ang PDO para sa database connection — mas secure at database-agnostic.</li>
+        <li>Prepared statements = proteksyon sa SQL injection; huwag mag-concatenate ng user input.</li>
+        <li>Transactions = consistency: lahat magtagumpay o lahat mabibigo (commit/rollback).</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

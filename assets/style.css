@@ -61,7 +61,7 @@ body {
 }
 
 .lesson-sidebar {
-  background: #fafaf8;
+  background: var(--bg);
   border-right: 1px solid var(--border);
   padding: 2rem 0;
   position: sticky;
@@ -151,9 +151,9 @@ body {
 .sidebar-featured {
   margin: 1.5rem 1rem 0;
   padding: 1rem;
-  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  background: var(--code-bg);
   border-radius: var(--radius);
-  border: 1px solid #bae6fd;
+  border: 1px solid var(--border);
 }
 
 .featured-label {
@@ -288,6 +288,14 @@ blockquote p {
   border-left: 4px solid var(--accent);
 }
 
+[data-theme="dark"] .tip {
+  background: #064e3b;
+}
+
+[data-theme="dark"] .warning {
+  background: #78350f;
+}
+
 .tip strong, .warning strong, .info strong {
   display: block;
   margin-bottom: 0.25rem;
@@ -324,7 +332,7 @@ tr:last-child td {
 /* ========== Quiz ========== */
 
 .quiz-item {
-  background: #fafafa;
+  background: var(--code-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.25rem;
@@ -384,6 +392,16 @@ tr:last-child td {
   color: #991b1b;
 }
 
+[data-theme="dark"] .quiz-feedback.correct {
+  background: #064e3b;
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .quiz-feedback.incorrect {
+  background: #7f1d1d;
+  color: #fca5a5;
+}
+
 .quiz-submit {
   margin-top: 1rem;
   padding: 0.5rem 1.5rem;
@@ -437,7 +455,7 @@ tr:last-child td {
 /* ========== Project box ========== */
 
 .project {
-  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  background: var(--accent-light);
   border: 2px dashed var(--accent);
   border-radius: var(--radius);
   padding: 1.5rem;
@@ -485,7 +503,8 @@ tr:last-child td {
 }
 
 .nav-prev:hover {
-  background: #bfdbfe;
+  background: var(--accent);
+  color: #fff;
 }
 
 .nav-next {

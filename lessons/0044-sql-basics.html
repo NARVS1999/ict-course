@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0044: SQL Basics</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0044: SQL Basics</h1>
+      <p><em>Pag-aaral ng SQL — ang wika ng database para mag-query, mag-insert, mag-update, at mag-delete ng data.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang basic SQL commands: SELECT, INSERT, UPDATE, DELETE, at mga filtering techniques.
+      </div>
+
+      <h2>SELECT — Pagkuha ng Data</h2>
+      <p>Ang SELECT ay ginagamit para kumuha ng data mula sa isang table. Pwedeng piliin ang lahat ng columns (*) o specific columns lang. Gamit ang WHERE, pwedeng i-filter ang results. Ang ORDER BY ay para sa pag-aayos, at LIMIT para sa bilang ng rows na ibabalik.</p>
+
+      <pre><code>-- Kunin lahat ng records
+SELECT * FROM Students;
+
+-- Kunin specific columns na may filter
+SELECT first_name, last_name, email
+FROM Students
+WHERE course = 'BSIT'
+ORDER BY last_name ASC
+LIMIT 10;</code></pre>
+
+      <h2>INSERT, UPDATE, DELETE</h2>
+      <p>Ang INSERT ay nagdaragdag ng bagong record, ang UPDATE ay nagbabago ng existing records, at ang DELETE ay nagtatanggal ng records. Laging mag-ingat sa UPDATE at DELETE — gamitin ang WHERE para hindi maapektuhan ang lahat ng records.</p>
+
+      <pre><code>-- Magdagdag ng bagong estudyante
+INSERT INTO Students (student_id, first_name, last_name, email, course)
+VALUES (101, 'Juan', 'Dela Cruz', 'jdcruz@email.com', 'BSIT');
+
+-- Mag-update ng email
+UPDATE Students
+SET email = 'jdcruz2026@email.com'
+WHERE student_id = 101;
+
+-- Mag-delete ng record
+DELETE FROM Students
+WHERE student_id = 101;</code></pre>
+
+      <h2>Filtering: LIKE, BETWEEN, IN</h2>
+      <p>Gamitin ang <strong>LIKE</strong> para sa pattern matching (% ay wildcard), <strong>BETWEEN</strong> para sa range, at <strong>IN</strong> para sa list ng values.</p>
+
+      <pre><code>-- LIKE: maghanap ng pangalan na naglalaman ng "Maria"
+SELECT * FROM Students WHERE first_name LIKE '%Maria%';
+
+-- BETWEEN: mga estudyanteng nag-enroll sa pagitan ng dalawang petsa
+SELECT * FROM Enrollments
+WHERE enrollment_date BETWEEN '2026-01-01' AND '2026-06-30';
+
+-- IN: mga course na specific lang
+SELECT * FROM Students WHERE course IN ('BSIT', 'BSCS', 'BSEE');</code></pre>
+
+      <h2>Aggregate Functions</h2>
+      <p>Ang aggregate functions ay nagko-compute ng iisang value mula sa maraming rows: COUNT (bilang), SUM (kabuuan), AVG (average), MIN (pinakamaliit), at MAX (pinakamalaki).</p>
+
+      <pre><code>SELECT
+    COUNT(*) AS total_students,
+    AVG(age) AS average_age,
+    MAX(gpa) AS highest_gpa,
+    MIN(gpa) AS lowest_gpa
+FROM Students
+WHERE course = 'BSIT';</code></pre>
+
+      <blockquote>"Ang SQL ang wika ng database — ginagamit para magtanong (SELECT) o mag-utos (UPDATE)."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ginagawa ng SELECT statement?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Nagdedelete ng data</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Kumukuha ng data mula sa table</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Nag-a-update ng data</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Anong aggregate function ang ginagamit para bilangin ang bilang ng rows?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> SUM</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> COUNT</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> AVG</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang itutugma ng LIKE '%a%'?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Lahat ng values na nagtatapos sa 'a'</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Lahat ng values na may letrang 'a' kahit saan</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Lahat ng values na nagsisimula sa 'a'</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Products Table</h3>
+        <p>Sumulat ng SQL queries para sa: (1) CREATE TABLE Products na may product_id, product_name, price, at quantity; (2) INSERT ng 3 sample products; (3) SELECT lahat ng products na price > 100; (4) UPDATE ang quantity ng isang product; (5) SELECT gamit ang ORDER BY price DESC.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>SELECT ay para kumuha ng data; INSERT para magdagdag; UPDATE para magbago; DELETE para magtanggal.</li>
+        <li>Gamitin ang LIKE, BETWEEN, at IN para sa filtering.</li>
+        <li>Aggregate functions: COUNT, SUM, AVG, MIN, MAX para sa computations.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

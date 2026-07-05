@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Networking Commands Cheatsheet</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+  <style>
+    body { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    @media print { .theme-toggle { display: none; } }
+  </style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<h1>Networking Commands Cheatsheet</h1>
+<p><em>Mga command para i-diagnose ang network problems — dapat kabisado!</em></p>
+
+<h2>Windows Commands</h2>
+<table>
+  <tr><th>Command</th><th>Purpose</th></tr>
+  <tr><td>ipconfig</td><td>Ipakita ang IP address, subnet mask, default gateway</td></tr>
+  <tr><td>ipconfig /all</td><td>Detailed network info (MAC address, DNS, DHCP)</td></tr>
+  <tr><td>ping &lt;address&gt;</td><td>Mag-test ng connectivity sa device/server</td></tr>
+  <tr><td>tracert &lt;address&gt;</td><td>I-trace ang route papunta sa destination</td></tr>
+  <tr><td>nslookup &lt;domain&gt;</td><td>I-resolve ang domain name sa IP address</td></tr>
+  <tr><td>netstat -an</td><td>Ipakita ang active connections at ports</td></tr>
+  <tr><td>arp -a</td><td>Ipakita ang IP-to-MAC address table</td></tr>
+  <tr><td>ipconfig /flushdns</td><td>I-clear ang DNS cache</td></tr>
+  <tr><td>ipconfig /release &amp;&amp; ipconfig /renew</td><td>Mag-release at mag-renew ng IP lease</td></tr>
+</table>
+
+<h2>Linux / macOS Commands</h2>
+<table>
+  <tr><th>Command</th><th>Purpose</th></tr>
+  <tr><td>ifconfig</td><td>Ipakita ang network interfaces at IP</td></tr>
+  <tr><td>ip a</td><td>Modern alternative sa ifconfig</td></tr>
+  <tr><td>ping &lt;address&gt;</td><td>Test connectivity</td></tr>
+  <tr><td>traceroute &lt;address&gt;</td><td>I-trace ang route</td></tr>
+  <tr><td>nslookup &lt;domain&gt;</td><td>DNS lookup</td></tr>
+  <tr><td>dig &lt;domain&gt;</td><td>Detailed DNS lookup</td></tr>
+  <tr><td>netstat -tuln</td><td>Ipakita ang listening ports</td></tr>
+  <tr><td>ss -tuln</td><td>Modern alternative sa netstat</td></tr>
+  <tr><td>arp -a</td><td>ARP cache</td></tr>
+</table>
+
+<h2>Troubleshooting Flow</h2>
+<div class="step">
+  <div class="step-number">1</div>
+  <div class="step-content"><strong>ping 8.8.8.8</strong> — may internet connection ba? Kung may reply, may connection.</div>
+</div>
+<div class="step">
+  <div class="step-number">2</div>
+  <div class="step-content"><strong>ping google.com</strong> — gumagana ba ang DNS? Kung nag-resolve, DNS ok.</div>
+</div>
+<div class="step">
+  <div class="step-number">3</div>
+  <div class="step-content"><strong>ipconfig/ifconfig</strong> — may IP address ka ba? Check kung naka-DHCP.</div>
+</div>
+<div class="step">
+  <div class="step-number">4</div>
+  <div class="step-content"><strong>tracert/traceroute 8.8.8.8</strong> — saan banda humihinto ang connection?</div>
+</div>
+<div class="step">
+  <div class="step-number">5</div>
+  <div class="step-content"><strong>nslookup google.com</strong> — nagre-resolve ba ang DNS?</div>
+</div>
+
+<h2>Common Ports</h2>
+<table>
+  <tr><th>Port</th><th>Protocol</th><th>Purpose</th></tr>
+  <tr><td>20/21</td><td>FTP</td><td>File transfer</td></tr>
+  <tr><td>22</td><td>SSH</td><td>Secure remote login</td></tr>
+  <tr><td>25</td><td>SMTP</td><td>Email sending</td></tr>
+  <tr><td>53</td><td>DNS</td><td>Domain name resolution</td></tr>
+  <tr><td>80</td><td>HTTP</td><td>Web traffic (unencrypted)</td></tr>
+  <tr><td>443</td><td>HTTPS</td><td>Web traffic (encrypted)</td></tr>
+  <tr><td>3389</td><td>RDP</td><td>Remote desktop</td></tr>
+</table>
+
+<script>
+  document.getElementById('themeToggle')?.addEventListener('click', function() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>

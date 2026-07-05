@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0002: Parts of a Computer (Hardware Basics)</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0002: Parts of a Computer (Hardware Basics)</h1>
+      <p><em>Pagkilala sa mga bahagi ng computer at ang kani-kanilang function.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapag-identify ng major parts ng computer at maipaliwanag ang function ng bawat isa.
+      </div>
+
+      <h2>Input, Output, Processing, at Storage Devices</h2>
+      <p>Ang computer ay may apat na pangunahing kategorya ng hardware:</p>
+      <ul>
+        <li><strong>Input Devices</strong> — ginagamit para mag-input ng data (keyboard, mouse, microphone, scanner).</li>
+        <li><strong>Output Devices</strong> — nagpapakita o naglalabas ng impormasyon (monitor, printer, speaker).</li>
+        <li><strong>Processing Devices</strong> — nagpo-process ng data (CPU, GPU).</li>
+        <li><strong>Storage Devices</strong> — nag-iimbak ng data (hard drive, SSD, USB flash drive).</li>
+      </ul>
+
+      <blockquote>"Ang CPU ang utak, RAM ang short-term memory, at ang hard drive ang long-term storage. Kapag mabagal PC mo, baka kulang sa RAM."</blockquote>
+
+      <h2>Mga Pangunahing Bahagi ng Computer</h2>
+      <ul>
+        <li><strong>CPU (Central Processing Unit)</strong> — Ang utak ng computer. Lahat ng calculations at instructions ay dito dumadaan.</li>
+        <li><strong>RAM (Random Access Memory)</strong> — Short-term memory. Dito naka-store ang mga ginagamit mong programs habang gamit mo sila.</li>
+        <li><strong>Hard Drive / SSD</strong> — Long-term storage. Dito naka-save ang files, photos, at programs kahit naka-off ang computer.</li>
+        <li><strong>Motherboard</strong> — Ang main circuit board na nagdudugtong sa lahat ng parts.</li>
+        <li><strong>PSU (Power Supply Unit)</strong> — Nagbibigay ng kuryente sa lahat ng components.</li>
+      </ul>
+
+      <h2>Peripheral Devices</h2>
+      <p>Ang peripherals ay mga devices na nakakabit sa labas ng computer. Kabilang dito ang monitor, keyboard, mouse, printer, speaker, external hard drive, at webcam. Ang ilan ay input (keyboard, mouse), ang iba ay output (monitor, printer), at may ilan na pareho (touchscreen).</p>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What does CPU stand for?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Central Processing Unit</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Computer Personal Unit</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Core Program Utility</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. What is RAM used for?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Permanent storage of files</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Short-term memory for active programs</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Power supply regulation</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Which is faster: HDD or SSD?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> HDD</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> SSD</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Pareho lang sila</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Label the Computer Parts</h3>
+        <p>Gumuhit o sumulat ng mga pangunahing bahagi ng computer (CPU, RAM, Hard Drive, Motherboard, PSU, Monitor, Keyboard, Mouse) at i-label ang bawat isa. Isulat din ang function ng bawat bahagi.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang hardware ay nahahati sa input, output, processing, at storage devices.</li>
+        <li>CPU ang utak, RAM ang short-term memory, at hard drive/SSD ang long-term storage.</li>
+        <li>Mas mabilis ang SSD kumpara sa HDD.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

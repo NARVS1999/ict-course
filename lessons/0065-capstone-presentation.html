@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0065: Capstone Presentation &amp; Review</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0065: Capstone Presentation &amp; Review</h1>
+      <p><em>Paghahanda para sa huling presentasyon ng iyong capstone project — demo, peer review, at kung paano magpatuloy sa iyong ICT journey.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makapaghahanda ng 5-minute project presentation, makakapagbigay at makakatanggap ng peer feedback, at makakagawa ng plano para sa patuloy na pag-aaral.
+      </div>
+
+      <h2>Pagpresenta ng Iyong Project</h2>
+      <p>Ang presentasyon ay ang pagkakataon mo na i-showcase ang iyong natutunan at ang iyong project. Narito ang structure ng isang magandang project demo:</p>
+      <ul>
+        <li><strong>Introduction (30 sec)</strong> — Sino ka at ano ang project mo?</li>
+        <li><strong>Problem (30 sec)</strong> — Anong problema ang ni-solve ng project mo?</li>
+        <li><strong>Demo (2 min)</strong> — Ipakita ang iyong project. Mag-start sa homepage, i-demo ang main features.</li>
+        <li><strong>Tech Stack (1 min)</strong> — Anong technologies ang ginamit mo? Bakit mo sila pinili?</li>
+        <li><strong>Challenges &amp; Learnings (30 sec)</strong> — Anong challenges ang na-encounter mo at paano mo ito na-solve?</li>
+        <li><strong>Conclusion &amp; Next Steps (30 sec)</strong> — Ano ang next plans para sa project? Anong gusto mong matutunan next?</li>
+      </ul>
+
+      <blockquote>"Natapos mo man ang guide na ito, tandaan: sa ICT, tuloy-tuloy ang pag-aaral. Laging may bago. Build, break, fix, learn. Good luck sa journey mo!"</blockquote>
+
+      <h2>Peer Review</h2>
+      <p>Ang <strong>peer review</strong> ay ang proseso kung saan sinusuri ng mga kaklase o kasamahan ang iyong project at nagbibigay ng feedback. Mahalaga ito dahil:</p>
+      <ul>
+        <li>Nakakakuha ka ng ibang perspective sa project mo.</li>
+        <li>Nakakakita ng potential improvements na hindi mo napansin.</li>
+        <li>Natututo ka sa projects ng iba.</li>
+      </ul>
+      <p>Kapag nagbibigay ng feedback: maging constructive at specific. "Maganda ang UI mo, pero baka pwedeng magdagdag ng search function" — mas helpful ito kaysa "maganda" lang.</p>
+
+      <h2>Next Steps: Continuous Learning</h2>
+      <p>Ang pagkakatapos ng kursong ito ay hindi ang katapusan — simula pa lang ito. Narito ang mga susunod mong pwedeng gawin:</p>
+      <ul>
+        <li>Magpatuloy sa pag-gawa ng personal projects.</li>
+        <li>Sumali sa tech communities (Facebook groups, Discord, Reddit).</li>
+        <li>Kumuha ng IT certifications (CompTIA A+, AWS Cloud Practitioner, atbp.)</li>
+        <li>Mag-internship o mag-freelance sa platforms tulad ng Upwork o OnlineJobs.ph.</li>
+        <li>Mag-explore ng advanced topics: cybersecurity, AI/ML, cloud architecture.</li>
+      </ul>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang dapat isama sa isang project demo?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Code lang ng project</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Introduction, problem, demo ng features, tech stack, challenges, at next steps</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Link lang ng GitHub repo</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Bakit mahalaga ang peer review?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Para may manggaling ng ibang perspective at makakuha ng constructive feedback</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Para i-compare kung sino ang mas magaling</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Hindi naman mahalaga ang peer review</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang ibig sabihin ng continuous learning sa ICT?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Mag-aral hanggang magka-degree</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Patuloy na pag-aaral ng mga bagong technologies at skills kahit tapos na ang kurso</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Mag-review lang ng mga lumang lessons</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Prepare Your Capstone Presentation</h3>
+        <p>Gumawa ng 5-minute presentation para sa iyong capstone project. Maaaring gumamit ng PowerPoint, Google Slides, o kahit ano pang presentation tool. Siguraduhing may slides para sa: Title, Problem, Solution/Demo, Tech Stack, Challenges, at Next Steps. I-present ito sa harap ng klase o i-record ang presentation video.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang isang magandang project demo ay may introduction, problem, demo, tech stack, challenges, at next steps.</li>
+        <li>Ang peer review ay nagbibigay ng valuable feedback at ibang perspective.</li>
+        <li>Ang continuous learning ay susi sa ICT — laging may bagong technologies na dapat pag-aralan.</li>
+        <li>Congratulations! Natapos mo ang buong ICT Course Guide. Ang journey mo sa mundo ng teknolohiya ay nagsisimula pa lang.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Congratulations!</strong>
+        Natapos mo ang lahat ng 65 lessons ng ICT Course Guide. Ikaw ay handa nang magsimula sa iyong career sa Information and Communications Technology. Patuloy kang matuto, mag-practice, at lumago. Good luck sa ICT journey mo!
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'a', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

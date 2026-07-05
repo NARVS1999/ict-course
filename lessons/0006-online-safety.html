@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0006: Online Safety & Digital Citizenship</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0006: Online Safety & Digital Citizenship</h1>
+      <p><em>Paano maging ligtas online, iwas scam at phishing, at maging responsible na digital citizen.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakagawa ng strong password, makikilala ang phishing at scams, at mauunawaan ang responsible social media use.
+      </div>
+
+      <h2>Strong Passwords at Password Manager</h2>
+      <p>Ang <strong>strong password</strong> ay mahaba, may kombinasyon ng uppercase, lowercase, numbers, at special characters. Huwag gumamit ng "password123" o birthday mo. Gumamit ng phrase tulad ng "MyDog@2024Eats!".</p>
+      <p>Ang <strong>password manager</strong> (tulad ng LastPass, Bitwarden, o Google Password Manager) ay nagse-save ng lahat ng passwords mo sa isang secure na vault. Isa lang ang kailangan mong tandaan — ang master password.</p>
+
+      <blockquote>"Kung may email na nagsasabing nanalo ka ng 1 million pero hindi ka sumali, scam 'yan. Huwag i-click ang link!"</blockquote>
+
+      <h2>Phishing, Scams, at Malware</h2>
+      <p>Ang <strong>phishing</strong> ay isang uri ng scam kung saan nagpapanggap ang attacker bilang lehitimong kumpanya para nakawin ang iyong personal information. Karaniwan itong dumarating sa pamamagitan ng email, text, o fake websites. Ang <strong>malware</strong> naman ay malicious software na pwedeng makapinsala sa computer mo — virus, trojan, ransomware, at spyware.</p>
+
+      <h2>Responsible Social Media at Privacy Settings</h2>
+      <p>Huwag mag-post ng masyadong personal na impormasyon tulad ng address, phone number, o schedule mo. Gamitin ang privacy settings ng Facebook, Instagram, at iba pa para i-control kung sino ang makakakita ng posts mo. Mag-isip bago mag-click at mag-share.</p>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What is phishing?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> A type of computer virus</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> A scam where attackers pretend to be a legitimate company to steal information</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> A method to speed up internet connection</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Which of the following is an example of a strong password?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> password123</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> MyD0g@2024!Eats</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> 123456789</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. What is a password manager?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> A tool that generates and stores passwords securely</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> A program that cracks passwords</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> A website for sharing passwords</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Check for Data Breaches</h3>
+        <p>Pumunta sa <strong>haveibeenpwned.com</strong> at i-type ang iyong email address (o isang dummy email para safe). Tingnan kung may data breach na involved ang email na iyon. Isulat ang resulta at mag-isip kung paano mo mapoprotektahan ang iyong accounts.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Gumamit ng strong passwords na mahaba at may kombinasyon ng characters.</li>
+        <li>Ang phishing ay isang scam na nagta-target ng personal information.</li>
+        <li>Maging responsible sa social media — i-adjust ang privacy settings at huwag mag-post ng sobrang personal na impormasyon.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

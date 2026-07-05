@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0017: BIOS/UEFI & Boot Process</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0017: BIOS/UEFI & Boot Process</h1>
+      <p><em>Alamin ang BIOS at UEFI, POST, boot order, at kung paano i-configure ang basic system settings.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Maunawaan ang boot process ng computer at kung paano ma-access at gamitin ang BIOS/UEFI setup.
+      </div>
+
+      <h2>BIOS vs UEFI</h2>
+      <p>Ang <strong>BIOS (Basic Input/Output System)</strong> ay ang firmware na nag-b-boot ng computer — ito ang unang tumatakbo pagpindot mo ng power button. Ang mas bagong version ay <strong>UEFI (Unified Extensible Firmware Interface)</strong> — mas moderno, may graphical interface, sumusuporta sa mas malalaking drives (2TB+), at mas mabilis mag-boot. Karamihan sa mga computer ngayon ay UEFI na, pero madalas pa rin tawaging BIOS.</p>
+
+      <h2>Pag-access ng BIOS at Mga Setting</h2>
+      <p>Para pumasok sa BIOS/UEFI, pindutin ang <strong>DEL, F2, o F10</strong> kaagad pagkatapos i-on ang computer (depende sa manufacturer). Sa loob ng BIOS makikita mo ang: <strong>Boot Order</strong> (alin ang priority — USB, SSD/HDD, DVD), <strong>Virtualization</strong> (enable para sa virtual machines), <strong>Secure Boot</strong> (security feature), at <strong>XMP/DOCP</strong> (para sa RAM speed).</p>
+
+      <blockquote>"Kung ayaw mag-boot, pumasok sa BIOS at icheck kung nade-detect ang hard drive."</blockquote>
+
+      <h2>POST at Beep Codes</h2>
+      <p>Ang <strong>POST (Power-On Self-Test)</strong> ay ang initial diagnostic test na ginagawa ng computer pag-on. Kung may problema, maririnig ang <strong>beep codes</strong> — halimbawa, 1 long beep + 2 short beeps ay usually GPU issue. Kung walang beep at walang display, posibleng may problem sa RAM o CPU. Ang <strong>CMOS battery</strong> (CR2032) ay nagpapanatili ng BIOS settings kahit naka-off ang PC — kung patay na ito, mawawala ang oras at settings sa tuwing mag-bboot.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Paano pumasok sa BIOS setup?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Pindutin ang Windows key + R</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Pindutin ang DEL, F2, o F10 pag-on ng computer</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> I-restart ang computer at maghintay</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang POST?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Isang operating system</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Isang peripheral device</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Initial diagnostic test ng computer pag-on</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang gamit ng CMOS battery?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Pagpapagana ng GPU</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Pagpapanatili ng BIOS settings at oras kahit naka-off ang PC</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Pag-iilaw ng keyboard</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Explore Your BIOS/UEFI</h3>
+        <p>Kung kaya mong i-access ang BIOS/UEFI ng computer mo, pumasok at hanapin ang boot order setting — i-take note kung ano ang nakalagay bilang first boot device. Kung bawal o hindi ka sigurado, manood ng YouTube video na nagpapakita ng BIOS setup ng kahit anong motherboard (hal. "How to enter BIOS and change boot order"). I-drawing o i-screenshot ang boot order screen at isulat kung ano ang mga options.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>BIOS/UEFI ang unang software na tumatakbo pag-on ng computer — UEFI ang modern version.</li>
+        <li>Pindutin ang DEL, F2, o F10 para pumasok sa BIOS setup.</li>
+        <li>Ang POST ay nagche-check kung maayos ang hardware — ang beep codes ay nag-i-indicate ng specific problems.</li>
+        <li>Ang CMOS battery ay nagpapanatili ng BIOS settings kahit naka-off ang PC.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'c', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

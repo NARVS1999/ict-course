@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0042: Web Hosting & Deployment</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0042: Web Hosting & Deployment</h1>
+      <p><em>Matuto kung paano i-deploy ang website para makita ng buong mundo — hosting providers, domains, FTP, at deployment platforms.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapag-deploy ng static website sa GitHub Pages at makakapag-explain ng iba't ibang hosting options.
+      </div>
+
+      <h2>Ano ang Web Hosting?</h2>
+      <p>Ang <strong>web hosting</strong> ay serbisyo na nag-i-store ng website files sa isang server na naka-konekta sa internet. Kapag nag-type ang user ng domain mo, ang hosting server ang magde-deliver ng files sa browser nila.</p>
+
+      <blockquote>"Matapos mo gawin ang site, kailangan mong i-deploy para makita ng buong mundo. Maraming libreng hosting para sa practice."</blockquote>
+
+      <h2>Types of Hosting</h2>
+      <ul>
+        <li><strong>Shared Hosting</strong> — Mura, maraming websites sa isang server. OK for small sites. (Hal. 000webhost, Hostinger)</li>
+        <li><strong>VPS (Virtual Private Server)</strong> — Dedicated resources sa isang virtual server. Mas kontrolado.</li>
+        <li><strong>Cloud Hosting</strong> — Scalable, binabayaran ang ginagamit. (Hal. AWS, Google Cloud, Azure)</li>
+        <li><strong>Static Site Hosting</strong> — Libre, para sa HTML/CSS/JS sites. (Hal. GitHub Pages, Netlify, Vercel)</li>
+      </ul>
+
+      <h2>FTP at cPanel</h2>
+      <p>Ang <strong>FTP (File Transfer Protocol)</strong> ay ginagamit para mag-upload ng files sa hosting server. Gamit ang <strong>cPanel</strong>, pwedeng ma-manage ang hosting — mag-upload ng files, gumawa ng databases, mag-set ng email, at mag-install ng CMS.</p>
+
+      <pre><code>Gamit ang FileZilla (FTP client):
+Host: ftp.yoursite.com
+Username: yourusername
+Password: ********
+Port: 21
+
+I-drag at i-drop ang files para ma-upload sa server.</code></pre>
+
+      <h2>Deploying Static Sites</h2>
+
+      <h3>GitHub Pages</h3>
+      <pre><code>1. Gumawa ng repository sa GitHub
+2. I-push ang HTML files sa repository
+3. Pumunta sa Settings → Pages
+4. Piliin ang branch (main) at folder (/root)
+5. I-access ang site sa:
+   https://username.github.io/repository-name/</code></pre>
+
+      <h3>Netlify</h3>
+      <pre><code>1. Mag-sign up sa netlify.com
+2. I-click ang "New site from Git"
+3. I-connect ang GitHub repository
+4. Awtomatikong made-deploy ang site
+5. Pwedeng mag-custom domain</code></pre>
+
+      <h2>Domain Setup at DNS</h2>
+      <p>Bumili ng domain name (hal. namecheap.com, GoDaddy). I-point ang DNS sa hosting provider sa pamamagitan ng pag-update ng nameservers o pag-add ng A record / CNAME record.</p>
+
+      <h2>SSL Certificates</h2>
+      <p>Ang <strong>SSL (Secure Sockets Layer)</strong> ay nag-e-encrypt ng data sa pagitan ng browser at server. Ang HTTPS ay naka-SSL na connection. Gamit ang <strong>Let's Encrypt</strong>, libre ang SSL certificate. Karamihan ng modern hosting (kasama ang GitHub Pages at Netlify) ay may automatic SSL.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang web hosting?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Isang serbisyo na nag-iimbak ng website files sa isang server na accessible sa internet</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Isang software para gumawa ng websites</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Isang programming language</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang gamit ng GitHub Pages?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Pagho-host ng dynamic websites na may database</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Libreng pagho-host ng static websites mula sa GitHub repository</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Pagho-host ng mga video files</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang ginagawa ng SSL certificate?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Pinapabilis ang website</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Ine-encrypt ang data sa pagitan ng browser at server para sa secure na connection</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Nagbibigay ng libreng domain name</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Deploy to GitHub Pages</h3>
+        <p>Gumawa ng simpleng HTML page (o gamitin ang hobby page mula Lesson 0036). I-upload sa GitHub repository at i-deploy gamit ang GitHub Pages. I-share ang link ng live site.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang web hosting ay nag-iimbak ng website files sa isang server.</li>
+        <li>Ang GitHub Pages at Netlify ay libre para sa static sites.</li>
+        <li>Ang SSL certificate ay nag-e-encrypt ng data para sa secure na connection.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0032: Bash/Shell Scripting</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0032: Bash/Shell Scripting</h1>
+      <p><em>Matuto ng Linux terminal basics at shell scripting para mag-automate ng system tasks.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakagamit ng basic Linux commands at makakagawa ng shell script para sa automation.
+      </div>
+
+      <h2>Linux Terminal Basics</h2>
+      <p>Ang terminal ay text-based interface para makipag-usap sa operating system. Narito ang essential commands:</p>
+
+      <blockquote>"Sa server administration, kailangan ang shell scripting — para auto backup ng database gabi-gabi."</blockquote>
+
+      <pre><code># Navigation
+ls              # List files sa current directory
+ls -la          # List with details at hidden files
+cd folder       # Change directory
+pwd             # Print working directory
+
+# File Operations
+cp file1 file2  # Kopyahin ang file
+mv file1 dir/   # Ilipat o i-rename
+rm file.txt     # Delete file
+mkdir newdir    # Gumawa ng folder
+
+# Permissions
+chmod 755 script.sh   # Gawing executable
+chown user:group file # Palitan ang owner
+
+# Search
+grep "keyword" file.txt  # Maghanap ng pattern sa file</code></pre>
+
+      <h2>Shell Scripts</h2>
+      <p>Ang shell script ay text file na may series ng commands. Ang <strong>shebang</strong> (<code>#!/bin/bash</code>) ang nagpapakilala na ito ay bash script.</p>
+
+      <pre><code>#!/bin/bash
+# Ito ay isang shell script
+
+# Variables
+name="Juan"
+echo "Hello, $name!"
+
+# Conditionals
+if [ -f "$1" ]; then
+    echo "File $1 exists."
+else
+    echo "File $1 does not exist."
+fi
+
+# Loop
+for file in *.txt; do
+    echo "Processing $file..."
+done</code></pre>
+
+      <h2>Automating System Tasks</h2>
+      <p>Pwedeng mag-schedule ng shell scripts gamit ang cron (Linux) o Task Scheduler (Windows).</p>
+
+      <pre><code>#!/bin/bash
+# backup.sh — Simple backup script
+backup_dir="/backups/$(date +%Y%m%d)"
+mkdir -p "$backup_dir"
+cp -r /important/data "$backup_dir"
+echo "Backup completed: $backup_dir"</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ginagawa ng ls command?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Nagli-list ng files at folders</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Nagde-delete ng files</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Nagko-copy ng files</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano dapat ang unang linya ng isang bash shell script?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> # bash script</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> #!/bin/bash</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> start bash</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang gamit ng grep command?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Gumagawa ng folder</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Nagche-check ng disk space</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Naghahanap ng pattern sa file</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Backup Script</h3>
+        <p>Gumawa ng bash script na gumagawa ng backup ng isang folder. Mag-create ng source folder at destination folder. I-copy lahat ng files mula source patungo sa backup destination at mag-print ng confirmation message.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang ls, cd, cp, mv, rm ay basic Linux commands.</li>
+        <li>Ang shebang ay #!/bin/bash.</li>
+        <li>Ang shell scripts ay pwedeng mag-automate ng system tasks tulad ng backup.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

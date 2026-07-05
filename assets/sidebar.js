@@ -9,9 +9,13 @@
   // Extract the current lesson ID from the filename.
   // Convention: filename starts with the ID followed by a dash,
   // e.g. "0001-lesson-name.html" → id "0001".
-  var filename = window.location.pathname.split('/').pop() || '';
+  var pathname = window.location.pathname;
+  var filename = pathname.split('/').pop() || '';
   var currentId = filename.split('-')[0];
   var currentIdx = -1;
+
+  // Derive the base directory so links work from any page depth
+  var baseDir = pathname.substring(0, pathname.lastIndexOf('/') + 1);
 
   var html =
     '<div class="sidebar-section">' +
@@ -26,7 +30,7 @@
     if (l.id === currentId) cls += ' current';
 
     html +=
-      '<li><a href="' + l.file + '" class="' + cls + '">' +
+      '<li><a href="' + baseDir + l.file + '" class="' + cls + '">' +
         '<span class="sidebar-num">' + l.id + '</span>' +
         '<span class="sidebar-title">' + l.title + '</span>' +
       '</a></li>';
@@ -42,7 +46,7 @@
     html +=
       '<div class="sidebar-featured">' +
         '<div class="featured-label">Next Up</div>' +
-        '<a href="' + next.file + '" class="featured-link">' +
+        '<a href="' + baseDir + next.file + '" class="featured-link">' +
           next.id + ': ' + next.title +
         '</a>' +
       '</div>';

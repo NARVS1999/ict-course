@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0034: Markdown & Documentation</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0034: Markdown & Documentation</h1>
+      <p><em>Matuto ng Markdown syntax para gumawa ng malinis at professional na documentation.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakagawa ng README.md at makakapagsulat ng Markdown documents na may headings, lists, links, images, at code blocks.
+      </div>
+
+      <h2>Markdown Syntax</h2>
+      <p>Ang <strong>Markdown</strong> ay lightweight markup language para mag-format ng text. Ginagamit ito sa README files, documentation, forums, at note-taking apps.</p>
+
+      <blockquote>"Lahat ng ICT professional marunong mag-Markdown — simple lang pero sobrang linis ng documentation."</blockquote>
+
+      <pre><code># Heading 1 (Tulad ng h1 sa HTML)
+## Heading 2
+### Heading 3
+
+**Bold text** at *italic text*
+
+- Unordered list item
+- Another item
+  - Nested item
+
+1. Ordered list item
+2. Second item
+
+[Link text](https://example.com)
+
+![Alt text](image.jpg)
+
+`Inline code`
+
+```python
+# Code block
+print("Hello, Markdown!")
+```</code></pre>
+
+      <h2>README Files</h2>
+      <p>Ang <strong>README.md</strong> ang unang nakikita ng mga tao sa isang GitHub repository. Dapat ito naglalaman ng:</p>
+      <ul>
+        <li>Project title at description</li>
+        <li>Installation instructions</li>
+        <li>Usage examples</li>
+        <li>License at contact info</li>
+      </ul>
+
+      <h2>Documentation Tools</h2>
+      <p>Para sa mas malaking documentation projects, gamitin ang <strong>MkDocs</strong> (Python-based) o <strong>Docusaurus</strong> (React-based). Pareho silang gumagamit ng Markdown files at nagge-generate ng static HTML site.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Paano gumawa ng heading sa Markdown?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Gumamit ng # sign</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Gumamit ng &lt;h1&gt; tag</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Gumamit ng @ sign</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Paano mag-bold ng text sa Markdown?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> &lt;b&gt;text&lt;/b&gt;</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> **text**</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> __text_</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang README file?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Isang file na naglalaman ng instructions tungkol sa project</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Isang file na naglalaman ng code</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Isang image file</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Project README</h3>
+        <p>Gumawa ng README.md para sa isang sample project na "Student Grade Calculator". Isama ang: title, description, installation steps, usage example, at license. Gamitin ang Markdown syntax na natutunan.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang Markdown ay lightweight markup para sa text formatting.</li>
+        <li>Gamitin ang # para sa headings, ** para sa bold, at ``` para sa code blocks.</li>
+        <li>Ang README.md ay mahalaga sa bawat project para sa documentation.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

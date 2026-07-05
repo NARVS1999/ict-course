@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0018: Common PC Problems & Troubleshooting</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0018: Common PC Problems & Troubleshooting</h1>
+      <p><em>Matutunan kung paano i-diagnose at i-ayos ang mga common computer problems — no power, BSOD, slow performance, at higit pa.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Makapag-troubleshoot ng common PC issues gamit ang built-in tools ng Windows.
+      </div>
+
+      <h2>No Power, No Display, at Beeping</h2>
+      <p>Kung walang power: suriin ang power cable, PSU switch, at outlet. Kung may power pero walang display: tingnan kung naka-connect ang monitor cable sa GPU (hindi sa motherboard kung may dedicated GPU). Kung may beeping: i-search ang beep pattern online — 1 long + 2 short ay GPU, continuous beeps ay RAM issue. Subukan mong i-reseat ang RAM (tanggalin at ibalik) at GPU.</p>
+
+      <h2>BSOD (Blue Screen of Death)</h2>
+      <p>Ang <strong>BSOD</strong> ay nangyayari kapag nagka-critical error ang Windows. Maganda ang BSOD dahil may <strong>stop code</strong> (hal. MEMORY_MANAGEMENT, VIDEO_TDR_FAILURE, CRITICAL_PROCESS_DIED) na nagsasabi kung saan ang problema. I-search ang stop code online para sa specific solution. Pwedeng driver issue, faulty RAM, overheating, o corrupted system files.</p>
+
+      <h2>Slow Performance at Task Manager</h2>
+      <p>Gamit ang <strong>Task Manager</strong> (Ctrl+Shift+Esc), makikita mo kung aling programs ang gumagamit ng CPU, RAM, Disk, at Network. Kung 100% ang disk usage, baka may program na stuck o HDD ang gamit mo (upgrade to SSD!). Pwede ring magkaroon ng malware o masyadong maraming startup programs. I-right-click ang task at piliin ang "End Task" para isara ang resource-heavy programs.</p>
+
+      <blockquote>"Bago tawagin ang technician, subukan muna mag-restart — maraming problema nasosolve ng restart."</blockquote>
+
+      <h2>Safe Mode at System Restore</h2>
+      <p>Ang <strong>Safe Mode</strong> ay nag-bboot ang Windows na may minimal drivers lang — mainam ito para mag-uninstall ng problematic drivers o programs. Pumasok sa Safe Mode sa pamamagitan ng pag-press ng F8 (sa lumang Windows) o pag-restart habang hawak ang Shift. Ang <strong>System Restore</strong> naman ay nagbabalik ng Windows sa isang previous state (restore point) — parang time machine para sa system files.</p>
+
+      <h2>Windows Recovery</h2>
+      <p>Kung hindi mag-boot ang Windows, ang <strong>Windows Recovery Environment (WinRE)</strong> ay may options: Startup Repair (awtomatikong ayusin), Command Prompt (advanced troubleshooting), at Reset This PC (ire-install ang Windows pero pwedeng keep files).</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ibig sabihin ng BSOD?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Basic System Operation Diagnostic</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Blue Screen of Death</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Boot Sector Override Detected</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Anong tool ang ginagamit para makita ang CPU at RAM usage?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> File Explorer</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Notepad</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Task Manager</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Para saan ang Safe Mode?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Mag-boot na may minimal drivers para ma-troubleshoot ang problems</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Maglaro ng games nang walang lag</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Mag-install ng bagong software</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Monitor Your PC Performance</h3>
+        <p>Buksan ang Task Manager (Ctrl+Shift+Esc) at pumunta sa Performance tab. I-observe ang CPU, Memory, at Disk usage. Kung may program na gumagamit ng maraming resources, i-click ang Processes tab, i-sort by CPU usage, at i-note ang top 5 processes. Subukan ding buksan ang Startup Apps tab at tingnan kung aling apps ang naka-enable. I-document ang iyong observation.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>I-restart muna bago mag-troubleshoot — maraming issues nasosolve nito.</li>
+        <li>Ang BSOD ay may stop code na nagsasabi kung ano ang problema.</li>
+        <li>Task Manager ang ginagamit para i-monitor ang performance at mag-end ng problematic processes.</li>
+        <li>Safe Mode at System Restore ay powerful tools para sa pag-aayos ng Windows.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'c', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

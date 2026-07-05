@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0010: Email & Calendar Management</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0010: Email & Calendar Management</h1>
+      <p><em>Paano gumamit ng email at calendar nang propesyonal at epektibo.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakagawa ng propesyonal na email, maunawaan ang CC vs BCC, at makapag-schedule ng meetings gamit ang Google Calendar o Outlook.
+      </div>
+
+      <h2>Professional Email Composition</h2>
+      <p>Ang isang propesyonal na email ay may malinaw na <strong>subject line</strong>, maayos na <strong>greeting</strong> (Dear Sir/Ma'am), concise na <strong>body</strong>, at <strong>signature</strong> (Name, Position, Contact Info). Iwasan ang paggamit ng slang, emojis (sa formal emails), at "Hi" lang na walang context.</p>
+
+      <blockquote>"Kapag mag-email sa boss, laging may subject line na clear. Huwag 'Hi' lang."</blockquote>
+
+      <h2>CC vs BCC at Attachments</h2>
+      <ul>
+        <li><strong>CC (Carbon Copy)</strong> — Nakikita ng lahat ng recipients kung sino ang naka-CC. Gamitin ito para sa mga taong kailangan lang ma-update.</li>
+        <li><strong>BCC (Blind Carbon Copy)</strong> — Hindi nakikita ng ibang recipients kung sino ang naka-BCC. Gamitin ito para sa privacy.</li>
+        <li><strong>Attachments</strong> — Mag-attach ng files gamit ang paperclip icon. Siguraduhing tama ang file at hindi masyadong malaki.</li>
+      </ul>
+
+      <h2>Inbox Management</h2>
+      <p>Panatilihing organized ang iyong inbox gamit ang <strong>folders</strong> (Gmail) o <strong>labels</strong> (Outlook). Gumawa ng <strong>filters</strong> para automatic na ma-sort ang emails mula sa specific senders. I-archive o i-delete ang mga lumang emails na hindi na kailangan.</p>
+
+      <h2>Google Calendar at Outlook</h2>
+      <p>Pwede kang mag-<strong>schedule ng meetings</strong>, mag-set ng <strong>reminders</strong>, at mag-<strong>share ng calendar</strong> sa ibang tao. Sa Google Calendar, i-click ang "Create" at ilagay ang title, date, time, at participants. Magagamit mo rin ang "Find a Time" para malaman kung kailan available ang lahat.</p>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What is the difference between CC and BCC?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> CC recipients can be seen by everyone; BCC recipients are hidden</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> CC is for attachments; BCC is for text-only emails</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> CC is for internal use; BCC is for external recipients</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. What should a professional email subject line be?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Short and vague like "Hi"</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Clear and specific, e.g., "Meeting Request: Project Update on Monday"</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> A single word like "Urgent"</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. How do you schedule a meeting in Google Calendar?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Click "Create" and fill in the meeting details</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Send an email and the calendar auto-creates the meeting</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Open a new document and type the schedule</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Write a Professional Email</h3>
+        <p>Gumawa ng isang propesyonal na email na humihingi ng meeting sa iyong guro o supervisor. I-address ito nang maayos, maglagay ng malinaw na subject line, ipaliwanag ang dahilan ng meeting, at magmungkahi ng oras. Huwag kalimutan ang email signature.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang propesyonal na email ay may malinaw na subject, greeting, body, at signature.</li>
+        <li>CC ay visible sa lahat; BCC ay hidden.</li>
+        <li>Gamitin ang Google Calendar o Outlook para mag-schedule ng meetings at mag-set ng reminders.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

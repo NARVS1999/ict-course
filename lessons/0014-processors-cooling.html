@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0014: Processors & Cooling</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0014: Processors & Cooling</h1>
+      <p><em>Alamin ang tungkol sa CPU — ang utak ng computer — at kung paano ito pinapalamig.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Maunawaan ang pagkakaiba ng Intel at AMD processors, ang konsepto ng cores/threads/clock speed, at kung paano mag-install ng CPU cooler.
+      </div>
+
+      <h2>CPU Brands: Intel vs AMD</h2>
+      <p>Dalawang major na brand ng processors sa merkado: <strong>Intel</strong> at <strong>AMD</strong>. Ang Intel ay may Core series (i3, i5, i7, i9) habang ang AMD ay may Ryzen series (3, 5, 7, 9). Pareho silang magaling — ang Intel ay kilala sa single-core performance at gaming, samantalang ang AMD ay nag-aalok ng mas maraming cores at threads sa mas murang presyo. Ang socket ng processor ay dapat tugma sa motherboard — halimbawa, Intel LGA1700 o AMD AM5.</p>
+
+      <h2>Cores, Threads, at Clock Speed</h2>
+      <p>Ang <strong>core</strong> ay parang isang indibidwal na utak sa loob ng CPU — mas maraming cores, mas maraming tasks ang kayang sabayang hawakan. Ang <strong>thread</strong> ay virtual core na tumutulong sa multitasking. Ang <strong>clock speed</strong> (sinusukat sa GHz) ay ang bilis ng bawat core — mas mataas na GHz, mas mabilis ang pag-process. Halimbawa, ang 3.5 GHz ay nangangahulugang 3.5 bilyong cycles per second.</p>
+
+      <h2>Heatsink, Fan, at Thermal Paste</h2>
+      <p>Ang CPU ay umiinit kapag tumatakbo, kaya kailangan ng <strong>heatsink</strong> (metal na nag-aabsorb ng init) at <strong>fan</strong> (na nagpapalabas ng init). Sa pagitan ng CPU at heatsink, nilalagyan ng <strong>thermal paste</strong> para mas epektibo ang paglipat ng init. Kung tuyo na ang thermal paste, pwedeng mag-overheat ang CPU. Mayroon ding <strong>liquid cooling</strong> para sa high-performance PCs — gumagamit ito ng liquid para mas mabilis na mag-dissipate ng init.</p>
+
+      <blockquote>"Kung nag-o-overheat ang PC, baka tuyo na ang thermal paste — palitan every 2-3 years."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang dalawang major CPU brands?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Samsung at Apple</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Intel at AMD</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> NVIDIA at Qualcomm</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang sinusukat ng clock speed (GHz)?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Ang laki ng storage</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Ang bilis ng bawat core ng CPU</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Ang dami ng RAM</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang gamit ng thermal paste?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Pandikit ng CPU sa socket</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Pampadulas ng fan</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Para sa mas epektibong paglipat ng init mula CPU papunta sa heatsink</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: CPU Comparison</h3>
+        <p>Magsaliksik ng Intel Core i5 (latest generation) at AMD Ryzen 5 (latest generation). I-compare ang kanilang specs: number of cores, threads, base clock speed, boost clock speed, TDP (power consumption), at presyo. Gumawa ng table sa notebook o document na nagpapakita ng pagkakaiba at isulat kung alin ang mas maganda para sa iyong pangangailangan.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Intel at AMD ang dalawang pangunahing CPU brands — pumili base sa budget at pangangailangan.</li>
+        <li>Mas maraming cores at threads = mas magaling sa multitasking.</li>
+        <li>Ang clock speed (GHz) ay nagsasabi kung gaano kabilis ang CPU.</li>
+        <li>Ang thermal paste ay mahalaga para sa tamang pagpapalamig ng CPU — palitan tuwing 2-3 taon.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

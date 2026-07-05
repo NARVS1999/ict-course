@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0041: Introduction to CMS (WordPress)</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0041: Introduction to CMS (WordPress)</h1>
+      <p><em>Alamin ang Content Management System at kung paano gumawa ng website gamit ang WordPress nang hindi nangangailangan ng coding.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapag-install ng WordPress, makakapag-customize ng themes, at makakagawa ng pages at posts.
+      </div>
+
+      <h2>Ano ang CMS?</h2>
+      <p>Ang <strong>CMS (Content Management System)</strong> ay software na nagpapahintulot sa users na gumawa, mag-manage, at mag-publish ng content nang hindi nagsusulat ng code. Ang <strong>WordPress</strong> ang pinakasikat na CMS — ginagamit ng 43% ng websites sa buong mundo.</p>
+
+      <blockquote>"WordPress — 43% ng websites sa buong mundo! Kahit hindi marunong mag-code, kayang gumawa ng site."</blockquote>
+
+      <h2>Pag-install ng WordPress</h2>
+      <p>Para sa local development, gamitin ang <strong>XAMPP</strong> (Windows) o <strong>Local</strong> (by Flywheel). I-download ang WordPress mula sa wordpress.org, i-extract sa htdocs folder (sa XAMPP), at i-setup ang database sa phpMyAdmin.</p>
+
+      <pre><code>1. I-install ang XAMPP at i-start ang Apache at MySQL
+2. I-download ang WordPress at i-extract sa C:\xampp\htdocs\mysite
+3. Gumawa ng database sa phpMyAdmin (e.g., "wordpress_db")
+4. i-access ang http://localhost/mysite sa browser
+5. Sundin ang installation wizard (database name, username: root, password: blank)</code></pre>
+
+      <h2>Themes, Plugins, at Widgets</h2>
+      <ul>
+        <li><strong>Themes</strong> — Nagkokontrol sa itsura ng website. Pwedeng mag-install ng libre o premium themes.</li>
+        <li><strong>Plugins</strong> — Nagdadagdag ng functionality tulad ng contact forms, SEO, security, e-commerce.</li>
+        <li><strong>Widgets</strong> — Mga content blocks na pwedeng ilagay sa sidebar, footer, at iba pang widget areas.</li>
+      </ul>
+
+      <h2>Pages vs Posts</h2>
+      <ul>
+        <li><strong>Pages</strong> — Static content tulad ng About, Contact, Homepage. Hindi naka-organize by date.</li>
+        <li><strong>Posts</strong> — Blog entries na naka-organize by date at categories. Pwedeng may comments.</li>
+      </ul>
+
+      <h2>Basic Customization</h2>
+      <p>Sa WordPress dashboard, pumunta sa <strong>Appearance → Customize</strong> para baguhin ang site identity (title, tagline), colors, menus, at homepage settings. Sa <strong>Appearance → Menus</strong>, pwedeng gumawa ng navigation menu.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang CMS?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Content Management System — software para gumawa at mag-manage ng website content</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Computer Management System</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Code Maintenance System</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang WordPress plugins?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Mga theme na nagpapaganda ng website</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Mga extension na nagdadagdag ng functionality sa WordPress</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Mga template para sa email</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang pinagkaiba ng page at post sa WordPress?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Walang pinagkaiba</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Ang page ay may comments, ang post ay wala</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Ang page ay static content, ang post ay blog entries na naka-organize by date</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: WordPress Local Install</h3>
+        <p>I-install ang XAMPP at WordPress sa local machine. Gumawa ng test post na may title na "My First WordPress Post" at may content tungkol sa iyong natutunan sa araling ito. I-customize ang theme (palitan ang header image o colors).</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang CMS ay nagpapadali ng website creation nang walang coding.</li>
+        <li>Ang WordPress ay may themes (design) at plugins (functionality).</li>
+        <li>Ang pages ay static, ang posts ay blog entries na naka-organize by date.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML & CSS Cheatsheet</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+  <style>
+    body { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    @media print { .theme-toggle { display: none; } }
+  </style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<h1>HTML &amp; CSS Cheatsheet</h1>
+
+<h2>HTML Structure</h2>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Heading&lt;/h1&gt;
+    &lt;p&gt;Paragraph&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+
+<h2>Common HTML Elements</h2>
+<table>
+  <tr><th>Tag</th><th>Purpose</th></tr>
+  <tr><td>&lt;h1&gt; to &lt;h6&gt;</td><td>Headings (1 largest, 6 smallest)</td></tr>
+  <tr><td>&lt;p&gt;</td><td>Paragraph</td></tr>
+  <tr><td>&lt;a href="..."&gt;</td><td>Link</td></tr>
+  <tr><td>&lt;img src="..."&gt;</td><td>Image</td></tr>
+  <tr><td>&lt;ul&gt; / &lt;ol&gt;</td><td>Unordered / Ordered list</td></tr>
+  <tr><td>&lt;li&gt;</td><td>List item</td></tr>
+  <tr><td>&lt;table&gt;</td><td>Table</td></tr>
+  <tr><td>&lt;form&gt;</td><td>Form for user input</td></tr>
+  <tr><td>&lt;input&gt;</td><td>Input field</td></tr>
+  <tr><td>&lt;div&gt;</td><td>Generic container (block)</td></tr>
+  <tr><td>&lt;span&gt;</td><td>Generic container (inline)</td></tr>
+</table>
+
+<h2>Semantic HTML5</h2>
+<pre>&lt;header&gt;  — site header / intro
+&lt;nav&gt;     — navigation links
+&lt;main&gt;    — main content (isa lang per page)
+&lt;article&gt; — independent content
+&lt;section&gt; — thematic group
+&lt;aside&gt;   — sidebar / related content
+&lt;footer&gt;  — site footer</pre>
+
+<h2>CSS Selectors</h2>
+<pre>tagname { }         — select by tag: p { }
+.class-name { }     — select by class: .highlight { }
+#id-name { }        — select by id: #header { }
+tag.class { }       — tag with class: p.special { }
+parent child { }    — descendant: div p { }
+parent > child { }  — direct child: ul > li { }</pre>
+
+<h2>CSS Box Model</h2>
+<pre>element {
+    margin: 10px;       /* space outside border */
+    border: 1px solid;  /* border */
+    padding: 10px;      /* space inside border */
+    width: 200px;       /* content width */
+    height: 100px;      /* content height */
+}</pre>
+
+<h2>Flexbox</h2>
+<pre>/* Parent container */
+.container {
+    display: flex;
+    justify-content: center; /* horizontal: flex-start, center, space-between */
+    align-items: center;     /* vertical: flex-start, center, stretch */
+    gap: 10px;               /* space between items */
+    flex-wrap: wrap;         /* allow wrapping */
+}
+
+/* Child items */
+.item {
+    flex: 1;  /* grow equally */
+}</pre>
+
+<h2>CSS Grid</h2>
+<pre>.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+    gap: 20px;
+}</pre>
+
+<script>
+  document.getElementById('themeToggle')?.addEventListener('click', function() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>

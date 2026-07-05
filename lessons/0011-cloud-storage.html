@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0011: Cloud Storage & Collaboration</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0011: Cloud Storage & Collaboration</h1>
+      <p><em>Paano gamitin ang cloud storage para mag-save, mag-share, at makipag-collaborate online.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapag-upload at makakapag-share ng files sa cloud, makakagamit ng real-time collaboration, at mauunawaan ang version history.
+      </div>
+
+      <h2>Ano ang Cloud Storage?</h2>
+      <p>Ang <strong>cloud storage</strong> ay serbisyo kung saan naka-store ang iyong files sa malalayong servers sa internet, hindi sa iyong local computer. Ibig sabihin, maa-access mo ang iyong files kahit saan — sa phone, laptop, o tablet — basta may internet connection. Sikat na providers: <strong>Google Drive</strong>, <strong>OneDrive</strong>, at <strong>Dropbox</strong>.</p>
+
+      <h2>Uploading, Sharing, at Permissions</h2>
+      <p>Pwedeng mag-<strong>upload</strong> ng files sa cloud sa pamamagitan ng drag-and-drop o "New" button. Kapag mag-<strong>share</strong>, pwede mong i-set ang <strong>permissions</strong> — "Viewer" (tingin lang), "Commenter" (pwedeng mag-comment), o "Editor" (pwedeng mag-edit). Pwede ring mag-set ng expiration date o password para sa shared link.</p>
+
+      <blockquote>"Imbes na mag-email ng attachment pabalik-balik, gumamit ng shared Google Docs — iisang file, lahat nag-e-edit."</blockquote>
+
+      <h2>Real-Time Collaboration</h2>
+      <p>Ang isa sa pinakamagandang feature ng cloud apps ay ang <strong>real-time collaboration</strong> — maraming tao ang pwedeng mag-edit ng iisang document nang sabay-sabay. Makikita mo kung sino ang nag-e-edit at kung anong bahagi ang binabago nila (may colored cursor bawat user).</p>
+
+      <h2>Version History</h2>
+      <p>Ang <strong>version history</strong> ay nagse-save ng lahat ng mga pagbabagong ginawa sa isang file. Pwede mong tingnan ang mga naunang version at i-<strong>restore</strong> ang lumang version kung kinakailangan. Sa Google Docs, ito ay nasa File > Version History > See Version History.</p>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What is cloud storage?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Storing files on your computer's hard drive</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Storing files on remote servers accessible via the internet</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Printing documents to a cloud printer</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. How do you share a file with view-only permissions?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Set the permission to "Viewer" before sharing the link</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Send it as an email attachment</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Upload it to a public website</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. What is version history?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> A list of all users who accessed the file</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> A record of all changes made to a file that allows you to restore previous versions</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> The date the file was first created</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Collaborate on a Shared Google Doc</h3>
+        <p>Gumawa ng Google Doc at i-share ito sa isang kaklase o kaibigan na may "Editor" permission. Magsulat kayo nang sabay-sabay ng isang listahan ng inyong mga paboritong websites. Pagkatapos, tingnan ang Version History (File > Version History) para makita kung sino ang nag-edit ng ano.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang cloud storage ay nagpapahintulot na ma-access ang files kahit saan.</li>
+        <li>Pwede kang mag-share ng files na may specific permissions: Viewer, Commenter, o Editor.</li>
+        <li>Ang real-time collaboration at version history ay mahalagang features ng cloud apps.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'a', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

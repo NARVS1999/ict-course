@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0038: JavaScript Essentials</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0038: JavaScript Essentials</h1>
+      <p><em>Matuto ng JavaScript — variables, DOM manipulation, events, at Fetch API para sa interactive web pages.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapagdagdag ng interactivity sa HTML page gamit ang JavaScript events at DOM manipulation.
+      </div>
+
+      <h2>Variables, Data Types, at Functions Recap</h2>
+      <p>Ang JavaScript ay ang programming language ng web. Pwedeng gumamit ng <code>var</code>, <code>let</code>, o <code>const</code> para sa variables.</p>
+
+      <blockquote>"JavaScript ang nagbibigay buhay sa website — kapag may click, may animation, may pop-up."</blockquote>
+
+      <pre><code>// Variables at Data Types
+let name = "Juan";
+const age = 20;
+let isStudent = true;
+let scores = [85, 90, 78];
+let person = { firstName: "Maria", lastName: "Santos" };
+
+// Functions
+function greet(name) {
+  return "Hello, " + name + "!";
+}
+
+console.log(greet("Juan"));</code></pre>
+
+      <h2>DOM Manipulation</h2>
+      <p>Ang <strong>DOM (Document Object Model)</strong> ay ang representation ng HTML page sa JavaScript. Pwedeng magbasa o magbago ng elements.</p>
+
+      <pre><code>// Select elements
+let heading = document.getElementById("title");
+let paragraphs = document.querySelectorAll("p");
+let button = document.querySelector(".btn");
+
+// Change content
+heading.textContent = "New Title!";
+heading.innerHTML = "&lt;em&gt;Styled Title&lt;/em&gt;";
+
+// Change styles
+heading.style.color = "red";
+heading.classList.add("highlight");</code></pre>
+
+      <h2>Events</h2>
+      <p>Ang <strong>events</strong> ay mga aksyon na nagti-trigger ng JavaScript code. Kasama na rito ang click, submit, keypress, mouseover, atbp.</p>
+
+      <pre><code>// Click event
+button.addEventListener("click", function() {
+  alert("Button clicked!");
+});
+
+// Form submit event
+form.addEventListener("submit", function(e) {
+  e.preventDefault();  // Pigilan ang page reload
+  console.log("Form submitted!");
+});
+
+// Keypress event
+input.addEventListener("keyup", function(e) {
+  console.log("Key pressed:", e.key);
+});</code></pre>
+
+      <h2>Fetch API</h2>
+      <p>Ang <strong>Fetch API</strong> ay ginagamit para mag-send ng HTTP requests mula sa browser. Pwedeng kumuha ng data mula sa server nang hindi nagre-reload ng page.</p>
+
+      <pre><code>// GET request
+fetch("https://api.example.com/users")
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error("Error:", error));
+
+// POST request
+fetch("https://api.example.com/users", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name: "Juan", age: 20 })
+});</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Paano pumili ng element sa pamamagitan ng ID sa JavaScript?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> document.getElementById("id")</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> document.querySelector("#id")</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Pareho silang tama</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Anong event ang nagfa-fire kapag nag-click ang user sa isang element?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> hover</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> click</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> keydown</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang ginagawa ng fetch() function?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Naglo-load ng bagong HTML page</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Nagse-save ng data sa server</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Nagse-send ng HTTP request para kumuha o mag-send ng data</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Interactive Button</h3>
+        <p>Gumawa ng HTML page na may heading at button. Kapag ni-click ang button, magbabago ang text ng heading. Gumamit ng document.getElementById at addEventListener.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang DOM manipulation ay nagpapabago ng HTML elements gamit ang JavaScript.</li>
+        <li>Ang events tulad ng click ay nagti-trigger ng JavaScript functions.</li>
+        <li>Ang Fetch API ay ginagamit para mag-communicate sa servers.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'c', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

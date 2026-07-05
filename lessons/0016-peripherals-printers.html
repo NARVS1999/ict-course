@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0016: Peripherals & Printers</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0016: Peripherals & Printers</h1>
+      <p><em>Tuklasin ang mga input at output devices — keyboard, mouse, monitor, printer, at kung paano i-troubleshoot ang mga ito.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang iba't ibang uri ng peripherals, printers, at kung paano mag-install ng drivers at mag-troubleshoot ng common printer issues.
+      </div>
+
+      <h2>Keyboards: Membrane vs Mechanical</h2>
+      <p>Ang <strong>membrane keyboard</strong> ay gumagamit ng rubber dome sa ilalim ng keys — tahimik, mura, at karaniwan sa mga office PCs. Ang <strong>mechanical keyboard</strong> naman ay may individual switches sa bawat key — mas matibay, mas tactile ang pakiramdam, at maraming choices ng switch type (Blue — maingay at clicky, Red — linear at tahimik, Brown — tactile pero tahimik). Mas gusto ng gamers at typists ang mechanical dahil sa accuracy at feel.</p>
+
+      <h2>Mice: Optical vs Laser</h2>
+      <p>Ang <strong>optical mouse</strong> ay gumagamit ng LED light para sa tracking — mas maganda sa non-glossy surfaces at mas mura. Ang <strong>laser mouse</strong> naman ay gumagamit ng laser — mas accurate at pwedeng gamitin sa kahit anong surface, kahit salamin. Para sa gaming, mas preferred ang laser mouse dahil sa higher DPI (sensitivity).</p>
+
+      <h2>Monitors: LCD, LED, IPS, Refresh Rate</h2>
+      <p>Ang mga monitor ngayon ay LCD o LED (pareho lang, LED ang backlight). Ang <strong>IPS (In-Plane Switching)</strong> panel ay may mas magandang color accuracy at viewing angles — maganda para sa graphic design. Ang <strong>refresh rate</strong> (60Hz, 120Hz, 144Hz, 240Hz) ay kung ilang beses nagre-refresh ang screen per second — mas mataas, mas smooth ang galaw, lalo na sa gaming.</p>
+
+      <h2>Printers: Inkjet, Laser, Thermal</h2>
+      <p><strong>Inkjet printer</strong> — gumagamit ng liquid ink, maganda para sa photo printing, pero mahal ang ink cartridges. <strong>Laser printer</strong> — gumagamit ng toner powder, mabilis at mura sa long run, pinakamaganda para sa high-volume text printing. <strong>Thermal printer</strong> — gumagamit ng init para mag-print sa thermal paper, karaniwan sa receipt printers. Para magamit ang printer, kailangan i-install ang <strong>driver</strong> — software na nagbibigay-daan sa OS na makipag-usap sa printer.</p>
+
+      <blockquote>"Kung hindi nagpi-print ang printer, unang suriin: may papel ba? may ink/toner ba? naka-on at naka-connect ba? Kung oo lahat, i-restart ang printer at computer."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang pagkakaiba ng membrane at mechanical keyboards?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Pareho lang sila</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Membrane ay gumagamit ng rubber dome; mechanical ay may individual switches</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Mechanical ay wireless, membrane ay wired</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Aling printer ang pinakamaganda para sa high-volume text printing?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Inkjet printer</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Laser printer</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Thermal printer</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang karaniwang dahilan ng paper jam?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Walang ink ang printer</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Masyadong maraming papel sa tray o may wrinkled na papel</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Hindi naka-install ang driver</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Install a Printer Driver</h3>
+        <p>Kung may printer sa bahay o sa school, i-install ang driver nito sa computer. Pumunta sa Settings > Bluetooth & Devices > Printers & Scanners, i-click ang "Add Device" at sundan ang steps. Kung walang printer, mag-download ng driver package mula sa website ng isang printer brand (HP, Canon, Epson) at i-explore ang mga files na kasama. I-document ang process.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Mechanical keyboards ay mas matibay at mas maganda sa pakiramdam kaysa membrane.</li>
+        <li>Laser printer ang pinaka-epektibo para sa maraming text documents.</li>
+        <li>Ang printer driver ay kinakailangan para magamit ang printer sa computer.</li>
+        <li>Common printer issues: paper jam, no ink/toner, connection problems — i-restart muna bago mag-panic.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

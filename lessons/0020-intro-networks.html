@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0020: Introduction to Computer Networks</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0020: Introduction to Computer Networks</h1>
+      <p><em>Alamin ang konsepto ng computer networks — LAN, WAN, topologies, at client-server architecture.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Maunawaan ang pangunahing konsepto ng networking at ang iba't ibang uri ng network topologies.
+      </div>
+
+      <h2>Ano ang Network?</h2>
+      <p>Ang <strong>computer network</strong> ay dalawa o higit pang computers na magkaka-connect para mag-share ng resources (files, printers, internet). Ang pinakasimpleng network ay dalawang computer na naka-cable o naka-Wi-Fi. Ang <strong>LAN (Local Area Network)</strong> ay nasa iisang lugar lang (bahay, opisina, school). Ang <strong>WAN (Wide Area Network)</strong> ay sumasaklaw sa malawak na lugar — ang internet mismo ay ang pinakamalaking WAN. Ang <strong>MAN (Metropolitan Area Network)</strong> naman ay nasa pagitan — isang lungsod o campus.</p>
+
+      <h2>Network Topologies</h2>
+      <p>Ang <strong>topology</strong> ay ang physical o logical na arrangement ng devices sa network. <strong>Star</strong> — lahat ng devices ay naka-connect sa central device (switch/router) — ito ang pinaka-common. <strong>Bus</strong> — iisang cable lang, lahat ng devices naka-tap dito (luma na). <strong>Ring</strong> — bawat device ay naka-connect sa dalawang katabi, parang circle. <strong>Mesh</strong> — lahat ng devices ay interconnected — sobrang reliable pero mahal.</p>
+
+      <blockquote>"Ang network parang kalsada — may daanan (cable/Wi-Fi), may address ang bawat bahay (IP address), may traffic rules (protocols)."</blockquote>
+
+      <h2>Client-Server vs Peer-to-Peer</h2>
+      <p>Sa <strong>client-server model</strong>, may central server na nagbibigay ng resources (files, email, web pages) at clients na humihingi ng access — ito ang gamit sa mga opisina at sa internet. Sa <strong>peer-to-peer (P2P)</strong>, lahat ng computers ay pantay-pantay at pwedeng mag-share ng files direkta sa isa't isa — walang central server — ito ay gamit sa maliliit na networks o file sharing apps.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang LAN?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Isang network na sumasaklaw sa malawak na lugar tulad ng internet</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Isang network sa iisang lugar lang tulad ng bahay o opisina</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Isang uri ng cable</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Aling topology ang gumagamit ng central device (switch/router)?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Star</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Bus</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Ring</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang client-server model?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Walang central server, lahat ng computers ay pantay</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> May central server na nagbibigay ng resources sa clients</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Isang uri ng topology</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Diagram ng Iyong Home Network</h3>
+        <p>Gumuhit ng network diagram ng iyong setup sa bahay. Isama ang router, modem, computers, phones, printers, at iba pang devices. Tukuyin kung anong topology ang gamit ninyo (most likely star). Lagyan ng label ang bawat device at kung paano sila naka-connect (Wi-Fi o Ethernet). Pwedeng sa papel o gamit ang drawing software.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang network ay para sa pag-share ng resources sa pagitan ng computers.</li>
+        <li>LAN ay local, WAN ay malawak (internet), MAN ay nasa pagitan.</li>
+        <li>Star topology ang pinaka-common — lahat ng devices naka-connect sa central switch/router.</li>
+        <li>Client-server ay may central server; peer-to-peer ay walang central server.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'a', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

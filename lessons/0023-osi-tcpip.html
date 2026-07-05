@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0023: The OSI Model & TCP/IP Model</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0023: The OSI Model & TCP/IP Model</h1>
+      <p><em>Unawain ang 7 layers ng OSI model at ang 4 layers ng TCP/IP model — ang pundasyon ng networking.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Malaman ang bawat layer ng OSI at TCP/IP models at kung anong protocols ang gumagana sa bawat layer.
+      </div>
+
+      <h2>OSI Model — 7 Layers</h2>
+      <p>Ang <strong>OSI (Open Systems Interconnection) model</strong> ay isang konseptwal na framework na nagpapaliwanag kung paano gumagana ang network communication. 7 layers ito, mula sa pinakamababa hanggang sa pinakamataas: <strong>Physical</strong> (cables, bits), <strong>Data Link</strong> (MAC addresses, switches), <strong>Network</strong> (IP addressing, routers), <strong>Transport</strong> (TCP/UDP, port numbers), <strong>Session</strong> (establish/manage connections), <strong>Presentation</strong> (encryption, data formatting), <strong>Application</strong> (HTTP, FTP, SMTP — kung saan nakikipag-ugnayan ang user). <br><br>Mnemonic: <strong>P</strong>lease <strong>D</strong>o <strong>N</strong>ot <strong>T</strong>hrow <strong>S</strong>ausage <strong>P</strong>izza <strong>A</strong>way (Physical, Data Link, Network, Transport, Session, Presentation, Application).</p>
+
+      <h2>Tracks: Ano ang Nangyayari sa Bawat Layer</h2>
+      <p>Kapag nag-browse ka ng website: ang <strong>Application layer</strong> ay nagpapadala ng HTTP request. Ang <strong>Transport layer</strong> (TCP) ay nagha-hati ng data sa segments at tinitiyak na dumating ito nang maayos. Ang <strong>Network layer</strong> (IP) ay nag-a-add ng source at destination IP addresses. Ang <strong>Data Link layer</strong> ay nag-a-add ng MAC addresses para sa local delivery. Ang <strong>Physical layer</strong> ang nagpapadala ng actual bits sa cable o Wi-Fi.</p>
+
+      <blockquote>"Bawat layer may kanya-kanyang trabaho. Kapag nagb-browse ka, dumadaan sa lahat ng layer."</blockquote>
+
+      <h2>TCP/IP Model — 4 Layers</h2>
+      <p>Ang <strong>TCP/IP model</strong> ay ang practical na version ng OSI — 4 layers lang: <strong>Network Interface</strong> (Physical + Data Link), <strong>Internet</strong> (Network layer — IP), <strong>Transport</strong> (TCP, UDP), <strong>Application</strong> (Session + Presentation + Application — HTTP, FTP, DNS, DHCP, SMTP). Ito ang actual na ginagamit ng internet.</p>
+
+      <h2>Mga Common Protocols</h2>
+      <ul>
+        <li><strong>HTTP/HTTPS</strong> — web browsing (port 80/443)</li>
+        <li><strong>FTP</strong> — file transfer (port 21)</li>
+        <li><strong>SMTP</strong> — email sending (port 25)</li>
+        <li><strong>DNS</strong> — domain name to IP (port 53)</li>
+        <li><strong>DHCP</strong> — automatic IP assignment (port 67/68)</li>
+        <li><strong>ARP</strong> — IP to MAC address resolution</li>
+      </ul>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ilang layers ang OSI model?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> 4</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> 5</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> 7</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Sa anong layer ng OSI gumagana ang HTTP?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Network layer</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Transport layer</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Application layer</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ilang layers ang TCP/IP model?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> 4</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> 7</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> 6</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Memorize ang OSI Layers</h3>
+        <p>Gamit ang mnemonic na "Please Do Not Throw Sausage Pizza Away" (Physical, Data Link, Network, Transport, Session, Presentation, Application), isaulo ang 7 layers ng OSI model. Isulat ang mga ito sa isang papel nang paulit-ulit hanggang sa kabisado mo. Pagkatapos, ipaliwanag sa sarili mong salita kung ano ang ginagawa ng bawat layer. I-record ang iyong sarili kung kinakailangan.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>OSI model ay may 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, Application.</li>
+        <li>TCP/IP model ay may 4 layers: Network Interface, Internet, Transport, Application.</li>
+        <li>HTTP ay nasa Application layer; TCP ay nasa Transport layer; IP ay nasa Network layer.</li>
+        <li>Ang bawat layer ay may specific na function — sama-sama silang nagtatrabaho para sa network communication.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'c', q2: 'c', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

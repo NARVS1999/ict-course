@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0064: Capstone Project Planning &amp; Execution</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0064: Capstone Project Planning &amp; Execution</h1>
+      <p><em>Paghahanda para sa capstone project — pagpili ng project, pagpaplano ng scope at timeline, pag-implement gamit ang multiple skills, at paggawa ng documentation.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapili ng capstone project, makakagawa ng project proposal (scope, tech stack, timeline), at makakapagplano ng documentation.
+      </div>
+
+      <h2>Pagpili ng Capstone Project</h2>
+      <p>Ang capstone project ay ang pagkakataon mo na i-apply ang lahat ng natutunan mo sa buong kurso. Pumili ng project na nagpapakita ng skills mo sa web development, databases, cybersecurity, at cloud deployment.</p>
+      <p><strong>Recommended Capstone Projects:</strong></p>
+      <ul>
+        <li><strong>IT Asset Management System</strong> — Web app para i-track ang assets ng isang kumpanya (computers, monitors, software licenses). May CRUD, search, at user authentication.</li>
+        <li><strong>Network Monitoring Dashboard</strong> — Dashboard na nagmo-monitor ng network devices at nagpapakita ng status at alerts.</li>
+        <li><strong>Helpdesk Ticketing System</strong> — Web app kung saan pwedeng mag-submit ng tickets ang users at ma-assign sa technicians.</li>
+        <li><strong>Personal Portfolio &amp; Blog</strong> — Personal website na may blog functionality, project showcase, at contact form.</li>
+        <li><strong>Cybersecurity Awareness App</strong> — Interactive app na nagtuturo ng cybersecurity basics gamit ang quizzes at simulations.</li>
+      </ul>
+
+      <blockquote>"Pumili ng project na nagpapakita ng skills mo — halimbawa, isang web app na may database, security, at naka-deploy sa cloud."</blockquote>
+
+      <h2>Project Management Basics</h2>
+      <ul>
+        <li><strong>Scope</strong> — Ano ang kasama at hindi kasama sa project. Dapat realistic at specific.</li>
+        <li><strong>Timeline</strong> — Hatiin ang project sa phases: Planning, Development, Testing, Deployment, Documentation.</li>
+        <li><strong>Tools</strong> — Gumamit ng project management tools tulad ng Trello, Notion, o simpleng to-do list.</li>
+      </ul>
+
+      <h2>Documentation</h2>
+      <p>Ang documentation ay kasinghalaga ng code. Dapat mayroon kang:</p>
+      <ul>
+        <li><strong>README</strong> — Overview ng project, tech stack, features, at instructions kung paano i-run.</li>
+        <li><strong>User Manual</strong> — Step-by-step guide para sa end-user.</li>
+        <li><strong>Technical Documentation</strong> — Architecture, database schema, API endpoints.</li>
+      </ul>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang project scope?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Ang budget ng project</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Ang mga hangganan ng project — ano ang kasama at hindi kasama</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Ang final output ng project</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang dapat laman ng isang README file?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Code lang</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Overview ng project, tech stack, features, at setup instructions</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> List ng passwords at credentials</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Bakit mahalaga i-document ang iyong project?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Para magmukhang maraming ginawa</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Para maintindihan ng iba (at ng future mo) kung paano gamitin at i-maintain ang project</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Hindi naman kailangan ang documentation</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Write a Project Proposal</h3>
+        <p>Pumili ng isang capstone project mula sa list. Sumulat ng project proposal na naglalaman ng: project title, problem statement, scope, tech stack (HTML/CSS/JS, Python, MySQL, cloud platform), at timeline (1 linggo planning, 2 linggo development, 1 linggo testing at deployment).</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Pumili ng capstone project na nagpapakita ng iyong natutunang skills.</li>
+        <li>Recommended projects: Asset Management, Network Dashboard, Ticketing System, Portfolio/Blog, Cybersecurity App.</li>
+        <li>Mahalaga ang scope, timeline, at tools sa project management.</li>
+        <li>Documentation (README, user manual, technical docs) ay kasinghalaga ng code.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

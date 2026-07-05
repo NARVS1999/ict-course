@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Cheatsheet</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+  <style>
+    body { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    pre { font-size: 0.8rem; }
+    @media print { .theme-toggle { display: none; } }
+  </style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<h1>SQL Cheatsheet</h1>
+<p><em>Ang mga pinakagamit na SQL commands — laging reference!</em></p>
+
+<h2>Basic Queries</h2>
+<pre>-- Pumili ng lahat ng columns
+SELECT * FROM users;
+
+-- Pumili ng specific columns
+SELECT name, email FROM users;
+
+-- I-filter gamit WHERE
+SELECT * FROM users WHERE age &gt;= 18;
+
+-- I-sort gamit ORDER BY
+SELECT * FROM products ORDER BY price DESC;
+
+-- Limitahan ang results
+SELECT * FROM users LIMIT 10;</pre>
+
+<h2>Insert, Update, Delete</h2>
+<pre>-- Mag-insert ng bagong record
+INSERT INTO users (name, email, age)
+VALUES ('Juan', 'juan@email.com', 25);
+
+-- Mag-update ng existing record
+UPDATE users SET age = 26 WHERE name = 'Juan';
+
+-- Mag-delete ng record
+DELETE FROM users WHERE id = 5;</pre>
+
+<h2>Filtering</h2>
+<pre>-- LIKE — pattern matching
+SELECT * FROM users WHERE name LIKE '%Juan%';
+
+-- BETWEEN — range
+SELECT * FROM products WHERE price BETWEEN 10 AND 100;
+
+-- IN — multiple values
+SELECT * FROM users WHERE age IN (18, 21, 25);</pre>
+
+<h2>Aggregate Functions</h2>
+<pre>-- COUNT — bilang ng records
+SELECT COUNT(*) FROM users;
+
+-- SUM — total ng values
+SELECT SUM(price) FROM orders;
+
+-- AVG — average
+SELECT AVG(price) FROM products;
+
+-- GROUP BY — group at i-aggregate
+SELECT department, COUNT(*) FROM employees GROUP BY department;
+
+-- HAVING — filter pagkatapos ng GROUP BY
+SELECT department, AVG(salary) FROM employees
+GROUP BY department HAVING AVG(salary) &gt; 50000;</pre>
+
+<h2>Joins</h2>
+<pre>-- INNER JOIN — records na may match sa both tables
+SELECT users.name, orders.total
+FROM users
+INNER JOIN orders ON users.id = orders.user_id;
+
+-- LEFT JOIN — lahat ng nasa left table, kahit walang match
+SELECT users.name, orders.total
+FROM users
+LEFT JOIN orders ON users.id = orders.user_id;</pre>
+
+<h2>Create Table</h2>
+<pre>CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE,
+    age INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);</pre>
+
+<script>
+  document.getElementById('themeToggle')?.addEventListener('click', function() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>

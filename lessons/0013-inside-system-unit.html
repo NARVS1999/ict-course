@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0013: Inside the System Unit</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0013: Inside the System Unit</h1>
+      <p><em>Tuklasin ang mga bahagi ng loob ng CPU case — motherboard, RAM, GPU, at iba pa.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang mga pangunahing internal components ng isang computer at kung paano ligtas na buksan ang system unit.
+      </div>
+
+      <h2>Pagbubukas ng PC Case nang Ligtas</h2>
+      <p>Bago mo buksan ang system unit, siguraduhing naka-off ang PC at naka-unplug sa saksakan. Mahalaga ito para maiwasan ang electric shock at maprotektahan ang mga components. Gumamit ng anti-static wrist strap kung available, o hawakan muna ang metal na bahagi ng case para ma-discharge ang static electricity. Ang static electricity o ESD (Electrostatic Discharge) ay pwedeng makasira ng sensitive electronics.</p>
+
+      <blockquote>"Bago buksan ang PC, patayin at hugutin sa saksakan. Gumamit ng anti-static wrist strap kung meron."</blockquote>
+
+      <h2>Motherboard — Ang Central ng Lahat</h2>
+      <p>Ang motherboard ang main circuit board ng computer. Dito nakakabit ang lahat ng major components: CPU, RAM, GPU, at storage devices. Makikita mo ang iba't ibang sockets at slots — ang CPU socket, RAM slots (DIMM slots), PCIe x16 slot para sa GPU, at mas maliliit na PCIe slots para sa expansion cards tulad ng Wi-Fi card o sound card.</p>
+
+      <h2>CPU, RAM, at GPU</h2>
+      <p>Ang <strong>CPU (Central Processing Unit)</strong> ang utak ng computer — naka-install ito sa CPU socket na may heatsink at fan sa ibabaw. Ang <strong>RAM (Random Access Memory)</strong> ay temporary memory na ginagamit ng CPU para mag-load ng programs at files. Ang <strong>GPU (Graphics Processing Unit)</strong> naman ang responsable sa pag-render ng images at video. Ang GPU ay pwedeng integrated (built-in sa CPU) o dedicated (hiwalay na video card sa PCIe slot).</p>
+
+      <h2>PSU at Power Connectors</h2>
+      <p>Ang <strong>PSU (Power Supply Unit)</strong> ang nagbibigay ng kuryente sa lahat ng components. May iba't ibang connectors ito: ang 24-pin ATX connector para sa motherboard, 4/8-pin CPU power connector, SATA power para sa storage, at PCIe power para sa GPU. Tiyaking sapat ang wattage ng PSU para sa buong system mo.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ibig sabihin ng ESD?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Electrostatic Discharge</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Electronic System Data</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Electrical Supply Device</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang motherboard?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Ang power supply ng computer</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Ang main circuit board kung saan nakakabit ang lahat ng components</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Ang storage device para sa files</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Bakit kailangan mong i-ground ang sarili bago buksan ang PC?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Para hindi makuryente</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Para maiwasan ang ESD na makasira ng components</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Para mas mabilis mag-boot ang computer</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: PC Teardown Video</h3>
+        <p>Manood ng YouTube video ng isang PC teardown (halimbawa: "How to Disassemble a Desktop PC"). I-pause ang video at kilalanin ang mga components na nabanggit — motherboard, CPU, RAM, GPU, PSU, at storage. Sumulat ng 5-sentence summary kung ano ang iyong nakita at kung saan matatagpuan ang bawat component.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Laging i-unplug at i-ground ang sarili bago buksan ang PC para maiwasan ang ESD.</li>
+        <li>Ang motherboard ang central circuit board na nagkokonekta sa lahat ng components.</li>
+        <li>Ang CPU ang utak, RAM ang temporary memory, at GPU ang nagha-handle ng graphics.</li>
+        <li>Ang PSU ay may iba't ibang connectors para sa bawat component.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

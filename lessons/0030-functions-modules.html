@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0030: Functions & Modules</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0030: Functions & Modules</h1>
+      <p><em>Matuto gumawa ng reusable code gamit ang functions at pag-import ng modules sa Python.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakagawa ng sarili mong functions at makakagamit ng built-in modules tulad ng math, random, at datetime.
+      </div>
+
+      <h2>Defining Functions</h2>
+      <p>Gamit ang <strong>def</strong> keyword, pwedeng gumawa ng function na pwedeng tawagin kahit saan sa code. Ang <strong>return</strong> naman ay nagbabalik ng value.</p>
+
+      <blockquote>"Kapag paulit-ulit ang code, gawin function para isang tawag na lang."</blockquote>
+
+      <pre><code>def greet(name):
+    """Mag-print ng greeting."""
+    return "Hello, " + name + "!"
+
+message = greet("Maria")
+print(message)  # Output: Hello, Maria!
+
+# Function na may parameters at return value
+def add(a, b):
+    return a + b
+
+result = add(5, 3)
+print("Sum:", result)  # Output: Sum: 8</code></pre>
+
+      <h2>Importing Modules</h2>
+      <p>Ang modules ay mga Python file na may reusable code. Gamitin ang <code>import</code> para magamit ang mga ito.</p>
+
+      <pre><code>import math
+import random
+from datetime import datetime
+
+# Math module
+print(math.sqrt(16))       # 4.0
+print(math.pi)             # 3.14159...
+
+# Random module
+print(random.randint(1, 10))  # Random number 1-10
+print(random.choice(["red", "blue", "green"]))  # Random choice
+
+# Datetime module
+now = datetime.now()
+print(now.strftime("%Y-%m-%d %H:%M:%S"))</code></pre>
+
+      <h2>Writing Simple Scripts</h2>
+      <p>Pagsamahin ang functions at modules sa isang script file (.py).</p>
+      <pre><code># calculator.py
+import math
+
+def circle_area(radius):
+    return math.pi * radius ** 2
+
+def circle_circumference(radius):
+    return 2 * math.pi * radius
+
+r = float(input("Enter radius: "))
+print(f"Area: {circle_area(r):.2f}")
+print(f"Circumference: {circle_circumference(r):.2f}")</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Anong keyword ang ginagamit para gumawa ng function sa Python?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> def</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> function</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> define</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang ginagawa ng return statement sa isang function?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Nagpi-print ng value</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Nagbabalik ng value mula sa function</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Nagtatapos ng program</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Paano mo ia-import ang math module?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> include math</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> using math</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> import math</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Circle Calculator</h3>
+        <p>Gumawa ng Python script na may function na <code>calculate_area(radius)</code> na nagko-compute ng area ng circle. Gamitin ang math.pi. I-print ang result para sa radius na 5, 7, at 10.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Gumamit ng def para gumawa ng function at return para magbalik ng value.</li>
+        <li>Ang modules ay ini-import gamit ang import statement.</li>
+        <li>Ang math, random, at datetime ay common na built-in modules.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0025: Basic Network Troubleshooting Commands</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0025: Basic Network Troubleshooting Commands</h1>
+      <p><em>Matutunan ang mga essential command-line tools para i-diagnose ang network problems — ping, tracert, ipconfig, nslookup, netstat, at arp.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Magamit ang basic network troubleshooting commands para i-check ang connectivity, i-diagnose ang issues, at maunawaan ang network configuration.
+      </div>
+
+      <h2>Ping — Test Connectivity</h2>
+      <p>Ang <strong>ping</strong> ay nagse-send ng ICMP echo request packets sa isang destination IP o domain name at sumusukat kung gaano katagal bago bumalik ang reply. Gamitin ito para i-check kung may connection sa isang device o website. Halimbawa: <code>ping google.com</code> o <code>ping 8.8.8.8</code>. Kung may reply, ibig sabihin may connection. Kung "Request timed out", walang connection o naka-block ang ICMP.</p>
+
+      <blockquote>"Kapag walang internet, unang gawin: mag-ping sa 8.8.8.8 (Google DNS). Kapag may reply, ibig sabihin may connection pero baka DNS issue."</blockquote>
+
+      <h2>Tracert/Traceroute — Path ng Packets</h2>
+      <p>Ang <strong>tracert</strong> (Windows) o <strong>traceroute</strong> (macOS/Linux) ay nagpapakita ng path na tinatahak ng packets papunta sa destination. Makikita mo ang bawat hop (router) na dinadaanan at kung gaano katagal. Gamitin ito para malaman kung saan nagka-problema ang connection — hal. <code>tracert google.com</code>.</p>
+
+      <h2>Ipconfig/Ifconfig — IP Configuration</h2>
+      <p>Ang <strong>ipconfig</strong> (Windows) ay nagpapakita ng IP address, subnet mask, default gateway, at DNS servers ng iyong computer. Gamitin ang <code>ipconfig /all</code> para sa detailed info (MAC address, DHCP status). Ang <code>ipconfig /release</code> at <code>ipconfig /renew</code> ay nagre-release at nagre-renew ng IP lease.</p>
+
+      <h2>Nslookup, Netstat, at ARP</h2>
+      <p><strong>nslookup</strong> — query sa DNS para malaman ang IP address ng domain name. <strong>netstat</strong> — nagpapakita ng active connections, listening ports, at network statistics. Gamitin ang <code>netstat -an</code> para sa lahat ng connections at ports. <strong>arp -a</strong> — nagpapakita ng ARP table (IP-to-MAC address mappings) ng mga devices na nakausap ng computer mo.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ginagawa ng ping command?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Nagpapakita ng IP configuration</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Nagse-send ng packets para i-test ang connectivity sa destination</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Nagre-resolve ng domain name</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang ipinapakita ng ipconfig?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> IP address, subnet mask, at default gateway ng computer</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> DNS records ng domain</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Listahan ng Wi-Fi networks</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang 8.8.8.8?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Ang IP address ng Facebook</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Ang default gateway ng lahat ng routers</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Google Public DNS — ginagamit para i-test ang internet connectivity</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Run Network Commands</h3>
+        <p>Buksan ang Command Prompt at isa-isang gawin ang mga sumusunod na commands: <code>ipconfig /all</code>, <code>ping google.com</code>, <code>tracert google.com</code>, <code>nslookup google.com</code>, at <code>arp -a</code>. I-screenshot o kopyahin ang output ng bawat command sa isang document. Isulat sa tabi kung ano ang ibig sabihin ng resulta — hal. "Ang IP ko ay 192.168.1.10, ang ping sa Google ay 15ms."</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ping para i-test kung may connectivity sa destination — gamitin ang 8.8.8.8 para i-check ang internet.</li>
+        <li>Tracert para makita ang path ng packets at malaman kung saan nagka-problema.</li>
+        <li>Ipconfig para makita ang IP configuration ng computer.</li>
+        <li>Nslookup para i-query ang DNS; netstat para sa active connections; arp para sa IP-to-MAC mappings.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'a', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

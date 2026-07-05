@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0056: Cloud Computing Concepts</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0056: Cloud Computing Concepts</h1>
+      <p><em>Pag-unawa sa cloud computing — kung ano ito, ang mga service models (IaaS/PaaS/SaaS), deployment types (public/private/hybrid), at ang mga benepisyo nito.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makapagpapaliwanag ng cloud computing concepts, makapag-differentiate ng IaaS/PaaS/SaaS at public/private/hybrid cloud, at makapagbigay ng mga halimbawa ng cloud services.
+      </div>
+
+      <h2>Ano ang Cloud Computing?</h2>
+      <p>Ang <strong>cloud computing</strong> ay ang paghahatid ng computing services — servers, storage, databases, networking, software — sa pamamagitan ng internet. Sa halip na bumili at mag-maintain ng sarili mong physical servers, nagre-rent ka ng resources mula sa cloud providers.</p>
+      <p>Isipin mo na lang: imbes na magtayo ka ng sarili mong power plant para magamit ang kuryente, kumonekta ka na lang sa electrical grid. Ganun din ang cloud — imbes na bumili ng sariling server, gumamit ka ng computing power on demand.</p>
+
+      <blockquote>"Imbes na bibili ka ng sariling server, nagre-rent ka ng computing resources sa cloud (e.g., AWS, Google Cloud, Azure)."</blockquote>
+
+      <h2>Cloud Service Models: IaaS, PaaS, SaaS</h2>
+      <p>May tatlong pangunahing cloud service models:</p>
+      <ul>
+        <li><strong>IaaS (Infrastructure as a Service)</strong> — Nagbibigay ng virtualized computing resources tulad ng VMs, storage, at networks. Ikaw ang may kontrol sa OS, apps, at middleware. Halimbawa: AWS EC2, Google Compute Engine.</li>
+        <li><strong>PaaS (Platform as a Service)</strong> — Nagbibigay ng platform para mag-develop at mag-deploy ng apps nang hindi na inaalala ang underlying infrastructure. Halimbawa: Google App Engine, Heroku.</li>
+        <li><strong>SaaS (Software as a Service)</strong> — Kumpletong software na naka-host sa cloud at ina-access mo sa browser. Halimbawa: Gmail, Google Docs, Microsoft 365.</li>
+      </ul>
+
+      <h2>Cloud Deployment Models</h2>
+      <ul>
+        <li><strong>Public Cloud</strong> — Ang infrastructure ay pag-aari ng third-party provider at shared sa maraming users. Mura at scalable.</li>
+        <li><strong>Private Cloud</strong> — Dedicated sa isang organization lang. Mas secure at controlled.</li>
+        <li><strong>Hybrid Cloud</strong> — Combination ng public at private cloud. Best of both worlds.</li>
+      </ul>
+
+      <h2>Benefits ng Cloud Computing</h2>
+      <ul>
+        <li><strong>Scalability</strong> — Pwedeng magdagdag o magbawas ng resources on demand.</li>
+        <li><strong>Cost-Efficiency</strong> — Pay-as-you-go. Walang upfront cost para sa hardware.</li>
+        <li><strong>Accessibility</strong> — Accessible kahit saan, basta may internet.</li>
+        <li><strong>Reliability</strong> — Redundancy at backup ng data.</li>
+      </ul>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What does IaaS stand for?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Infrastructure as a Service</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Internet as a Service</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Integration as a Service</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang pinagkaiba ng public cloud sa private cloud?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Public cloud ay libre, private cloud ay may bayad</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Public cloud ay shared infrastructure, private cloud ay dedicated sa isang organization</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Public cloud ay para sa bahay, private cloud ay para sa opisina</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Alin sa mga sumusunod ang halimbawa ng SaaS?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> AWS EC2</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Gmail</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Google Compute Engine</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Cloud Service Model Classification</h3>
+        <p>Tingnan ang mga sumusunod na apps/services at i-classify kung IaaS, PaaS, o SaaS ang mga ito: Gmail, Google Drive, Netflix, AWS EC2, Heroku, Microsoft 365, Dropbox, Google App Engine. Gumawa ng table at isulat ang sagot.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang cloud computing ay pag-rent ng computing resources sa internet.</li>
+        <li>Tatlong service models: IaaS (infrastructure), PaaS (platform), SaaS (software).</li>
+        <li>Tatlong deployment models: public, private, hybrid.</li>
+        <li>Benefits: scalability, cost-efficiency, accessibility, reliability.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

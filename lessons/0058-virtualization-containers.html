@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0058: Virtualization &amp; Containers</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0058: Virtualization &amp; Containers</h1>
+      <p><em>Pag-unawa sa virtualization — virtual machines (VirtualBox/VMware) at containers (Docker) — at ang pagkakaiba ng dalawa.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makapagpapaliwanag ng virtualization at containers, makapag-differentiate ng VMs at containers, at makapag-run ng Docker "hello-world" container.
+      </div>
+
+      <h2>Ano ang Virtualization?</h2>
+      <p>Ang <strong>virtualization</strong> ay ang paggawa ng virtual version ng isang resource — tulad ng server, OS, storage, o network. Sa pamamagitan ng <strong>hypervisor</strong> (tulad ng VirtualBox, VMware, o Hyper-V), pwedeng magpatakbo ng maraming virtual machines (VMs) sa iisang physical server.</p>
+      <p>Halimbawa: Sa isang laptop na Windows, pwedeng magpatakbo ng Ubuntu Linux sa loob ng VirtualBox. Parang computer sa loob ng computer.</p>
+
+      <blockquote>"Ang VM ay parang isang buong computer na ginaya lang — may sariling OS, kernel, at apps. Pero magaan lang dahil software lang siya."</blockquote>
+
+      <h2>Ano ang Containers?</h2>
+      <p>Ang <strong>container</strong> ay isang lightweight, standalone executable package na may kasamang lahat ng kailangan para tumakbo ang isang software — code, runtime, system tools, libraries, at settings. Ang pinakasikat na container platform ay <strong>Docker</strong>.</p>
+      <p>Ang container ay nagse-share ng OS kernel ng host machine, kaya mas magaan at mas mabilis compared sa VM. Hindi na kailangan ng separate OS para sa bawat container.</p>
+
+      <blockquote>"Container parang kapsula na may lahat ng kailangan ng application — consistent sa kahit anong environment."</blockquote>
+
+      <h2>Docker Basics</h2>
+      <ul>
+        <li><strong>Docker Image</strong> — Template o blueprint para sa container. Halimbawa: node:18, ubuntu:22.04, nginx:latest.</li>
+        <li><strong>Docker Container</strong> — Running instance ng isang image.</li>
+        <li><strong>Dockerfile</strong> — Text file na may instructions kung paano i-build ang Docker image.</li>
+      </ul>
+
+      <h3>Example Dockerfile</h3>
+      <pre><code># Simple Dockerfile para sa Node.js app
+FROM node:18-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["node", "app.js"]</code></pre>
+
+      <h2>VM vs Container</h2>
+      <table>
+        <tr><th>Feature</th><th>Virtual Machine</th><th>Container</th></tr>
+        <tr><td>OS</td><td>Bawat VM may sariling OS</td><td>Nagse-share ng host OS kernel</td></tr>
+        <tr><td>Size</td><td>GBs</td><td>MBs</td></tr>
+        <tr><td>Boot Time</td><td>Minutes</td><td>Seconds</td></tr>
+        <tr><td>Resource Usage</td><td>Mabigat</td><td>Magaan</td></tr>
+        <tr><td>Isolation</td><td>Mataas (full OS isolation)</td><td>Process-level isolation</td></tr>
+      </table>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang virtual machine?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Isang physical computer</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Isang software-based na simulation ng computer</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Isang uri ng container</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang Docker?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Isang virtualization software</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Isang container platform</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Isang cloud provider</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang pinagkaiba ng VM at container?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Mas mabigat ang container kaysa VM</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Ang VM ay nagse-share ng host OS kernel, ang container ay may sariling OS</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Ang container ay nagse-share ng host OS kernel at mas magaan kaysa VM</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Run a Docker Container</h3>
+        <p>I-download at i-install ang <strong>Docker Desktop</strong> (docker.com). Pagkatapos, buksan ang terminal at patakbuhin ang command: <code>docker run hello-world</code>. I-screenshot ang output na nagpapakitang gumagana ang Docker installation.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang virtualization ay paggawa ng virtual version ng computer (VM) gamit ang hypervisor.</li>
+        <li>Ang Docker ay ang pinakasikat na container platform.</li>
+        <li>Ang container ay mas magaan, mas mabilis, at nagse-share ng host OS kernel.</li>
+        <li>Ang Dockerfile ay ginagamit para i-build ang Docker images.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

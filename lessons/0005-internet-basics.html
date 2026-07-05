@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0005: Internet Basics & Web Browsers</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0005: Internet Basics & Web Browsers</h1>
+      <p><em>Paano gumagana ang internet, ang papel ng ISP at DNS, at paano gamitin ang web browser nang epektibo.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapagpaliwanag kung paano gumagana ang internet, ISP, DNS, servers, at web browsers.
+      </div>
+
+      <h2>ISP at DNS</h2>
+      <p>Ang <strong>ISP (Internet Service Provider)</strong> ay ang kumpanyang nagbibigay sa iyo ng internet connection — halimbawa ay PLDT, Globe, o Converge. Sila ang nagkokonekta ng iyong computer sa malawak na network ng internet.</p>
+      <p>Ang <strong>DNS (Domain Name System)</strong> naman ay parang telephone book ng internet. Kapag nag-type ka ng "google.com," tinatanong ng browser mo ang DNS kung anong IP address ang katumbas ng domain name na iyon (hal. 142.250.80.46). Kapag nakuha na ang IP address, doon na mapupunta ang request mo sa server.</p>
+
+      <blockquote>"Kapag nag-type ka ng google.com, nagtatanong muna sa DNS 'Anong address nito?' bago pumunta sa server."</blockquote>
+
+      <h2>Servers at Web Browsers</h2>
+      <p>Ang <strong>server</strong> ay isang computer na naka-imbak ng mga websites at naghahatid ng content kapag may nag-request. Ang <strong>web browser</strong> naman ay ang program na ginagamit mo para ma-access ang web — Chrome, Firefox, Edge, Safari, atbp.</p>
+
+      <h2>URLs, Domains, at Hyperlinks</h2>
+      <p>Ang <strong>URL (Uniform Resource Locator)</strong> ay ang address ng isang webpage (hal. https://www.google.com). Ang <strong>domain</strong> ay ang pangalan ng website (google.com). Ang <strong>hyperlinks</strong> ay mga clickable text o image na nagdadala sa iyo sa ibang page.</p>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What does ISP stand for?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Internet Service Provider</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Internal Security Protocol</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Integrated System Program</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. What does DNS do?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> It provides internet connection</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> It translates domain names to IP addresses</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> It stores website files</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Which of the following is an example of a web browser?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Google</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Microsoft Word</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Mozilla Firefox</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Inspect a Website with DevTools</h3>
+        <p>Pumunta sa anumang website at pindutin ang <strong>F12</strong> (o right-click > Inspect). Pumunta sa <strong>Network tab</strong> at i-refresh ang page. Makikita mo ang lahat ng requests na ginagawa ng browser — images, scripts, at iba pa. I-screenshot o isulat ang tatlong uri ng requests na makikita mo.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>ISP ang nagbibigay ng internet connection; DNS ang nagta-translate ng domain names to IP addresses.</li>
+        <li>Ang server ay nag-iimbak ng websites; ang browser ang ginagamit para ma-access ang mga ito.</li>
+        <li>URL ang address ng webpage; domain ang pangalan ng website; hyperlinks ang nagkokonekta ng pages.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

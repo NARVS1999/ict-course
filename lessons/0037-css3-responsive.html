@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0037: CSS3 & Responsive Design</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0037: CSS3 & Responsive Design</h1>
+      <p><em>Matuto ng CSS para istilo ang web pages — selectors, box model, Flexbox, Grid, at media queries.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapag-apply ng CSS styles sa HTML at makakagawa ng responsive layout gamit ang Flexbox at media queries.
+      </div>
+
+      <h2>CSS Selectors at Properties</h2>
+      <p>Ang <strong>CSS (Cascading Style Sheets)</strong> ang nagpapaganda ng website. Pwedeng mag-style ng elements gamit ang selectors.</p>
+
+      <blockquote>"CSS ang nagpapaganda ng website. Gamitin ang Flexbox para hindi na mahirapan sa pag-a-align."</blockquote>
+
+      <pre><code>/* Element selector */
+h1 { color: blue; font-size: 32px; }
+
+/* Class selector */
+.card { background: white; border-radius: 8px; }
+
+/* ID selector */
+#header { background: #333; color: white; }
+
+/* Pseudo-class */
+a:hover { text-decoration: underline; }</code></pre>
+
+      <h2>Box Model</h2>
+      <p>Ang bawat HTML element ay may box na binubuo ng: <strong>content</strong>, <strong>padding</strong> (space sa loob), <strong>border</strong>, at <strong>margin</strong> (space sa labas).</p>
+
+      <pre><code>div {
+  width: 300px;
+  padding: 20px;
+  border: 2px solid black;
+  margin: 10px;
+}</code></pre>
+
+      <h2>Flexbox</h2>
+      <p>Ang <code>display: flex</code> ay nag-a-align ng items nang pahalang o patayo. Mas madali kaysa sa traditional float method.</p>
+
+      <pre><code>.container {
+  display: flex;
+  justify-content: center;   /* Horizontal alignment */
+  align-items: center;       /* Vertical alignment */
+  gap: 10px;                 /* Space between items */
+}
+
+.item { flex: 1; }           /* Equal width items */</code></pre>
+
+      <h2>CSS Grid</h2>
+      <pre><code>.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}</code></pre>
+
+      <h2>Media Queries at Responsive Design</h2>
+      <p>Gamit ang <strong>media queries</strong>, pwedeng mag-apply ng ibang styles depende sa screen size.</p>
+
+      <pre><code>/* Default: desktop styles */
+.container { display: flex; }
+
+/* Tablet */
+@media (max-width: 768px) {
+  .container { flex-direction: column; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+}</code></pre>
+
+      <h2>Colors at Typography</h2>
+      <pre><code>body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+}</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ibig sabihin ng CSS?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Cascading Style Sheets</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Computer Style System</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Creative Style Sheets</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang tamang pagkakasunod-sunod ng box model mula sa loob palabas?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Margin, Border, Padding, Content</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Content, Padding, Border, Margin</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Content, Margin, Border, Padding</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang ginagawa ng display: flex?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Ginagawang invisible ang element</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Ginagawang block-level ang element</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Ginagawang flexible container ang element para mag-align ng items</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Style Your Hobby Page</h3>
+        <p>Kunin ang HTML page na ginawa mo sa Lesson 0036 at lagyan ng CSS. Magdagdag ng: isang styled header na may background color, Flexbox layout para sa content, at media query na nagpapalit ng layout para sa mobile.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang CSS ay ginagamit para mag-style ng HTML elements.</li>
+        <li>Ang box model ay content, padding, border, margin.</li>
+        <li>Ang Flexbox at media queries ay essential para sa responsive design.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

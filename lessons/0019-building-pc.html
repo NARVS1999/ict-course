@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0019: Building a PC from Scratch</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0019: Building a PC from Scratch</h1>
+      <p><em>Gabay sa pagbuo ng sarili mong computer — mula sa pagpili ng parts hanggang sa first boot at OS installation.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang buong process ng pag-assemble ng PC, mula sa compatibility checking hanggang sa pag-install ng operating system.
+      </div>
+
+      <h2>Compatibility Checking</h2>
+      <p>Bago bumili ng parts, siguraduhing compatible ang mga ito. Gamitin ang <strong>PC Part Picker</strong> (pcpartpicker.com) — awtomatiko nitong chicheck kung tugma ang motherboard sa CPU socket, RAM type, PSU wattage, at case size. Importante ring isaalang-alang ang budget at purpose ng PC (gaming, office, content creation).</p>
+
+      <h2>Step-by-Step Assembly</h2>
+      <p>1. <strong>CPU</strong> — I-install sa motherboard socket, i-align ang gold triangle. 2. <strong>CPU Cooler</strong> — Lagyan ng thermal paste, ikabit ang heatsink at fan. 3. <strong>RAM</strong> — I-slide sa DIMM slots (A2 at B2 para sa dual-channel). 4. <strong>Motherboard sa Case</strong> — I-screw ang standoffs, ilagay ang I/O shield, at i-secure ang motherboard. 5. <strong>PSU</strong> — I-install sa case, ikabit ang 24-pin at CPU power cables. 6. <strong>Storage</strong> — Ikabit ang SSD/HDD at i-connect ang SATA cable (kung SATA). 7. <strong>GPU</strong> — I-slide sa PCIe x16 slot at i-secure. 8. <strong>Cable Management</strong> — Ayusin ang cables para sa magandang airflow.</p>
+
+      <blockquote>"Parang Lego ang PC building — masaya pero dapat compatible ang parts. Huwag pwersahin!"</blockquote>
+
+      <h2>First Boot at OS Installation</h2>
+      <p>Pagkatapos ng assembly, i-on ang PC — dapat makita ang BIOS screen. I-set ang boot order sa USB drive (kung nag-i-install ng OS). I-install ang <strong>Windows</strong> o <strong>Linux</strong> sa pamamagitan ng bootable USB. Pagkatapos, i-install ang drivers (chipset, GPU, LAN, audio) at mag-update ng Windows. Huwag kalimutan ang <strong>cable management</strong> — magandang airflow = mas malamig na components = mas matagal na buhay.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Anong tool ang pwedeng gamitin para i-check ang compatibility ng PC parts?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Google Docs</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> PC Part Picker</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Microsoft Word</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang dapat ilagay sa pagitan ng CPU at heatsink?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Tubig</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Thermal paste</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Double-sided tape</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang unang dapat gawin pagkatapos mag-assemble ng PC?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Maglaro ng games</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> I-install ang operating system</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> I-on at pumasok sa BIOS para i-verify na na-detect ang lahat ng parts</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Build a Budget PC on PC Part Picker</h3>
+        <p>Gamit ang pcpartpicker.com, gumawa ng parts list para sa isang budget PC build (hal. 30,000-40,000 PHP). Pumili ng CPU, motherboard, RAM, storage, PSU, at case. Siguraduhing compatible ang lahat. I-screenshot o i-save ang completed parts list at isulat kung para saan mo gagamitin ang PC na ito (school, gaming, office).</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Gumamit ng PC Part Picker para i-verify ang compatibility ng parts bago bumili.</li>
+        <li>Ang tamang sequence ng assembly: CPU → Cooler → RAM → Motherboard → PSU → Storage → GPU.</li>
+        <li>Huwag pwersahin ang parts — kung hindi pumasok, baka mali ang alignment o compatibility.</li>
+        <li>Pagkatapos ng assembly, i-verify sa BIOS na na-detect ang lahat bago mag-install ng OS.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

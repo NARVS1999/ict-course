@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0043: Database Fundamentals</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0043: Database Fundamentals</h1>
+      <p><em>Pag-unawa sa database, DBMS, relational vs NoSQL, at mga pangunahing konsepto tulad ng tables, records, at keys.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Maunawaan kung ano ang database, ang mga uri nito, at ang mga pangunahing bahagi ng relational database.
+      </div>
+
+      <h2>Ano ang Database?</h2>
+      <p>Ang database ay isang organisadong koleksyon ng data na madaling i-access, i-manage, at i-update. Halimbawa: listahan ng students sa isang school, inventory ng isang tindahan, o user accounts ng isang website.</p>
+
+      <h2>DBMS (Database Management System)</h2>
+      <p>Ang DBMS ay software na ginagamit para i-manage ang database. Mga halimbawa: MySQL (popular sa web), PostgreSQL (advanced features), at SQLite (lightweight, walang server). Pumili batay sa laki ng project at requirements.</p>
+
+      <h2>Relational vs NoSQL</h2>
+      <p>Ang relational database (tulad ng MySQL at PostgreSQL) ay naka-organize sa tables na may rows at columns, at may relasyon sa isa't isa gamit ang keys. Ang NoSQL (tulad ng MongoDB) naman ay flexible — pwedeng document-based, key-value, o graph — at hindi gumagamit ng fixed schema. Mainam ang relational para sa structured data at transactions; ang NoSQL ay para sa malalaking volume ng unstructured data.</p>
+
+      <blockquote>"Ang relational database naka-organize sa tables na parang mga spreadsheet na may relasyon sa isa't isa."</blockquote>
+
+      <h2>Tables, Records, at Fields</h2>
+      <p>Ang table ay binubuo ng rows (records) at columns (fields). Halimbawa, sa isang "Students" table, ang bawat row ay isang estudyante, at ang columns ay: student_id, first_name, last_name, at email.</p>
+
+      <h2>Primary Key at Foreign Key</h2>
+      <p>Ang <strong>Primary Key</strong> ay isang unique identifier para sa bawat record sa isang table — hindi pwedeng magkaroon ng dalawang records na pareho ang primary key. Ang <strong>Foreign Key</strong> naman ay isang column na tumutukoy sa primary key ng ibang table, na ginagamit para i-link ang dalawang tables.</p>
+
+      <pre><code>-- Halimbawa ng paggawa ng table na may primary key
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100)
+);
+
+-- Halimbawa ng foreign key
+CREATE TABLE Enrollments (
+    enrollment_id INT PRIMARY KEY,
+    student_id INT,
+    course_code VARCHAR(10),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id)
+);</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang tawag sa unique identifier para sa bawat record sa isang table?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Foreign Key</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Primary Key</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Index</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang pangunahing pagkakaiba ng relational database at NoSQL?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Walang pinagkaiba</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Relational ay gumagamit ng tables na may schema; NoSQL ay flexible at walang fixed schema</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> NoSQL ay laging mas mabilis</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Alin sa mga sumusunod ang halimbawa ng DBMS?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> MySQL</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Microsoft Word</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Google Chrome</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Design a Student Records Table</h3>
+        <p>Gumuhit o mag-type ng schema para sa isang table na mag-iimbak ng student records. Isama ang mga fields: student ID, full name, birthdate, email, at course. Tukuyin kung alin ang primary key at magbigay ng dalawang sample records.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang database ay organisadong koleksyon ng data na mina-manage ng DBMS.</li>
+        <li>Relational databases gumagamit ng tables na may primary at foreign keys; NoSQL ay flexible schema.</li>
+        <li>Ang primary key ay unique identifier; foreign key ay nagli-link ng tables.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

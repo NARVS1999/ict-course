@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0003: Operating Systems (Windows, macOS, Linux)</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0003: Operating Systems (Windows, macOS, Linux)</h1>
+      <p><em>Pag-unawa sa operating system at pagkakaiba ng Windows, macOS, at Linux.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapagpaliwanag kung ano ang OS, makilala ang Windows/macOS/Linux interfaces, at mag-navigate sa basic settings.
+      </div>
+
+      <h2>Ano ang Operating System?</h2>
+      <p>Ang <strong>Operating System (OS)</strong> ay ang pangunahing software na nagmamanage ng computer hardware at nagbibigay ng interface para sa user. Ito ang nagpapatakbo ng lahat ng programs at nag-aallocate ng resources tulad ng memory, processor time, at storage. Kung walang OS, hindi mo magagamit ang computer.</p>
+
+      <blockquote>"Windows ang pinakagamitin sa offices at schools, pero sa servers mas sikat ang Linux."</blockquote>
+
+      <h2>Windows vs macOS vs Linux</h2>
+      <ul>
+        <li><strong>Windows</strong> — Gawa ng Microsoft. Pinakasikat sa mga offices, schools, at personal computers. User-friendly at maraming supported software at games.</li>
+        <li><strong>macOS</strong> — Gawa ng Apple. Exclusive sa Mac computers. Known for its sleek design, stability, at security. Madalas gamit ng mga designers at creatives.</li>
+        <li><strong>Linux (Ubuntu)</strong> — Open-source at libre. Maraming variety (distributions o "distros"). Mas gamit sa servers, developers, at advanced users. Ang Ubuntu ang pinaka-user-friendly na version ng Linux.</li>
+      </ul>
+
+      <h2>Basic Settings</h2>
+      <p>Sa Windows, makikita mo ang Settings app (gear icon) kung saan mo pwedeng i-customize ang Display, Network, User Accounts, at iba pa. Sa macOS, nasa System Settings ito. Sa Linux (Ubuntu), nasa Settings app din ang mga basic configuration.</p>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What is an operating system?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> A software that manages computer hardware and provides user interface</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> A type of computer monitor</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> A programming language</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Which OS is commonly used in servers?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Windows</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Linux</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> macOS</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Name a popular Linux distribution for beginners.</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Windows 11</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> macOS Ventura</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Ubuntu</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Explore Windows Settings</h3>
+        <p>Buksan ang Settings app sa Windows (Start menu > gear icon). I-explore ang mga sumusunod: Display settings, Network & Internet, at Accounts. Isulat sa notebook kung ano ang mga options na makikita mo sa bawat category.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang OS ay nagmamanage ng hardware at nagbibigay ng interface sa user.</li>
+        <li>Windows ang pinakagamit sa offices/schools; Linux ang mas sikat sa servers.</li>
+        <li>Ubuntu ang pinaka-beginner-friendly na Linux distribution.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

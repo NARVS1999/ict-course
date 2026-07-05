@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0012: Productivity Tools & Keyboard Shortcuts</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0012: Productivity Tools & Keyboard Shortcuts</h1>
+      <p><em>Mga keyboard shortcuts at productivity tools para maging mas efficient sa computer.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makaka-memorize ng essential keyboard shortcuts, makagamit ng task management tools, at maia-apply ang Pomodoro technique.
+      </div>
+
+      <h2>Essential Keyboard Shortcuts</h2>
+      <p>Ang keyboard shortcuts ay key combinations na mabilis na nagsasagawa ng command nang hindi ginagamit ang mouse. Narito ang mga essential:</p>
+      <ul>
+        <li><strong>Ctrl+C</strong> — Copy</li>
+        <li><strong>Ctrl+V</strong> — Paste</li>
+        <li><strong>Ctrl+Z</strong> — Undo (ibalik ang ginawang pagbabago)</li>
+        <li><strong>Ctrl+A</strong> — Select All</li>
+        <li><strong>Alt+Tab</strong> — Lumipat sa ibang open window</li>
+        <li><strong>Win+D</strong> — Ipakita ang desktop (minimize lahat ng windows)</li>
+        <li><strong>Win+E</strong> — Buksan ang File Explorer</li>
+        <li><strong>Ctrl+Shift+Esc</strong> — Buksan ang Task Manager</li>
+      </ul>
+
+      <blockquote>"Matuto ng keyboard shortcuts — grabe ang tipid sa oras. Parang secret move sa fighting game."</blockquote>
+
+      <h2>Task Management Apps</h2>
+      <p>Ang task management apps ay tumutulong sa iyo na mag-organize ng iyong mga gawain:</p>
+      <ul>
+        <li><strong>Trello</strong> — Visual boards na may cards para sa tasks. Parang sticky notes sa whiteboard.</li>
+        <li><strong>Todoist</strong> — Simple list-based task manager na may due dates at priorities.</li>
+        <li><strong>Google Keep</strong> — Quick notes na may reminders at color coding.</li>
+        <li><strong>Notion</strong> — All-in-one workspace para sa notes, tasks, databases, at wikis.</li>
+      </ul>
+
+      <h2>Note-Taking: OneNote at Notion</h2>
+      <p>Ang <strong>OneNote</strong> ay bahagi ng Microsoft Office at maganda para sa structured notes na may sections at pages. Ang <strong>Notion</strong> naman ay mas flexible — pwedeng gawing notes, task board, o kahit database.</p>
+
+      <h2>Pomodoro Technique</h2>
+      <p>Ang <strong>Pomodoro Technique</strong> ay isang time management method kung saan nagtatrabaho ka nang nakatutok sa loob ng 25 minuto (isang "pomodoro"), followed by 5-minute break. Pagkatapos ng 4 na pomodoros, mag-30 minutong mahabang break. Makakatulong ito para maiwasan ang burnout at mapanatili ang focus.</p>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What does Ctrl+Z do?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Redo the last action</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Undo the last action</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Save the current file</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. What is the Pomodoro technique?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> A method of typing faster on the keyboard</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> A time management method using 25-minute focused work intervals</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> A technique for organizing computer files</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Name a popular task management app.</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Microsoft Word</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Trello</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Google Chrome</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Set Up a Trello Board</h3>
+        <p>Gumawa ng Trello board para sa iyong weekly tasks. Gumawa ng mga columns tulad ng "To Do", "Doing", at "Done". Magdagdag ng cards para sa bawat task na kailangan mong gawin ngayong linggo. I-set ang due dates at labels kung kinakailangan.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang keyboard shortcuts tulad ng Ctrl+C, Ctrl+V, at Ctrl+Z ay nakakatipid ng oras.</li>
+        <li>Gamitin ang Trello, Todoist, o Google Keep para sa task management.</li>
+        <li>Ang Pomodoro technique ay 25 minuto work, 5 minuto break para sa mas epektibong pag-aaral o pagtatrabaho.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

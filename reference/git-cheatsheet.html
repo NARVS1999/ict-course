@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Cheatsheet</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+  <style>
+    body { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    @media print { .theme-toggle { display: none; } }
+  </style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<h1>Git &amp; GitHub Cheatsheet</h1>
+<p><em>Ang mga pinakagamit na Git commands — parang time machine para sa code mo!</em></p>
+
+<h2>Setting Up</h2>
+<pre>git config --global user.name "Name"
+git config --global user.email "email@example.com"
+git init            — mag-start ng bagong repository
+git clone &lt;url&gt;    — kopyahin ang existing repo</pre>
+
+<h2>Basic Workflow</h2>
+<pre>git status          — tingnan ang status ng files
+git add &lt;file&gt;     — i-stage ang file para i-commit
+git add .           — i-stage lahat ng files
+git commit -m "msg" — i-save ang changes (may message)
+git log --oneline   — tingnan ang commit history</pre>
+
+<h2>Working with Remote (GitHub)</h2>
+<pre>git remote add origin &lt;url&gt;   — i-link ang local repo sa GitHub
+git push -u origin main       — i-upload ang commits sa GitHub
+git pull                      — i-download ang latest changes
+git fetch                     — tingnan ang changes nang hindi merge</pre>
+
+<h2>Branches</h2>
+<pre>git branch                    — listahan ng branches
+git branch &lt;name&gt;            — gumawa ng bagong branch
+git checkout &lt;branch&gt;        — lumipat ng branch
+git checkout -b &lt;name&gt;       — gumawa at lumipat nang sabay
+git merge &lt;branch&gt;           — i-merge ang branch sa current branch</pre>
+
+<h2>Undoing Changes</h2>
+<pre>git restore &lt;file&gt;           — i-undo ang unstaged changes
+git restore --staged &lt;file&gt;  — i-unstage ang file
+git reset --soft HEAD~1      — i-undo ang last commit (keep changes)
+git reset --hard HEAD~1      — i-undo ang last commit (delete changes)</pre>
+
+<h2>GitHub Pull Request Flow</h2>
+<pre>1. git checkout -b feature-branch
+2. (gumawa ng changes, git add, git commit)
+3. git push -u origin feature-branch
+4. Sa GitHub: Create Pull Request
+5. (pagkatapos ma-approve, i-merge)
+6. git checkout main
+7. git pull</pre>
+
+<script>
+  document.getElementById('themeToggle')?.addEventListener('click', function() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>

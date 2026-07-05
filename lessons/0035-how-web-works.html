@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0035: How the Web Works</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0035: How the Web Works</h1>
+      <p><em>Alamin kung paano gumagana ang web — HTTP requests, DNS, hosting, at ang pagkakaiba ng frontend at backend.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapag-explain kung paano nagke-communicate ang browser at server, at makikilala ang iba't ibang HTTP methods at status codes.
+      </div>
+
+      <h2>HTTP/HTTPS at ang Request-Response Cycle</h2>
+      <p>Kapag nag-type ka ng URL sa browser, nagse-send ang browser ng <strong>HTTP request</strong> sa server. Ang server ay nagre-respond ng HTML, CSS, JS, at iba pang resources. Ang <strong>HTTPS</strong> ay secure version ng HTTP na naka-encrypt ang data.</p>
+
+      <blockquote>"Kapag nag-type ka ng URL, nagse-send ng request si browser, si server nagre-respond ng HTML na nire-render ng browser."</blockquote>
+
+      <h2>HTTP Methods</h2>
+      <ul>
+        <li><strong>GET</strong> — Kumukuha ng data mula sa server (hal. mag-load ng webpage)</li>
+        <li><strong>POST</strong> — Nagse-send ng data sa server (hal. mag-submit ng form)</li>
+        <li><strong>PUT</strong> — Mag-update ng existing data</li>
+        <li><strong>DELETE</strong> — Mag-delete ng data</li>
+      </ul>
+
+      <h2>HTTP Status Codes</h2>
+      <pre><code>200 OK          — Successful request
+301 Moved       — Na-redirect ang URL
+404 Not Found   — Hindi mahanap ang page
+500 Server Error — May problema sa server</code></pre>
+
+      <h2>Domain Names at DNS</h2>
+      <p>Ang <strong>domain name</strong> (hal. google.com) ay madaling tandaan na address. Ang <strong>DNS (Domain Name System)</strong> ang nagta-translate ng domain name papunta sa IP address ng server. Parang phonebook ng internet.</p>
+
+      <h2>Frontend vs Backend</h2>
+      <ul>
+        <li><strong>Frontend</strong> — Ang nakikita at ini-interact ng user. HTML, CSS, JavaScript ang gamit.</li>
+        <li><strong>Backend</strong> — Ang nasa server. Nagpro-process ng data, kumokonekta sa database. PHP, Python, Node.js ang gamit.</li>
+      </ul>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ibig sabihin ng HTTP?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> HyperText Transfer Protocol</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> High Tech Transfer Program</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> HyperText Transmission Process</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang pinagkaiba ng GET at POST?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Walang pinagkaiba</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Ang GET ay kumukuha ng data, ang POST ay nagse-send ng data</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Ang GET ay mas mabilis kaysa POST</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang ibig sabihin ng 404 status code?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Successful request</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Server error</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Hindi mahanap ang page</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: DevTools Network Tab</h3>
+        <p>Buksan ang Chrome DevTools (F12) at pumunta sa Network tab. I-reload ang isang website at obserbahan ang mga requests: method, status code, at response time. Mag-screen capture o magsulat ng observation tungkol sa nakita mo.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang HTTP ay protocol para sa communication ng browser at server.</li>
+        <li>Ang GET ay for retrieving data, POST ay for sending data.</li>
+        <li>Ang DNS ang nagta-translate ng domain name sa IP address.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

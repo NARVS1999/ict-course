@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICT Complete Course — Maging Competent ICT Professional</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="landing">
+  <h1>ICT Complete Course</h1>
+  <p class="subtitle">All-in-one Information and Communications Technology learning path — mula zero hanggang maging competent ICT professional. <strong>Taglish</strong> para mas mabilis maintindihan.</p>
+
+  <ul class="desc">
+    <li>Matuto ng computer fundamentals at internet safety</li>
+    <li>Maging expert sa productivity tools (Word, Excel, PowerPoint)</li>
+    <li>Alamin ang hardware at kung paano mag-troubleshoot</li>
+    <li>Intindihin ang networking (IP, DNS, OSI, Wi-Fi)</li>
+    <li>Mag-program sa Python at mag-script sa Bash</li>
+    <li>Gumawa ng websites gamit HTML, CSS, JS, at backend</li>
+    <li>Maging literate sa databases, cybersecurity, at cloud computing</li>
+    <li>Makatapos ng capstone project na mag-iintegrate ng lahat ng skills</li>
+  </ul>
+
+  <a class="btn-start" href="lessons/0001-ano-ang-ict.html">Start the Course</a>
+
+  <div class="phases">
+    <div class="phase-item">
+      <span class="phase-num">Phase 0</span>
+      <span class="phase-name">Computer &amp; Internet Fundamentals</span>
+      <span class="phase-count">6 lessons</span>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">Phase 1</span>
+      <span class="phase-name">Productivity &amp; Digital Literacy</span>
+      <span class="phase-count">6 lessons</span>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">Phase 2</span>
+      <span class="phase-name">Computer Hardware &amp; Troubleshooting</span>
+      <span class="phase-count">7 lessons</span>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">Phase 3</span>
+      <span class="phase-name">Networking Essentials</span>
+      <span class="phase-count">8 lessons</span>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">Phase 4</span>
+      <span class="phase-name">Introduction to Programming &amp; Scripting</span>
+      <span class="phase-count">7 lessons</span>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">Phase 5</span>
+      <span class="phase-name">Web Technologies &amp; Development</span>
+      <span class="phase-count">8 lessons</span>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">Phase 6</span>
+      <span class="phase-name">Databases &amp; Data Management</span>
+      <span class="phase-count">6 lessons</span>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">Phase 7</span>
+      <span class="phase-name">Cybersecurity Fundamentals</span>
+      <span class="phase-count">7 lessons</span>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">Phase 8</span>
+      <span class="phase-name">Cloud Computing &amp; Emerging Tech</span>
+      <span class="phase-count">5 lessons</span>
+    </div>
+    <div class="phase-item">
+      <span class="phase-num">Phase 9</span>
+      <span class="phase-name">Professional Skills &amp; Capstone Project</span>
+      <span class="phase-count">5 lessons</span>
+    </div>
+  </div>
+</div>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

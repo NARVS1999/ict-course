@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0059: Internet of Things (IoT)</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0059: Internet of Things (IoT)</h1>
+      <p><em>Pag-unawa sa Internet of Things — ang konsepto ng mga smart devices na konektado sa internet, IoT architecture, at ang mga platforms tulad ng Arduino at Raspberry Pi.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makapagpapaliwanag ng IoT concept, makapagdescribe ng IoT architecture (device/gateway/cloud), at makapagbigay ng mga halimbawa ng IoT applications.
+      </div>
+
+      <h2>Ano ang Internet of Things?</h2>
+      <p>Ang <strong>Internet of Things (IoT)</strong> ay ang network ng mga physical devices — appliances, vehicles, sensors, at iba pa — na may sensors, software, at connectivity para mag-collect at mag-exchange ng data sa internet. Sa madaling salita, ang mga ordinaryong bagay ay nagiging "smart" dahil nakakonekta sila sa internet.</p>
+
+      <blockquote>"IoT — pati ref, ilaw, at sasakyan nakakonekta na sa internet. Daming opportunities dito."</blockquote>
+
+      <h2>Mga Halimbawa ng IoT</h2>
+      <ul>
+        <li><strong>Smart Home</strong> — Smart lights (Philips Hue), smart thermostat (Nest), smart locks, smart speakers (Amazon Echo).</li>
+        <li><strong>Agriculture</strong> — Soil moisture sensors, automated irrigation, drone monitoring ng crops.</li>
+        <li><strong>Healthcare</strong> — Wearables (smartwatch), heart rate monitors, smart pill dispensers.</li>
+        <li><strong>Smart City</strong> — Smart traffic lights, waste management sensors, air quality monitoring.</li>
+      </ul>
+
+      <h2>IoT Architecture</h2>
+      <p>May tatlong layers ang typical IoT architecture:</p>
+      <ul>
+        <li><strong>Device Layer (Perception)</strong> — Ang mga sensors at actuators. Sila ang nangongolekta ng data (temperature, motion, light) at gumagawa ng actions.</li>
+        <li><strong>Gateway Layer (Network)</strong> — Ang nagco-connect ng devices sa cloud gamit ang WiFi, Bluetooth, Zigbee, o cellular. Pwede ring mag-local processing dito.</li>
+        <li><strong>Cloud Layer (Application)</strong> — Data storage, analytics, at user interface. Dito iniimbak at pinoproseso ang data, at dito rin ang dashboard para sa users.</li>
+      </ul>
+
+      <h2>Arduino at Raspberry Pi</h2>
+      <p>Ang <strong>Arduino</strong> ay isang microcontroller board — simple, mura, at magaling sa pag-control ng sensors at motors. Ang <strong>Raspberry Pi</strong> naman ay isang single-board computer — kaya magpatakbo ng full Linux OS, mag-host ng web server, at mag-proseso ng data. Pareho itong sikat na platforms para sa IoT projects.</p>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang IoT?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Network ng mga computer servers</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Network ng physical devices na konektado sa internet</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Isang uri ng programming language</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang tamang pagkakasunod-sunod ng IoT architecture layers?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Cloud → Gateway → Device</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Device → Gateway → Cloud</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Gateway → Device → Cloud</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Alin ang halimbawa ng IoT device?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Desktop computer</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Smart thermostat (Nest)</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Traditional light bulb</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: IoT Research</h3>
+        <p>Maghanap ng isang real-world IoT application (halimbawa: smart farming, wearable health tracker, smart traffic system). Sumulat ng isang page na summary tungkol dito — ano ang problema na nito-solve nito, ano ang mga sensors/devices na ginamit, at paano ito nakatutulong sa mga tao.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang IoT ay network ng physical devices na konektado sa internet.</li>
+        <li>IoT architecture: Device → Gateway → Cloud.</li>
+        <li>Applications: smart home, agriculture, healthcare, smart city.</li>
+        <li>Arduino (microcontroller) at Raspberry Pi (single-board computer) ang sikat na IoT platforms.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0062: Resume, Portfolio &amp; LinkedIn</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0062: Resume, Portfolio &amp; LinkedIn</h1>
+      <p><em>Pag-aaral kung paano gumawa ng effective technical resume, online portfolio (GitHub/personal website), at LinkedIn profile para sa IT job applications.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakagawa ng technical resume na nagha-highlight ng skills at projects, makakapag-set up ng GitHub portfolio, at makaka-optimize ng LinkedIn profile.
+      </div>
+
+      <h2>Technical Resume</h2>
+      <p>Ang technical resume ay iba sa ordinaryong resume. Dapat i-highlight ang iyong technical skills, projects, at certifications. Iwasan ang mahahabang description — maging concise at specific.</p>
+      <p><strong>Key Sections:</strong> Contact Info, Professional Summary, Skills (technical stack), Experience, Projects, Education &amp; Certifications.</p>
+
+      <blockquote>"Ang GitHub profile mo ay ang bago mong resume — lagyan ng magagandang projects kahit practice lang."</blockquote>
+
+      <h2>Online Portfolio</h2>
+      <p>Dalawang uri ng portfolio na mahalaga sa IT:</p>
+      <ul>
+        <li><strong>GitHub Profile</strong> — Ilagay ang lahat ng iyong code projects. Maganda ang README sa bawat repo na nagpapaliwanag ng project, tech stack, at features.</li>
+        <li><strong>Personal Website</strong> — Pwedeng gawin gamit ang HTML/CSS/JS, o gumamit ng platforms tulad ng GitHub Pages, Netlify, o WordPress. Dapat may mga sections: About, Projects, Skills, Contact.</li>
+      </ul>
+
+      <h2>LinkedIn Optimization</h2>
+      <ul>
+        <li><strong>Headline</strong> — Hindi lang "Student" o "Looking for opportunities." Dapat specific: "Aspiring Web Developer | HTML/CSS/JavaScript | IT Student."</li>
+        <li><strong>Summary</strong> — 2-3 sentences tungkol sa iyong skills, goals, at passion sa tech.</li>
+        <li><strong>Skills Section</strong> — Ilagay ang relevant technical skills at i-ask ang connections na i-endorse ka.</li>
+        <li><strong>Projects</strong> — Mag-upload ng screenshots at link sa GitHub repos.</li>
+      </ul>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang dapat i-highlight ng isang technical resume?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Hobbies at personal interests</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Technical skills, projects, at certifications</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Lahat ng academic subjects na na-take</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang isang portfolio sa konteksto ng IT?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Isang folder ng mga printed documents</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Isang online showcase ng iyong projects at skills tulad ng GitHub o personal website</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Isang resume file</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang dapat ilagay sa LinkedIn headline?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> "Student" lang</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Specific na title at skills tulad ng "Aspiring Web Developer | IT Student"</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> "Looking for job"</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Create or Update Your LinkedIn Profile</h3>
+        <p>Gumawa ng LinkedIn profile kung wala pa, o i-update ang existing profile. Siguraduhing may professional headline, summary, at hindi bababa sa isang project ang nakalagay. I-share ang link sa profile bilang output.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Technical resume dapat i-highlight ang skills, projects, at certifications.</li>
+        <li>GitHub at personal website ang main portfolio platforms para sa IT.</li>
+        <li>LinkedIn headline dapat specific at nagpapakita ng skills at career goal.</li>
+        <li>Maganda ang README files sa GitHub para ma-explain ang projects.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

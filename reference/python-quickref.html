@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Quick Reference</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+  <style>
+    body { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    .ref-section { margin-bottom: 2rem; }
+    .ref-section h2 { margin-top: 1.5rem; }
+    table { width: 100%; }
+    td:first-child { font-family: var(--font-mono); font-weight: 600; white-space: nowrap; }
+    @media print { .theme-toggle { display: none; } }
+  </style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<h1>Python Quick Reference</h1>
+<p><em>Mga madalas gamitin sa Python — print mo na para lagi mong reference!</em></p>
+
+<div class="ref-section">
+  <h2>Variables & Data Types</h2>
+  <table>
+    <tr><th>Code</th><th>Explanation</th></tr>
+    <tr><td>x = 5</td><td>Integer — whole number</td></tr>
+    <tr><td>y = 3.14</td><td>Float — decimal number</td></tr>
+    <tr><td>name = "Juan"</td><td>String — text (pwede '' or "")</td></tr>
+    <tr><td>is_ok = True</td><td>Boolean — True or False</td></tr>
+    <tr><td>fruits = ["apple", "banana"]</td><td>List — collection na pwedeng baguhin</td></tr>
+    <tr><td>person = {"name": "Juan", "age": 25}</td><td>Dictionary — key-value pairs</td></tr>
+    <tr><td>type(x)</td><td>Alamin ang data type ng variable</td></tr>
+  </table>
+</div>
+
+<div class="ref-section">
+  <h2>Input / Output</h2>
+  <table>
+    <tr><th>Code</th><th>Explanation</th></tr>
+    <tr><td>print("Hello")</td><td>Mag-output sa screen</td></tr>
+    <tr><td>print(f"Hello {name}")</td><td>f-string — mag-embed ng variable sa string</td></tr>
+    <tr><td>name = input("Enter name: ")</td><td>Kumuha ng input mula sa user</td></tr>
+  </table>
+</div>
+
+<div class="ref-section">
+  <h2>Conditionals</h2>
+  <pre>if condition:
+    # gawin ito
+elif other_condition:
+    # gawin ito
+else:
+    # gawin ito kung walang na-meet</pre>
+  <pre># Comparison: ==, !=, &lt;, &gt;, &lt;=, &gt;=
+# Logical: and, or, not</pre>
+</div>
+
+<div class="ref-section">
+  <h2>Loops</h2>
+  <pre># For loop — paulit-ulit sa collection
+for item in list:
+    print(item)
+
+# For loop gamit range
+for i in range(5):  # 0, 1, 2, 3, 4
+    print(i)
+
+# While loop — hanggang sa condition ay True
+while count &lt; 10:
+    print(count)
+    count += 1</pre>
+</div>
+
+<div class="ref-section">
+  <h2>Functions</h2>
+  <pre>def function_name(param1, param2):
+    """Docstring — explanation ng function."""
+    result = param1 + param2
+    return result
+
+# Tawagin ang function
+output = function_name(3, 5)</pre>
+</div>
+
+<div class="ref-section">
+  <h2>File Handling</h2>
+  <pre># Magbasa ng file
+with open("file.txt", "r") as f:
+    content = f.read()
+
+# Magsulat ng file
+with open("file.txt", "w") as f:
+    f.write("Hello, World!")
+
+# Magbasa ng CSV
+import csv
+with open("data.csv", "r") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        print(row)</pre>
+</div>
+
+<div class="ref-section">
+  <h2>Common Modules</h2>
+  <table>
+    <tr><th>Module</th><th>Usage</th></tr>
+    <tr><td>import math</td><td>math.sqrt(16), math.pi, math.floor(3.7)</td></tr>
+    <tr><td>import random</td><td>random.randint(1,10), random.choice(list)</td></tr>
+    <tr><td>import datetime</td><td>datetime.datetime.now()</td></tr>
+    <tr><td>import os</td><td>os.listdir(), os.rename(), os.remove()</td></tr>
+    <tr><td>import csv</td><td>csv.reader(), csv.writer()</td></tr>
+  </table>
+</div>
+
+<script>
+  document.getElementById('themeToggle')?.addEventListener('click', function() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>

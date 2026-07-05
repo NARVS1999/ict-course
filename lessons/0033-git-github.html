@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0033: Version Control with Git & GitHub</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0033: Version Control with Git & GitHub</h1>
+      <p><em>Matuto ng Git para i-track ang changes ng code at gamitin ang GitHub para sa collaboration.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakagawa ng Git repository, makakapag-commit ng changes, at makakapag-push sa GitHub.
+      </div>
+
+      <h2>Git Concepts</h2>
+      <p>Ang <strong>Git</strong> ay version control system na nagta-track ng bawat pagbabago sa code. <strong>Repository</strong> ang tawag sa project folder na may Git. Ang <strong>commit</strong> ay snapshot ng files sa isang specific na time. Ang <strong>branch</strong> ay hiwalay na version ng code para magtrabaho nang hindi naaapektuhan ang main code.</p>
+
+      <blockquote>"Ang Git parang time machine — kung nagkamali ka, kaya mong bumalik sa nakaraang version ng code."</blockquote>
+
+      <h2>Basic Git Commands</h2>
+      <pre><code># I-setup ang Git sa folder
+git init                    # Gumawa ng bagong repository
+git status                  # Tingnan ang status ng files
+
+# Mag-stage at mag-commit
+git add index.html          # I-stage ang file para i-commit
+git add .                   # I-stage lahat ng files
+git commit -m "Initial commit"  # Mag-save ng snapshot
+
+# Mag-branch
+git branch feature-login    # Gumawa ng bagong branch
+git checkout feature-login  # Lumipat sa branch
+git merge feature-login     # Pagsamahin ang branch sa main
+
+# Mag-connect sa remote
+git remote add origin https://github.com/user/repo.git
+git push origin main        # I-push ang commits sa GitHub
+git pull origin main        # I-download ang latest changes</code></pre>
+
+      <h2>GitHub Collaboration</h2>
+      <p>Ang <strong>GitHub</strong> ay online platform para mag-store ng Git repositories. Pwede kang mag-upload ng code, mag-collaborate sa iba, at mag-publish ng projects. Ang <strong>pull request</strong> ay request para i-merge ang changes mula sa isang branch papunta sa main. Ang <strong>README.md</strong> ay parang front page ng repository na naglalaman ng description at instructions.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang ginagawa ng git init?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Gumagawa ng bagong Git repository</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Nagde-delete ng repository</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Nagpi-print ng history</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang isang commit sa Git?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Isang error sa code</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Snapshot ng files sa isang point in time</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Isang branch ng repository</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang pull request sa GitHub?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Request na i-delete ang repository</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Request na i-download ang code</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Request na i-merge ang changes sa main branch</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: First GitHub Repo</h3>
+        <p>Gumawa ng GitHub account kung wala pa. I-create ang repository na "my-first-repo". I-initialize ito ng README. I-clone sa local machine, mag-add ng index.html file, i-commit at i-push pabalik sa GitHub.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang Git ay version control system para i-track ang code changes.</li>
+        <li>Ang git init, add, commit, push ay essential commands.</li>
+        <li>Ang GitHub ay online platform para sa collaboration at pag-store ng repositories.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

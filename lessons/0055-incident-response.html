@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0055: Incident Response & Ethical Hacking Intro</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0055: Incident Response & Ethical Hacking Intro</h1>
+      <p><em>Pag-unawa sa proseso ng pagtugon sa security incidents at panimula sa penetration testing at ethical hacking.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang incident response steps, ang konsepto ng penetration testing, at mga tools na ginagamit ng ethical hackers.
+      </div>
+
+      <h2>Incident Response Steps</h2>
+      <p>Ang incident response ay ang proseso ng pag-handle ng security breach o attack. Ang mga hakbang:</p>
+      <ul>
+        <li><strong>Preparation</strong> — Maghanda ng plan, tools, at team bago mangyari ang incident.</li>
+        <li><strong>Detection</strong> — Tukuyin na may incident na nangyayari (alerts, logs, user reports).</li>
+        <li><strong>Containment</strong> — Pigilan ang pagkalat ng damage (i-isolate ang affected system).</li>
+        <li><strong>Eradication</strong> — Tanggalin ang root cause (alisin ang malware, i-patch ang vulnerability).</li>
+        <li><strong>Recovery</strong> — Ibalik sa normal ang operations (restore from backup, i-monitor).</li>
+        <li><strong>Lessons Learned</strong> — Pag-aralan ang incident at magpatupad ng improvements.</li>
+      </ul>
+
+      <h2>Penetration Testing (Pen Testing)</h2>
+      <p>Ang penetration testing ay simulated cyber attack laban sa isang system para suriin ang seguridad. Layunin nito na mahanap ang vulnerabilities bago pa man sila matuklasan ng mga malicious attackers. May tatlong approach: black-box (walang prior knowledge), white-box (full knowledge), at grey-box (partial knowledge).</p>
+
+      <h2>Tools: Kali Linux, Wireshark, Nmap</h2>
+      <p><strong>Kali Linux</strong> — Isang Linux distribution na may pre-installed na security tools para sa penetration testing at ethical hacking. <strong>Wireshark</strong> — Network protocol analyzer na kumukuha at nag-a-analyze ng network traffic in real-time. <strong>Nmap</strong> — Network mapper na ginagamit para i-scan ang network at tukuyin ang mga open ports, services, at operating systems.</p>
+
+      <pre><code># Nmap: Scan for open ports
+nmap -sV 192.168.1.1
+
+# Nmap: Scan entire subnet
+nmap -sS 192.168.1.0/24
+
+# Wireshark TShark: Capture packets
+tshark -i eth0 -c 100
+
+# Kali Linux: Common tools
+# Metasploit, Burp Suite, John the Ripper, Aircrack-ng</code></pre>
+
+      <h2>Legal at Ethical Considerations</h2>
+      <p>Ang ethical hacking ay ginagawa lamang may nakasulat na permission (authorization). Bawal mag-penetration test sa system na hindi mo pag-aari o walang permiso. Ang paggawa nito nang walang permiso ay labag sa batas (cybercrime). Laging sundin ang "rules of engagement" at i-report ang findings sa may-ari ng system.</p>
+
+      <blockquote>"Ang ethical hacker ay 'good guy' — sinusubukan pasukin ang system para malaman ang butas at maayos bago pasukin ng totoong attacker."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang tamang pagkakasunod-sunod ng incident response steps?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Detection, Recovery, Preparation, Eradication, Containment</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Preparation, Detection, Containment, Eradication, Recovery, Lessons Learned</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Preparation, Eradication, Detection, Recovery, Containment</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang penetration testing?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Pag-attake sa system nang walang permiso</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Simulated cyber attack na may permiso para mahanap ang vulnerabilities</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Pag-install ng antivirus software</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang Kali Linux?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Isang text editor</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Isang Linux distribution na may security tools para sa penetration testing</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Isang web browser</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Research a Real-World Cyber Attack</h3>
+        <p>Maghanap ng isang kilalang cyber attack (halimbawa: WannaCry ransomware, SolarWinds hack, Yahoo data breach). Sumulat ng isang paragraph na naglalaman ng: anong nangyari, sino ang naapektuhan, paano ito nangyari, at anong lessons ang natutunan mula rito.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Incident response: Preparation, Detection, Containment, Eradication, Recovery, Lessons Learned.</li>
+        <li>Penetration testing = authorized hacking para makita ang butas ng system.</li>
+        <li>Kali Linux, Wireshark, Nmap ay tools para sa ethical hacking — gamitin nang responsable at legal.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

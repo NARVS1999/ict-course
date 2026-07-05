@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0048: Introduction to Data Analysis & Reporting</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0048: Introduction to Data Analysis & Reporting</h1>
+      <p><em>Pag-export, pag-aanalisa, at pag-visualize ng data para sa matalinong decision-making.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan ang pag-export ng data sa CSV/Excel, basic analysis gamit ang Python o Excel, at data visualization tools.
+      </div>
+
+      <h2>Exporting Data to CSV / Excel</h2>
+      <p>Ang CSV (Comma-Separated Values) ay isang simpleng format na nababasa ng Excel, Google Sheets, at ibang tools. Pwedeng mag-export ng data mula sa MySQL gamit ang INTO OUTFILE o mula sa PHP/Python sa pamamagitan ng pag-generate ng CSV file.</p>
+
+      <pre><code>-- MySQL export to CSV
+SELECT * FROM Students
+INTO OUTFILE 'students.csv'
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+
+// PHP export
+header('Content-Type: text/csv');
+header('Content-Disposition: attachment; filename="data.csv"');
+$output = fopen('php://output', 'w');
+fputcsv($output, ['Name', 'Course', 'Grade']);
+fputcsv($output, ['Juan', 'BSIT', 1.5]);
+fclose($output);</code></pre>
+
+      <h2>Basic Analysis gamit ang Python (Pandas)</h2>
+      <p>Ang Pandas ay isang Python library para sa data manipulation at analysis. Gamit ang DataFrame, pwedeng mag-filter, mag-group, at mag-compute ng statistics mula sa datasets.</p>
+
+      <pre><code>import pandas as pd
+
+# Basahin ang CSV file
+df = pd.read_csv('students.csv')
+
+# Tingnan ang unang 5 rows
+print(df.head())
+
+# Basic statistics
+print(df.describe())
+
+# Group by course at kunin ang average grade
+avg_by_course = df.groupby('course')['grade'].mean()
+print(avg_by_course)</code></pre>
+
+      <h2>Excel Pivot Tables</h2>
+      <p>Ang pivot table sa Excel ay nagbibigay-daan para i-summarize ang malalaking datasets sa pamamagitan ng pag-drag at pag-drop ng fields. Halimbawa: ilagay ang "Course" sa rows, "Grade" sa values (average), at makikita mo ang average grade per course.</p>
+
+      <h2>Data Visualization</h2>
+      <p>Ang data visualization ay ang pag-represent ng data sa graphical form (charts, graphs, dashboards). Tools: Google Data Studio (free), Looker (enterprise), Tableau Public (free for public data). Ang magandang visualization ay nagpapadali ng pag-unawa sa trends at patterns.</p>
+
+      <blockquote>"Hindi lang storage — dapat marunong ka ring mag-analyze ng data para maging useful sa decision-making."</blockquote>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang pangunahing gamit ng Python library na Pandas?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Paggawa ng website</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Data manipulation at analysis</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Pag-edit ng images</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang pivot table?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Isang uri ng database</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Tool sa Excel para i-summarize at i-analyze ang data sa pamamagitan ng pag-drag ng fields</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Isang programming language</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang data visualization?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Pagtatago ng data</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Pag-represent ng data sa graphical form para mas madaling maintindihan</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Pagdelete ng data</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: CSV Chart Creation</h3>
+        <p>Gamit ang Excel o Google Sheets, gumawa ng CSV dataset na may columns: "Month" at "Sales" (12 rows para sa isang taon). Gumawa ng line chart na nagpapakita ng sales trend sa buong taon. I-export ang chart bilang screenshot o PDF.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang CSV ay universal format para sa data export/import.</li>
+        <li>Pandas sa Python at Pivot Tables sa Excel ay powerful tools para sa data analysis.</li>
+        <li>Data visualization (charts/dashboards) ay nagpapadali ng pag-unawa sa datos.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

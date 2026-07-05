@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0001: Ano ang ICT at Bakit Ito Mahalaga</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0001: Ano ang ICT at Bakit Ito Mahalaga</h1>
+      <p><em>Pag-unawa sa Information and Communications Technology at kung paano ito nakakaapekto sa ating pang-araw-araw na buhay.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapagpaliwanag kung ano ang ICT, makapagbigay ng mga halimbawa ng ICT careers, at makilala ang ICT na ginagamit mo araw-araw.
+      </div>
+
+      <h2>Ano ang ICT?</h2>
+      <p>Ang ICT ay <strong>Information and Communications Technology</strong>. Ito ay tumutukoy sa lahat ng teknolohiyang ginagamit upang mag-handle ng impormasyon — mula sa paggawa, pag-store, pag-process, hanggang sa pag-share ng data. Kasama na rito ang mga computer, internet, cellphone, TV, radio, at iba pang communication devices.</p>
+      <p>Simple lang: kung may kinalaman ito sa impormasyon at komunikasyon gamit ang teknolohiya, ICT ang tawag doon.</p>
+
+      <blockquote>"ICT ang dahilan kung bakit ka nakakapag-Facebook, nakakapag-send ng email, at napapatakbo ang businesses online."</blockquote>
+
+      <h2>Mga Karera sa ICT</h2>
+      <p>Maraming trabaho ang pwedeng pasukin sa ICT field. Narito ang ilan sa mga sikat na karera:</p>
+      <ul>
+        <li><strong>Tech Support</strong> — Tumutulong sa mga users na may problema sa kanilang computer o software.</li>
+        <li><strong>Programmer / Software Developer</strong> — Gumagawa ng mga programa, apps, at websites.</li>
+        <li><strong>Network Administrator</strong> — Nagma-manage ng network ng isang kumpanya para laging online ang lahat.</li>
+        <li><strong>Cybersecurity Specialist</strong> — Nagpoprotekta sa systems at data laban sa mga hackers at threats.</li>
+        <li><strong>Data Analyst</strong> — Nangongolekta at nagsusuri ng data para makabuo ng meaningful insights.</li>
+      </ul>
+
+      <h2>ICT sa Araw-Araw</h2>
+      <p>Ginagamit natin ang ICT kahit hindi natin namamalayan. Kapag nagte-text ka, nagba-browse sa internet, nagce-cellphone, nanonood ng YouTube, o naglalaro ng online games — gumagamit ka ng ICT. Sa opisina, ginagamit ang ICT para sa email, video calls, data entry, at iba pa. Sa eskwelahan, ginagamit ang ICT para sa online class, research, at paggawa ng assignments.</p>
+
+      <h2>Quick Quiz</h2>
+
+      <div class="quiz-item">
+        <div class="quiz-question">1. What does ICT stand for?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Information and Communications Technology</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Internet and Computer Technology</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Integrated Computer Training</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">2. Which career focuses on protecting networks and data from threats?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Programmer</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Cybersecurity Specialist</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Data Analyst</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-question">3. Which of the following is an example of ICT used in daily life?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Using a microwave to heat food</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Sending an email to a friend</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Reading a printed book</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: ICT Devices Inventory</h3>
+        <p>List down 5 ICT devices na ginagamit mo araw-araw. Sa bawat device, isulat kung ano ang gamit nito at paano ito nakatutulong sa iyong pang-araw-araw na gawain. Halimbawa: Smartphone — ginagamit ko para mag-text, mag-Facebook, at mag-search sa Google.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>ICT stands for Information and Communications Technology.</li>
+        <li>Maraming career opportunities sa ICT: tech support, programmer, network admin, cybersecurity, at data analyst.</li>
+        <li>Ginagamit natin ang ICT araw-araw — sa trabaho, eskwelahan, at personal na buhay.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'b' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

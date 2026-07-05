@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0039: Introduction to Backend Development</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0039: Introduction to Backend Development</h1>
+      <p><em>Alamin ang server-side scripting — PHP/Node.js, handling requests, sessions, at database connection.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Sa pagtatapos ng araling ito, ikaw ay makakapag-explain ng backend concepts at makakagawa ng simpleng server-side script na nagdi-display ng dynamic content.
+      </div>
+
+      <h2>Ano ang Backend Development?</h2>
+      <p>Ang <strong>backend</strong> ay ang bahagi ng website na nasa server. Hindi ito nakikita ng user pero dito nangyayari ang processing ng data, authentication, at database operations. Ang mga common backend languages ay PHP, Python (Django/Flask), Node.js (Express), at Ruby on Rails.</p>
+
+      <blockquote>"Backend ang nagpro-proseso ng data at nag-i-store sa database — hindi ito nakikita ng user."</blockquote>
+
+      <h2>PHP Basics</h2>
+      <pre><code>&lt;?php
+// Variables at echo
+$name = "Juan";
+echo "Hello, $name!";
+
+// Forms
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    echo "Welcome, $username!";
+}
+
+// Sessions
+session_start();
+$_SESSION["user_id"] = 1;
+
+// MySQL Connection
+$conn = new mysqli("localhost", "root", "", "mydb");
+$result = $conn->query("SELECT * FROM users");
+?&gt;</code></pre>
+
+      <h2>Node.js with Express</h2>
+      <pre><code>const express = require("express");
+const app = express();
+
+// Basic route
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
+
+// Handle form data
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+  // Validate and respond
+  res.json({ message: "Logged in!" });
+});
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});</code></pre>
+
+      <h2>Sessions at Login System</h2>
+      <p>Ang <strong>session</strong> ay data na naka-store sa server para sa isang specific na user. Ginagamit ito para maalala kung naka-login ang user. Ang isang simpleng login system ay nangangailangan ng: form para sa username/password, validation, session management, at database kung saan naka-store ang user credentials.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang server-side scripting?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Code na tumatakbo sa server at nagge-generate ng HTML</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Code na tumatakbo sa browser ng user</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Code na nagdi-download ng files</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang session sa web development?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Isang file na naka-store sa browser</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Data na naka-store sa server para ma-track ang isang user</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Isang URL parameter</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang kailangan ng isang login system?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Email lang</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Password lang</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Authentication — pag-verify ng username at password</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Hello World Backend</h3>
+        <p>Gumawa ng simpleng backend page: sa PHP, gumawa ng index.php na nagpi-print ng "Hello, World!" gamit ang echo. Sa Node.js naman, gumawa ng Express app na may route na nagre-respond ng "Hello, World!".</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Ang backend ay server-side code na nagha-handle ng data processing.</li>
+        <li>PHP at Node.js ay common backend languages.</li>
+        <li>Ang sessions ay ginagamit para sa user authentication at state management.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Review the material or ask for clarification.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'a', q2: 'b', q3: 'c' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

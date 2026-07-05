@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0052: Authentication & Access Control</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0052: Authentication & Access Control</h1>
+      <p><em>Pag-unawa sa MFA, password policies, least privilege, at role-based access control.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matutunan kung paano patatagin ang authentication at i-manage ang access ng users sa system.
+      </div>
+
+      <h2>Multi-Factor Authentication (MFA)</h2>
+      <p>Ang MFA ay gumagamit ng dalawa o higit pang paraan para i-verify ang identity ng user: something you know (password), something you have (phone/authenticator app), at something you are (fingerprint/face). Kahit makompromiso ang password, hindi makakapasok ang attacker kung wala ang second factor.</p>
+
+      <h2>Password Policies</h2>
+      <p>Ang magandang password policy ay: gumamit ng mahaba at complex na password (minimum 12 characters, may uppercase, lowercase, numbers, symbols), huwag mag-reuse ng passwords sa iba't ibang accounts, at palitan ang password kung may suspected breach. Gamitin ang password manager (LastPass, Bitwarden, 1Password) para hindi mo kailanganing tandaan lahat.</p>
+
+      <h2>Principle of Least Privilege</h2>
+      <p>Ang bawat user o system ay dapat bigyan lamang ng pinakamababang permissions na kailangan para magawa ang trabaho. Halimbawa, ang isang intern ay hindi dapat magkaroon ng admin access. Kung ma-compromise ang account, limitado lamang ang pwedeng gawin ng attacker.</p>
+
+      <h2>RBAC (Role-Based Access Control)</h2>
+      <p>Sa RBAC, ang permissions ay naka-assign sa roles, hindi sa individual users. Halimbawa: "Admin" role ay may full access, "Editor" ay pwedeng mag-edit ng content, "Viewer" ay pwedeng tumingin lamang. Kapag nagpalit ng role ang user, nagbabago rin ang access niya.</p>
+
+      <blockquote>"Gumamit ng password manager at i-enable ang 2-factor authentication sa lahat ng important accounts."</blockquote>
+
+      <pre><code>-- Halimbawa ng RBAC database schema
+CREATE TABLE Roles (
+    role_id INT PRIMARY KEY,
+    role_name VARCHAR(50)
+);
+
+CREATE TABLE Permissions (
+    perm_id INT PRIMARY KEY,
+    perm_name VARCHAR(100)
+);
+
+CREATE TABLE Role_Permissions (
+    role_id INT,
+    perm_id INT,
+    PRIMARY KEY (role_id, perm_id),
+    FOREIGN KEY (role_id) REFERENCES Roles(role_id),
+    FOREIGN KEY (perm_id) REFERENCES Permissions(perm_id)
+);
+
+CREATE TABLE User_Roles (
+    user_id INT,
+    role_id INT,
+    PRIMARY KEY (user_id, role_id),
+    FOREIGN KEY (role_id) REFERENCES Roles(role_id)
+);</code></pre>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang MFA (Multi-Factor Authentication)?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Paggamit ng maraming passwords</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Paggamit ng dalawa o higit pang paraan para i-verify ang identity</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Pag-install ng maraming firewalls</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Ano ang principle of least privilege?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Bigyan ang lahat ng admin access</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Bigyan ang user ng pinakamababang permissions na kailangan lamang</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> I-block lahat ng users</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang RBAC (Role-Based Access Control)?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Permissions ay naka-assign sa roles, hindi sa indibidwal na users</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Lahat ng users ay may parehong access</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Access ay batay sa IP address</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Enable 2FA</h3>
+        <p>Pumili ng isang account (Google, Facebook, GitHub, o iba pa) at i-enable ang 2-Factor Authentication. I-document ang steps: pumunta sa security settings, piliin ang authentication method (authenticator app o SMS), at i-verify na gumagana ito. Huwag ibahagi ang iyong screenshots na may sensitive info.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>MFA = maraming layers ng verification; hindi sapat ang password lang.</li>
+        <li>Least privilege = minimal access lang; password manager = secure storage.</li>
+        <li>RBAC = permissions ay naka-assign sa roles, mas madali i-manage.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson na ito o magtanong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) { fb.textContent = 'Please select an answer.'; fb.className = 'quiz-feedback incorrect'; continue; }
+      if (sel.value === answers[key]) { fb.textContent = '\u2705 Correct! Well done.'; fb.className = 'quiz-feedback correct'; }
+      else { fb.textContent = '\u274C Incorrect. Review the material and try again.'; fb.className = 'quiz-feedback incorrect'; }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>

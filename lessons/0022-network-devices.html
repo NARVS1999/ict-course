@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 0022: Network Devices & Cabling</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <script>if (localStorage.getItem("theme") === "dark") document.documentElement.setAttribute("data-theme", "dark");</script>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<div class="lesson-layout">
+  <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
+  <main class="lesson-main">
+    <div class="lesson-container">
+
+      <h1>Lesson 0022: Network Devices & Cabling</h1>
+      <p><em>Tuklasin ang mga network devices — router, switch, hub, modem, access point — at ang mga Ethernet cables at fiber optics.</em></p>
+
+      <div class="info">
+        <strong>Lesson Goal</strong>
+        Matukoy ang pagkakaiba ng mga network devices at maunawaan ang mga uri ng network cables at ang kanilang gamit.
+      </div>
+
+      <h2>Network Devices: Router, Switch, Hub, Modem, Access Point</h2>
+      <p><strong>Router</strong> — nagkokonekta ng iba't ibang networks (hal. LAN to internet) at nagfa-forward ng data packets. <strong>Switch</strong> — nagkokonekta ng multiple devices sa iisang LAN at nagse-send ng data sa tamang device lang (mas matalino kaysa hub). <strong>Hub</strong> — tulad ng switch pero nagbo-broadcast ng data sa lahat ng ports (luma at inefficient). <strong>Modem</strong> — nagco-convert ng signal mula ISP (cable, DSL, fiber) papunta sa Ethernet. <strong>Access Point</strong> — nagbibigay ng Wi-Fi connectivity sa wired network.</p>
+
+      <h2>Ethernet Cables: Straight-Through vs Crossover</h2>
+      <p>Ang <strong>straight-through cable</strong> (T568A both ends o T568B both ends) ay ginagamit para sa PC-to-switch o router-to-switch connections. Ang <strong>crossover cable</strong> (T568A isang end, T568B kabilang end) ay ginagamit para sa PC-to-PC o switch-to-switch connections — pero sa modern devices, hindi na kailangan ang crossover dahil auto-MDIX na ang mga switch. <strong>Cat5e</strong> — hanggang 1 Gbps, <strong>Cat6</strong> — hanggang 10 Gbps (mas mahigpit ang specs), <strong>Cat6a</strong> — 10 Gbps sa mas mahabang distansya.</p>
+
+      <blockquote>"Gumagamit ng straight-through cable para PC-to-switch, crossover para PC-to-PC."</blockquote>
+
+      <h2>Fiber Optic at Coaxial Cables</h2>
+      <p>Ang <strong>fiber optic</strong> ay gumagamit ng liwanag (light pulses) sa halip na electrical signals — sobrang bilis (hanggang 100+ Gbps), walang interference, at pwede sa malalayong distansya. Ito ang ginagamit ng mga ISPs para sa high-speed internet. Ang <strong>coaxial cable</strong> ay ang lumang uri na ginagamit sa cable TV at DSL internet — mas mabagal at mas madaling kapitan ng interference kumpara sa fiber.</p>
+
+      <h2>RJ45 Crimping (T568A/T568B)</h2>
+      <p>Ang <strong>RJ45 connector</strong> ang plug na nasa dulo ng Ethernet cable. Ang <strong>T568A</strong> at <strong>T568B</strong> ay ang dalawang wiring standards — pareho lang gumagana, pero sa Pilipinas, mas common ang T568B. Ang wire order ng T568B: White-Orange, Orange, White-Green, Blue, White-Blue, Green, White-Brown, Brown.</p>
+
+      <h2>Quick Quiz</h2>
+      <div class="quiz-item">
+        <div class="quiz-question">1. Ano ang pagkakaiba ng switch at hub?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q1" value="a"> Pareho lang sila</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="b"> Ang switch ay nagse-send ng data sa tamang device; ang hub ay nagbo-broadcast sa lahat</label>
+          <label class="quiz-option"><input type="radio" name="q1" value="c"> Ang hub ay mas mabilis kaysa switch</label>
+        </div>
+        <div class="quiz-feedback" id="feedback1"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">2. Anong cable ang gamit para PC-to-switch?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q2" value="a"> Crossover cable</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="b"> Straight-through cable</label>
+          <label class="quiz-option"><input type="radio" name="q2" value="c"> Fiber optic cable</label>
+        </div>
+        <div class="quiz-feedback" id="feedback2"></div>
+      </div>
+      <div class="quiz-item">
+        <div class="quiz-question">3. Ano ang ibig sabihin ng Cat6?</div>
+        <div class="quiz-options">
+          <label class="quiz-option"><input type="radio" name="q3" value="a"> Category 6 — isang Ethernet cable standard na kaya ang 10 Gbps</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="b"> Isang uri ng fiber optic cable</label>
+          <label class="quiz-option"><input type="radio" name="q3" value="c"> Isang wireless standard</label>
+        </div>
+        <div class="quiz-feedback" id="feedback3"></div>
+      </div>
+
+      <button class="quiz-submit" onclick="checkQuiz()">Check Answers</button>
+
+      <div class="project">
+        <h3>Mini-Project: Kilalanin ang Iyong Home Network Devices</h3>
+        <p>Tingnan ang iyong setup sa bahay o sa school. Hanapin ang router, modem, switch (kung meron), access point, at iba pang network devices. I-drawing ang diagram kung paano sila naka-connect sa isa't isa. I-note ang brand at model ng bawat device. Kung may Ethernet cable, tingnan kung may nakasulat na "Cat5e" o "Cat6" sa cable.</p>
+      </div>
+
+      <h2>Summary</h2>
+      <ul>
+        <li>Router = nagkokonekta ng networks; Switch = nagkokonekta ng devices sa LAN; Hub = luma at inefficient.</li>
+        <li>Straight-through cable para sa PC-to-switch; crossover cable para sa PC-to-PC.</li>
+        <li>Cat5e (1 Gbps) at Cat6 (10 Gbps) ang common Ethernet cable categories.</li>
+        <li>Fiber optic ang pinakamabilis at ginagamit ng ISPs para sa high-speed internet.</li>
+      </ul>
+
+      <div class="info">
+        <strong>Questions?</strong>
+        Balikan ang lesson o humingi ng tulong sa iyong instructor.
+      </div>
+
+      <div class="lesson-nav"></div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/lessons-data.js"></script>
+<script src="../assets/sidebar.js"></script>
+<script src="../assets/lesson-nav.js"></script>
+<script>
+  function checkQuiz() {
+    var answers = { q1: 'b', q2: 'b', q3: 'a' };
+    for (var key in answers) {
+      var sel = document.querySelector('input[name="' + key + '"]:checked');
+      var fb = document.getElementById('feedback' + key.slice(1));
+      if (!sel) {
+        fb.textContent = 'Please select an answer.';
+        fb.className = 'quiz-feedback incorrect';
+        continue;
+      }
+      if (sel.value === answers[key]) {
+        fb.textContent = '\u2705 Correct! Well done.';
+        fb.className = 'quiz-feedback correct';
+      } else {
+        fb.textContent = '\u274C Incorrect. Review the material and try again.';
+        fb.className = 'quiz-feedback incorrect';
+      }
+    }
+  }
+</script>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  })();
+</script>
+</body>
+</html>
