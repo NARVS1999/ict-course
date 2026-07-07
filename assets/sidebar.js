@@ -53,4 +53,24 @@
   }
 
   sidebar.innerHTML = html;
+
+  // Hamburger toggle (mobile)
+  var toggle = document.getElementById('sidebarToggle');
+  var backdrop = document.getElementById('sidebarBackdrop');
+  if (toggle && sidebar && backdrop) {
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      backdrop.classList.remove('visible');
+    }
+    toggle.addEventListener('click', function() {
+      sidebar.classList.toggle('open');
+      backdrop.classList.toggle('visible');
+    });
+    backdrop.addEventListener('click', closeSidebar);
+    // Close sidebar when a nav link is clicked
+    var links = sidebar.querySelectorAll('.sidebar-link');
+    for (var j = 0; j < links.length; j++) {
+      links[j].addEventListener('click', closeSidebar);
+    }
+  }
 })();

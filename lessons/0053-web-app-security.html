@@ -9,6 +9,8 @@
 </head>
 <body>
 <button class="theme-toggle" id="themeToggle" title="Toggle theme">&#9788;</button>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle sidebar">&#9776;</button>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 <div class="lesson-layout">
   <aside class="lesson-sidebar" id="lesson-sidebar"></aside>
   <main class="lesson-main">
@@ -110,6 +112,11 @@ if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         <li>SQL Injection = malisiyosong SQL sa input — iwasan gamit ang prepared statements.</li>
         <li>XSS = malisiyosong JavaScript — i-prevent sa pamamagitan ng output escaping.</li>
         <li>CSRF = unwanted actions — i-prevent gamit ang CSRF tokens.</li>
+      </ul>
+
+      <h2>Recommended Resources</h2>
+      <ul>
+        <li><a href="https://owasp.org/www-project-top-ten/">OWASP Top 10</a> — SQL injection, XSS, CSRF at iba pang web security risks</li>
       </ul>
 
       <div class="info">
